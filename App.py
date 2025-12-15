@@ -1,95 +1,67 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import json
-import os
 
-app = Flask(__name__)
-CORS(app)
+app = FastAPI()
 
-# -------------------------------------------------------
-# LADEN VAN DE KEUZEBOM
-# -------------------------------------------------------
+# CORS (frontend mag backend aanroepen)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-KEUZEBESTAND = os.path.join(os.path.dirname(__file__), "keuzeboom.json")
+# =======================
+# JSON LADEN
+# =======================
+with open("keuzeboom.json", "r", encoding="utf-8") as f:
+    KEUZEBoom = json.load(f)
 
-with open(KEUZEBESTAND, "r", encoding="utf-8") as f:
-    TREE = json.load(f)
-
-def find_node(node_id):
-    """Zoekt een node op basis van ID."""
-    for n in TREE:
-        if n.get("id") == node_id:
-            return n
+# =======================
+# HULPFUNCTIES
+# =======================
+def find_node(node_id: str):
+    for node in KEUZEBoom:
+        if node.get("id") == node_id:
+            return node
     return None
 
+# =======================
+# START
+# =======================
+@app.get("/api/start")
+def start():
+    start_node = KEUZEBoom[0]
+    return start_node
 
-# -------------------------------------------------------
-# HULPFUNCTIE VOOR HET FORMATEREN VAN OPTIES
-# -------------------------------------------------------
+# =======================
+# NEXT
+# =======================
+class NextRequest(BaseModel):
+    node_id: str
+    choice: int
 
-def extract_answer_text(node):
-    if not node:
-        return ""
-    txt = node.get("text", "")
-    return txt.replace("Antw:", "").strip()
+@app.post("/api/next")
+def next_node(req: NextRequest):
+    current_node = find_node(req.node_id)
 
+    if not current_node:
+        raise HTTPException(status_code=400, detail="Huidige node niet gevonden")
 
-def compute_options(node):
-    """Geeft de juiste antwoordopties terug op basis van het nodetype."""
-    if node["type"] == "vraag":
-        return [extract_answer_text(find_node(n)) for n in node.get("next", [])]
-    return []
+    if "next" not in current_node:
+        raise HTTPException(status_code=400, detail="Node heeft geen vervolg")
 
+    if req.choice >= len(current_node["next"]):
+        raise HTTPException(status_code=400, detail="Ongeldige keuze-index")
 
-# -------------------------------------------------------
-# API: STARTPUNT
-# -------------------------------------------------------
+    # 🔑 DIT IS DE BELANGRIJKSTE REGEL
+    next_node_id = current_node["next"][req.choice]
 
-@app.route("/api/start", methods=["GET"])
-def api_start():
-    start_id = "BFC"  # vaste startnode
-    node = find_node(start_id)
+    next_node = find_node(next_node_id)
 
-    if not node:
-        return jsonify({"error": "Startnode ontbreekt"}), 500
+    if not next_node:
+        raise HTTPException(status_code=400, detail="Volgende node niet gevonden")
 
-    return jsonify({
-        "id": node["id"],
-        "type": node["type"],
-        "text": node["text"],
-        "options": compute_options(node),
-        "next": node.get("next", [])
-    })
-
-
-# -------------------------------------------------------
-# API: NEXT NODE (volgende vraag / systeem / antwoord)
-# -------------------------------------------------------
-
-@app.route("/api/next", methods=["POST"])
-def api_next():
-    data = request.json
-    next_id = data.get("next_id")
-
-    if not next_id:
-        return jsonify({"error": "next_id ontbreekt"}), 400
-
-    node = find_node(next_id)
-    if not node:
-        return jsonify({"error": f"Node '{next_id}' niet gevonden"}), 400
-
-    return jsonify({
-        "id": node["id"],
-        "type": node["type"],
-        "text": node["text"],
-        "options": compute_options(node),
-        "next": node.get("next", [])
-    })
-
-
-# -------------------------------------------------------
-# LOCAL RUN (wordt genegeerd op Render)
-# -------------------------------------------------------
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    return next_node
