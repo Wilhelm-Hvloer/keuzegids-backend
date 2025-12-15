@@ -1,154 +1,95 @@
-import json
-import re
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
+import json
+import os
 
-# -------------------------------------------------------
-# INITIALISATIE
-# -------------------------------------------------------
 app = Flask(__name__)
 CORS(app)
 
-KEUZEBESTAND = "keuzeboom.json"
-PRIJSBESTAND = "Prijstabellen coatingsystemen.json"
+# -------------------------------------------------------
+# LADEN VAN DE KEUZEBOM
+# -------------------------------------------------------
 
-# Boom & prijzen laden
+KEUZEBESTAND = os.path.join(os.path.dirname(__file__), "keuzeboom.json")
+
 with open(KEUZEBESTAND, "r", encoding="utf-8") as f:
-    boom = json.load(f)
-
-with open(PRIJSBESTAND, "r", encoding="utf-8") as f:
-    pdata = json.load(f)
-
-prijzen = pdata.get("Blad1", pdata)
-
-
-# -------------------------------------------------------
-# HELPERS
-# -------------------------------------------------------
-def clean_answer(txt):
-    return re.sub(r"^(Antw:|Sys:|Xtr:)\s*", "", txt).strip()
+    TREE = json.load(f)
 
 def find_node(node_id):
-    if node_id == "END":
-        return {"id": "END", "type": "end", "text": "Einde", "next": []}
-    return next((n for n in boom if n["id"] == node_id), None)
-
-def staffel_index(staffels, opp):
-    if opp < 30:
-        return 0
-    for i, s in enumerate(staffels):
-        clean = s.replace("+", "")
-        parts = clean.split("-")
-        try:
-            low = float(parts[0])
-            high = float(parts[1]) if len(parts) > 1 else 999999
-        except:
-            continue
-        if low <= opp <= high:
-            return i
-    return len(staffels) - 1
-
-def bereken_prijs(systeem, opp, ruimtes):
-    sd = prijzen.get(systeem)
-    if not sd:
-        return None
-
-    staffels = sd["staffel"]
-    prijzen_m2 = sd["prijzen"][str(ruimtes)]
-
-    idx = staffel_index(staffels, opp)
-    pm2 = prijzen_m2[idx]
-    totaal = pm2 * opp
-
-    return {
-        "systeem": systeem,
-        "oppervlakte": opp,
-        "ruimtes": ruimtes,
-        "prijs_m2": pm2,
-        "basis": round(totaal, 2),
-        "staffel": staffels[idx],
-    }
+    """Zoekt een node op basis van ID."""
+    for n in TREE:
+        if n.get("id") == node_id:
+            return n
+    return None
 
 
 # -------------------------------------------------------
-# API ROUTES
+# HULPFUNCTIE VOOR HET FORMATEREN VAN OPTIES
+# -------------------------------------------------------
+
+def extract_answer_text(node):
+    if not node:
+        return ""
+    txt = node.get("text", "")
+    return txt.replace("Antw:", "").strip()
+
+
+def compute_options(node):
+    """Geeft de juiste antwoordopties terug op basis van het nodetype."""
+    if node["type"] == "vraag":
+        return [extract_answer_text(find_node(n)) for n in node.get("next", [])]
+    return []
+
+
+# -------------------------------------------------------
+# API: STARTPUNT
 # -------------------------------------------------------
 
 @app.route("/api/start", methods=["GET"])
-def start():
-    """Startvraag (BFC) ophalen."""
-    node = find_node("BFC")
-    answers = [clean_answer(find_node(n)["text"]) for n in node["next"]]
+def api_start():
+    start_id = "BFC"  # vaste startnode
+    node = find_node(start_id)
+
+    if not node:
+        return jsonify({"error": "Startnode ontbreekt"}), 500
 
     return jsonify({
-        "node_id": "BFC",
+        "id": node["id"],
         "type": node["type"],
         "text": node["text"],
-        "answers": answers,
-        "next": node["next"]
+        "options": compute_options(node),
+        "next": node.get("next", [])
     })
 
 
+# -------------------------------------------------------
+# API: NEXT NODE (volgende vraag / systeem / antwoord)
+# -------------------------------------------------------
+
 @app.route("/api/next", methods=["POST"])
-def next_step():
-    """Ontvangt node_id + keuze, geeft volgende node terug."""
+def api_next():
     data = request.json
-    node_id = data.get("node_id")
-    choice = data.get("choice")
+    next_id = data.get("next_id")
 
-    current = find_node(node_id)
-    next_id = current["next"][choice]
+    if not next_id:
+        return jsonify({"error": "next_id ontbreekt"}), 400
+
     node = find_node(next_id)
+    if not node:
+        return jsonify({"error": f"Node '{next_id}' niet gevonden"}), 400
 
-    response = {
-        "node_id": next_id,
+    return jsonify({
+        "id": node["id"],
         "type": node["type"],
         "text": node["text"],
-        "answers": [],
-        "next": node["next"]
-    }
-
-    if node["type"] == "vraag":
-        response["answers"] = [
-            clean_answer(find_node(n)["text"]) for n in node["next"]
-        ]
-
-    if node["type"] == "antwoord":
-        response["answer"] = clean_answer(node["text"])
-
-    if node["type"] == "systeem":
-        response["system"] = clean_answer(node["text"])
-
-    if node["type"] == "afw":
-        response["systems"] = []
-        for sid in node["next"]:
-            s_node = find_node(sid)
-            response["systems"].append({
-                "id": sid,
-                "name": clean_answer(s_node["text"])
-            })
-
-    return jsonify(response)
-
-
-@app.route("/api/price", methods=["POST"])
-def price():
-    """Prijsberekening voor gekozen systeem."""
-    data = request.json
-    systeem = data["system"]
-    opp = float(data["oppervlakte"])
-    ruimtes = int(data["ruimtes"])
-
-    pr = bereken_prijs(systeem, opp, ruimtes)
-    return jsonify(pr)
+        "options": compute_options(node),
+        "next": node.get("next", [])
+    })
 
 
 # -------------------------------------------------------
-# START SERVER
+# LOCAL RUN (wordt genegeerd op Render)
 # -------------------------------------------------------
-@app.route("/")
-def index():
-    return "Keuzegids API draait ✔"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
