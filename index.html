@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keuzegids Hardeman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+    <h1>Keuzegids Hardeman</h1>
+
+    <!-- Vraagtekst -->
+    <div id="question-box" class="card">
+        <p id="question-text"></p>
+    </div>
+
+    <!-- Antwoordknoppen -->
+    <div id="answers"></div>
+
+    <!-- Extra invoerveld (oppervlakte, ruimtes, etc) -->
+    <div id="input-box" class="hidden">
+        <input id="input-field" type="text" placeholder="">
+        <button onclick="submitInput()">OK</button>
+    </div>
+
+    <!-- Systeemkeuze -->
+    <div id="system-list" class="hidden"></div>
+
+    <!-- Prijsresultaten -->
+    <div id="price-box" class="hidden card">
+        <h2>Prijsberekening</h2>
+        <p><b>Systeem:</b> <span id="p-system"></span></p>
+        <p><b>Oppervlakte:</b> <span id="p-opp"></span> m²</p>
+        <p><b>Ruimtes:</b> <span id="p-r"></span></p>
+        <p><b>Staffel:</b> <span id="p-staffel"></span></p>
+        <p><b>Prijs / m²:</b> €<span id="p-m2"></span></p>
+        <p><b>Totaal:</b> €<span id="p-totaal"></span></p>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

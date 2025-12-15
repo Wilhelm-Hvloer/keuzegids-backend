@@ -1,0 +1,6662 @@
+[
+  {
+    "id": "BFC",
+    "type": "vraag",
+    "text": "Vrg: Is de vloer geïsoleerd?",
+    "next": [
+      "BFB",
+      "BFA"
+    ]
+  },
+  {
+    "id": "BFB",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AAA"
+    ]
+  },
+  {
+    "id": "AAA",
+    "type": "vraag",
+    "text": "Vrg: huidige situatie: wat is de ondergrond?",
+    "next": [
+      "AAB",
+      "ABB",
+      "ACM",
+      "ADX",
+      "AIJ"
+    ]
+  },
+  {
+    "id": "AAB",
+    "type": "antwoord",
+    "text": "Antw: Gevlinderd beton",
+    "next": [
+      "AAC"
+    ]
+  },
+  {
+    "id": "AAC",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "AAD",
+      "AAQ"
+    ]
+  },
+  {
+    "id": "AAD",
+    "type": "antwoord",
+    "text": "Antw: Loopbelasting",
+    "next": [
+      "AAE"
+    ]
+  },
+  {
+    "id": "AAE",
+    "type": "systeem",
+    "text": "Sys: DOS Basic",
+    "next": [
+      "AAH"
+    ]
+  },
+  {
+    "id": "AAH",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AAI",
+      "AAM"
+    ]
+  },
+  {
+    "id": "AAI",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AAJ"
+    ]
+  },
+  {
+    "id": "AAJ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AAK",
+      "AAL"
+    ]
+  },
+  {
+    "id": "AAK",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AAL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AAM",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AAN"
+    ]
+  },
+  {
+    "id": "AAN",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AAO",
+      "AAP"
+    ]
+  },
+  {
+    "id": "AAO",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AAP",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AAQ",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "AAR"
+    ]
+  },
+  {
+    "id": "AAR",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "AAS"
+    ]
+  },
+  {
+    "id": "AAS",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AAT",
+      "AAX"
+    ]
+  },
+  {
+    "id": "AAT",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AAU"
+    ]
+  },
+  {
+    "id": "AAU",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AAV",
+      "AAW"
+    ]
+  },
+  {
+    "id": "AAV",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AAW",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AAX",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AAY"
+    ]
+  },
+  {
+    "id": "AAY",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AAZ",
+      "ABA"
+    ]
+  },
+  {
+    "id": "AAZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABA",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABB",
+    "type": "antwoord",
+    "text": "Antw: Ruwe beton /onder de rei gestort",
+    "next": [
+      "ABC"
+    ]
+  },
+  {
+    "id": "ABC",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "ABD",
+      "ACB"
+    ]
+  },
+  {
+    "id": "ABD",
+    "type": "antwoord",
+    "text": "Antw: Loopbelasting",
+    "next": [
+      "ABE"
+    ]
+  },
+  {
+    "id": "ABE",
+    "type": "vraag",
+    "text": "Vrg: uitstraling, Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "ABF",
+      "ABQ"
+    ]
+  },
+  {
+    "id": "ABF",
+    "type": "antwoord",
+    "text": "Antw: Kleine oneffenheden zijn oke",
+    "next": [
+      "ABG"
+    ]
+  },
+  {
+    "id": "ABG",
+    "type": "systeem",
+    "text": "Sys: DOS Basic",
+    "next": [
+      "ABH"
+    ]
+  },
+  {
+    "id": "ABH",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "ABI",
+      "ABM"
+    ]
+  },
+  {
+    "id": "ABI",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "ABJ"
+    ]
+  },
+  {
+    "id": "ABJ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ABK",
+      "ABL"
+    ]
+  },
+  {
+    "id": "ABK",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABM",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "ABN"
+    ]
+  },
+  {
+    "id": "ABN",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ABO",
+      "ABP"
+    ]
+  },
+  {
+    "id": "ABO",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABP",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABQ",
+    "type": "antwoord",
+    "text": "Antw: Geen oneffenheden",
+    "next": [
+      "ABR"
+    ]
+  },
+  {
+    "id": "ABR",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "ABS"
+    ]
+  },
+  {
+    "id": "ABS",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "ABT",
+      "ABX"
+    ]
+  },
+  {
+    "id": "ABT",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "ABU"
+    ]
+  },
+  {
+    "id": "ABU",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ABV",
+      "ABW"
+    ]
+  },
+  {
+    "id": "ABV",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABW",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ABX",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "ABY"
+    ]
+  },
+  {
+    "id": "ABY",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ABZ",
+      "ACA"
+    ]
+  },
+  {
+    "id": "ABZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACA",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACB",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "ACC"
+    ]
+  },
+  {
+    "id": "ACC",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "ACD"
+    ]
+  },
+  {
+    "id": "ACD",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "ACE",
+      "ACI"
+    ]
+  },
+  {
+    "id": "ACE",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "ACF"
+    ]
+  },
+  {
+    "id": "ACF",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ACG",
+      "ACH"
+    ]
+  },
+  {
+    "id": "ACG",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACH",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACI",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "ACJ"
+    ]
+  },
+  {
+    "id": "ACJ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ACK",
+      "ACL"
+    ]
+  },
+  {
+    "id": "ACK",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACM",
+    "type": "antwoord",
+    "text": "Antw: Egaline",
+    "next": [
+      "ACN"
+    ]
+  },
+  {
+    "id": "ACN",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "ACO",
+      "ACP"
+    ]
+  },
+  {
+    "id": "ACO",
+    "type": "antwoord",
+    "text": "Antw: Loopbelasting",
+    "next": [
+      "ACQ"
+    ]
+  },
+  {
+    "id": "ACQ",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "ACR",
+      "ACS"
+    ]
+  },
+  {
+    "id": "ACR",
+    "type": "antwoord",
+    "text": "Antw: Kleine oneffenheden zijn oké",
+    "next": [
+      "ACT"
+    ]
+  },
+  {
+    "id": "ACT",
+    "type": "systeem",
+    "text": "Sys: DOS Basic",
+    "next": [
+      "ACU"
+    ]
+  },
+  {
+    "id": "ACU",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "ACV",
+      "ACW"
+    ]
+  },
+  {
+    "id": "ACV",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "ACX"
+    ]
+  },
+  {
+    "id": "ACX",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ACY",
+      "ACZ"
+    ]
+  },
+  {
+    "id": "ACY",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACZ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACW",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "ADA"
+    ]
+  },
+  {
+    "id": "ADA",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ADB",
+      "ADC"
+    ]
+  },
+  {
+    "id": "ADB",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADC",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACS",
+    "type": "antwoord",
+    "text": "Antw: Geen oneffenheden",
+    "next": [
+      "ADD"
+    ]
+  },
+  {
+    "id": "ADD",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "ADE"
+    ]
+  },
+  {
+    "id": "ADE",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "ADF",
+      "ADG"
+    ]
+  },
+  {
+    "id": "ADF",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "ADH"
+    ]
+  },
+  {
+    "id": "ADH",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ADI",
+      "ADJ"
+    ]
+  },
+  {
+    "id": "ADI",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADJ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADG",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "ADK"
+    ]
+  },
+  {
+    "id": "ADK",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ADL",
+      "ADM"
+    ]
+  },
+  {
+    "id": "ADL",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADM",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ACP",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "ADN"
+    ]
+  },
+  {
+    "id": "ADN",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "ADO"
+    ]
+  },
+  {
+    "id": "ADO",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "ADP",
+      "ADQ"
+    ]
+  },
+  {
+    "id": "ADP",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "ADR"
+    ]
+  },
+  {
+    "id": "ADR",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ADS",
+      "ADT"
+    ]
+  },
+  {
+    "id": "ADS",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADT",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADQ",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "ADU"
+    ]
+  },
+  {
+    "id": "ADU",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ADV",
+      "ADW"
+    ]
+  },
+  {
+    "id": "ADV",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADW",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ADX",
+    "type": "antwoord",
+    "text": "Antw: Coating",
+    "next": [
+      "ADY"
+    ]
+  },
+  {
+    "id": "ADY",
+    "type": "vraag",
+    "text": "Vrg: Laat de coating op sommige plaatsen los?",
+    "next": [
+      "ADZ",
+      "AFL"
+    ]
+  },
+  {
+    "id": "ADZ",
+    "type": "antwoord",
+    "text": "Antw: ja",
+    "next": [
+      "AEA"
+    ]
+  },
+  {
+    "id": "AEA",
+    "type": "xtr",
+    "text": "Xtr: Meerwerk kaalschuren",
+    "next": [
+      "AEB"
+    ]
+  },
+  {
+    "id": "AEB",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "AEC",
+      "AEO"
+    ]
+  },
+  {
+    "id": "AEC",
+    "type": "antwoord",
+    "text": "Antw: Loopbelasting",
+    "next": [
+      "AED"
+    ]
+  },
+  {
+    "id": "AED",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AEE",
+      "AEH"
+    ]
+  },
+  {
+    "id": "AEE",
+    "type": "antwoord",
+    "text": "Antw: Kleine oneffenheden zijn oke",
+    "next": [
+      "AEF"
+    ]
+  },
+  {
+    "id": "AEF",
+    "type": "systeem",
+    "text": "Sys: DOS Basic",
+    "next": [
+      "AEG"
+    ]
+  },
+  {
+    "id": "AEG",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AEI",
+      "AEM"
+    ]
+  },
+  {
+    "id": "AEI",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AEJ"
+    ]
+  },
+  {
+    "id": "AEJ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AEK",
+      "AEL"
+    ]
+  },
+  {
+    "id": "AEK",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AEL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AEM",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AEN"
+    ]
+  },
+  {
+    "id": "AEN",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AEO",
+      "AEP"
+    ]
+  },
+  {
+    "id": "AEO",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "AFB"
+    ]
+  },
+  {
+    "id": "AEP",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AEH",
+    "type": "antwoord",
+    "text": "Antw: Geen oneffenheden",
+    "next": [
+      "AEQ"
+    ]
+  },
+  {
+    "id": "AEQ",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "AER"
+    ]
+  },
+  {
+    "id": "AER",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AES",
+      "AEX"
+    ]
+  },
+  {
+    "id": "AES",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AET"
+    ]
+  },
+  {
+    "id": "AET",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AEU",
+      "AEV"
+    ]
+  },
+  {
+    "id": "AEU",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AEV",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AEX",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AEY"
+    ]
+  },
+  {
+    "id": "AEY",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AEZ",
+      "AFA"
+    ]
+  },
+  {
+    "id": "AEZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFA",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFB",
+    "type": "systeem",
+    "text": "Sys: DOS Basic",
+    "next": [
+      "AFC"
+    ]
+  },
+  {
+    "id": "AFC",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AFD",
+      "AFH"
+    ]
+  },
+  {
+    "id": "AFD",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AFE"
+    ]
+  },
+  {
+    "id": "AFE",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AFF",
+      "AFG"
+    ]
+  },
+  {
+    "id": "AFF",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFG",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFH",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AFI"
+    ]
+  },
+  {
+    "id": "AFI",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AFJ",
+      "AFK"
+    ]
+  },
+  {
+    "id": "AFJ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFK",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AFM"
+    ]
+  },
+  {
+    "id": "AFM",
+    "type": "vraag",
+    "text": "Vrg: Wat voor coating is het?",
+    "next": [
+      "AFN",
+      "AGY"
+    ]
+  },
+  {
+    "id": "AFN",
+    "type": "antwoord",
+    "text": "Antw: Epoxy",
+    "next": [
+      "AFO"
+    ]
+  },
+  {
+    "id": "AFO",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "AFP",
+      "AGN"
+    ]
+  },
+  {
+    "id": "AFP",
+    "type": "antwoord",
+    "text": "Antw: Loopbelasting",
+    "next": [
+      "AFQ"
+    ]
+  },
+  {
+    "id": "AFQ",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AFR",
+      "AGC"
+    ]
+  },
+  {
+    "id": "AFR",
+    "type": "antwoord",
+    "text": "Antw: Kleine oneffenheden zijn oke",
+    "next": [
+      "AFS"
+    ]
+  },
+  {
+    "id": "AFS",
+    "type": "systeem",
+    "text": "Sys: DOS Basic",
+    "next": [
+      "AFT"
+    ]
+  },
+  {
+    "id": "AFT",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AFU",
+      "AFY"
+    ]
+  },
+  {
+    "id": "AFU",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AFV"
+    ]
+  },
+  {
+    "id": "AFV",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AFW",
+      "AFX"
+    ]
+  },
+  {
+    "id": "AFW",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFX",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AFY",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AFZ"
+    ]
+  },
+  {
+    "id": "AFZ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AGA",
+      "AGB"
+    ]
+  },
+  {
+    "id": "AGA",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGB",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGC",
+    "type": "antwoord",
+    "text": "Antw: Geen oneffenheden",
+    "next": [
+      "AGD"
+    ]
+  },
+  {
+    "id": "AGD",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "AGE"
+    ]
+  },
+  {
+    "id": "AGE",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AGF",
+      "AGG"
+    ]
+  },
+  {
+    "id": "AGF",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AGH"
+    ]
+  },
+  {
+    "id": "AGH",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AGI",
+      "AGJ"
+    ]
+  },
+  {
+    "id": "AGI",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGJ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGG",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AGK"
+    ]
+  },
+  {
+    "id": "AGK",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AGL",
+      "AGM"
+    ]
+  },
+  {
+    "id": "AGL",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGM",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGN",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "AGO"
+    ]
+  },
+  {
+    "id": "AGO",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "AGP"
+    ]
+  },
+  {
+    "id": "AGP",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AGQ",
+      "AGR"
+    ]
+  },
+  {
+    "id": "AGQ",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AGS"
+    ]
+  },
+  {
+    "id": "AGS",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AGT",
+      "AGU"
+    ]
+  },
+  {
+    "id": "AGT",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGU",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGR",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AGV"
+    ]
+  },
+  {
+    "id": "AGV",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AGW",
+      "AGX"
+    ]
+  },
+  {
+    "id": "AGW",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGX",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AGY",
+    "type": "antwoord",
+    "text": "Antw: PU",
+    "next": [
+      "AGZ"
+    ]
+  },
+  {
+    "id": "AGZ",
+    "type": "vraag",
+    "text": "Vrg: Kaalschuren voor Epoxy of PU aanbrengen?",
+    "next": [
+      "AHA",
+      "AII"
+    ]
+  },
+  {
+    "id": "AHA",
+    "type": "xtr",
+    "text": "Xtr: Meerwerk kaalschuren.",
+    "next": [
+      "AHB"
+    ]
+  },
+  {
+    "id": "AHB",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "AHC",
+      "AHX"
+    ]
+  },
+  {
+    "id": "AHC",
+    "type": "antwoord",
+    "text": "Antw: Loopbelasting",
+    "next": [
+      "AHD"
+    ]
+  },
+  {
+    "id": "AHD",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AHE",
+      "AHM"
+    ]
+  },
+  {
+    "id": "AHE",
+    "type": "antwoord",
+    "text": "Antw: Kleine oneffenheden zijn oke",
+    "next": [
+      "AHF"
+    ]
+  },
+  {
+    "id": "AHF",
+    "type": "systeem",
+    "text": "Sys: DOS Basic",
+    "next": [
+      "AHG"
+    ]
+  },
+  {
+    "id": "AHG",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AHH",
+      "AHI"
+    ]
+  },
+  {
+    "id": "AHH",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AHJ"
+    ]
+  },
+  {
+    "id": "AHJ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AHK",
+      "AHL"
+    ]
+  },
+  {
+    "id": "AHK",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AHL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AHI",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AHJ"
+    ]
+  },
+  {
+    "id": "AHM",
+    "type": "antwoord",
+    "text": "Antw: Geen oneffenheden",
+    "next": [
+      "AHN"
+    ]
+  },
+  {
+    "id": "AHN",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "AHO"
+    ]
+  },
+  {
+    "id": "AHO",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AHP",
+      "AHQ"
+    ]
+  },
+  {
+    "id": "AHP",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AHR"
+    ]
+  },
+  {
+    "id": "AHR",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AHS",
+      "AHT"
+    ]
+  },
+  {
+    "id": "AHS",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AHT",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AHQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AHU"
+    ]
+  },
+  {
+    "id": "AHU",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AHV",
+      "AHW"
+    ]
+  },
+  {
+    "id": "AHV",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AHW",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AHX",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "AHY"
+    ]
+  },
+  {
+    "id": "AHY",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "AHZ"
+    ]
+  },
+  {
+    "id": "AHZ",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AIA",
+      "AIB"
+    ]
+  },
+  {
+    "id": "AIA",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AIC"
+    ]
+  },
+  {
+    "id": "AIC",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AID",
+      "AIE"
+    ]
+  },
+  {
+    "id": "AID",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIE",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIB",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AIF"
+    ]
+  },
+  {
+    "id": "AIF",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AIG",
+      "AIH"
+    ]
+  },
+  {
+    "id": "AIG",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIH",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AII",
+    "type": "systeem",
+    "text": "Sys: Maatwerk offerte PU aanbrengen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIJ",
+    "type": "antwoord",
+    "text": "Antw: Zandcement",
+    "next": [
+      "AIK"
+    ]
+  },
+  {
+    "id": "AIK",
+    "type": "systeem",
+    "text": "Sys: DOS Premium",
+    "next": [
+      "AIL"
+    ]
+  },
+  {
+    "id": "AIL",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip? Minder glans?",
+    "next": [
+      "AIM",
+      "AIN"
+    ]
+  },
+  {
+    "id": "AIM",
+    "type": "antwoord",
+    "text": "Antw: Ja, ADD 250 toevoegen",
+    "next": [
+      "AIO"
+    ]
+  },
+  {
+    "id": "AIO",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AIP",
+      "AIQ"
+    ]
+  },
+  {
+    "id": "AIP",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIN",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AIR"
+    ]
+  },
+  {
+    "id": "AIR",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AIS",
+      "AIT"
+    ]
+  },
+  {
+    "id": "AIS",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIT",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BFA",
+    "type": "antwoord",
+    "text": "Antw: ja",
+    "next": [
+      "BEZ"
+    ]
+  },
+  {
+    "id": "BEZ",
+    "type": "vraag",
+    "text": "Moet de vloer specifieke eisen voldoen?",
+    "next": [
+      "AIU",
+      "AIW",
+      "AJN",
+      "AJW",
+      "AJY",
+      "AKH"
+    ]
+  },
+  {
+    "id": "AIU",
+    "type": "antwoord",
+    "text": "Antw: ESD",
+    "next": [
+      "AIV"
+    ]
+  },
+  {
+    "id": "AIV",
+    "type": "systeem",
+    "text": "Sys: Maatwerk offerte",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIW",
+    "type": "antwoord",
+    "text": "Antw: Vloeistofdicht",
+    "next": [
+      "AIX"
+    ]
+  },
+  {
+    "id": "AIX",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip?",
+    "next": [
+      "AIY",
+      "AIZ"
+    ]
+  },
+  {
+    "id": "AIY",
+    "type": "antwoord",
+    "text": "Antw: ja",
+    "next": [
+      "AJA"
+    ]
+  },
+  {
+    "id": "AJA",
+    "type": "vraag",
+    "text": "Vrg: Hoe grove antislip?",
+    "next": [
+      "AJB",
+      "AJC"
+    ]
+  },
+  {
+    "id": "AJB",
+    "type": "antwoord",
+    "text": "Antw: Eenvoudiger schoon maken 0,25–0,40",
+    "next": [
+      "AJD"
+    ]
+  },
+  {
+    "id": "AJD",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Optimum met WHG + Onafhankelijke keuring",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AJC",
+    "type": "antwoord",
+    "text": "Antw: Hufterproof 0,30–0,80",
+    "next": [
+      "AJE"
+    ]
+  },
+  {
+    "id": "AJE",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme met WHG + Onafhankelijke keuring",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AIZ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AJF"
+    ]
+  },
+  {
+    "id": "AJF",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AJG",
+      "AJJ"
+    ]
+  },
+  {
+    "id": "AJG",
+    "type": "antwoord",
+    "text": "Antw: Kleine oneffenheden zijn oke",
+    "next": [
+      "AJH"
+    ]
+  },
+  {
+    "id": "AJH",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic met WHG + keuring",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AJJ",
+    "type": "antwoord",
+    "text": "Antw: Geen oneffenheden",
+    "next": [
+      "AJK"
+    ]
+  },
+  {
+    "id": "AJK",
+    "type": "afw",
+    "text": "Afw: Situatie beoordelen",
+    "next": [
+      "AJL",
+      "AJM"
+    ]
+  },
+  {
+    "id": "AJL",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Premium met WHG + keuring",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AJM",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Excellent met WHG + keuring",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AJN",
+    "type": "antwoord",
+    "text": "Antw: HACCP",
+    "next": [
+      "AJO"
+    ]
+  },
+  {
+    "id": "AJO",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AJP",
+      "AJS"
+    ]
+  },
+  {
+    "id": "AJP",
+    "type": "antwoord",
+    "text": "Antw: Kleine oneffenheden zijn oke",
+    "next": [
+      "AJQ"
+    ]
+  },
+  {
+    "id": "AJQ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AJS",
+    "type": "antwoord",
+    "text": "Antw: Geen oneffenheden",
+    "next": [
+      "AJT"
+    ]
+  },
+  {
+    "id": "AJT",
+    "type": "afw",
+    "text": "Afw: Situatie beoordelen",
+    "next": [
+      "AJU",
+      "AJV"
+    ]
+  },
+  {
+    "id": "AJU",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Premium met WHG + keuring",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AJV",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Excelent met WHG + keuring",
+    "next": []
+  },
+  {
+    "id": "AJW",
+    "type": "antwoord",
+    "text": "Antw: Boeren coating",
+    "next": [
+      "AJX"
+    ]
+  },
+  {
+    "id": "AJX",
+    "type": "systeem",
+    "text": "Sys: Stralen en 350gram FAS100",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AJY",
+    "type": "antwoord",
+    "text": "Antw: Hellingbaan",
+    "next": [
+      "AJZ"
+    ]
+  },
+  {
+    "id": "AJZ",
+    "type": "vraag",
+    "text": "Vrg: Hoe grove antislip?",
+    "next": [
+      "AKA",
+      "AKC"
+    ]
+  },
+  {
+    "id": "AKA",
+    "type": "antwoord",
+    "text": "Antw: Eenvoudiger schoon maken 0,25–0,40",
+    "next": [
+      "AKB"
+    ]
+  },
+  {
+    "id": "AKB",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Optimum",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AKC",
+    "type": "antwoord",
+    "text": "Antw: Hufterproof 0,30–0,80",
+    "next": [
+      "AKD"
+    ]
+  },
+  {
+    "id": "AKD",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "AKE"
+    ]
+  },
+  {
+    "id": "AKE",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "AKF",
+      "AKG"
+    ]
+  },
+  {
+    "id": "AKF",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AKG",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AKH",
+    "type": "antwoord",
+    "text": "Ant: Geen specifieke eisen",
+    "next": [
+      "AKI"
+    ]
+  },
+  {
+    "id": "AKI",
+    "type": "vraag",
+    "text": "Vrg: Huidige situatie: wat is de ondergrond?",
+    "next": [
+      "AKJ",
+      "AOZ",
+      "ASP"
+    ]
+  },
+  {
+    "id": "AKJ",
+    "type": "antwoord",
+    "text": "Antw: Gevlinderd beton",
+    "next": [
+      "AKK"
+    ]
+  },
+  {
+    "id": "AKK",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "AKL",
+      "ALN",
+      "AMU",
+      "ANI",
+      "AOO"
+    ]
+  },
+  {
+    "id": "AKL",
+    "type": "antwoord",
+    "text": "Antw: Loopverkeer",
+    "next": [
+      "AKM"
+    ]
+  },
+  {
+    "id": "AKM",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AKN",
+      "AKO",
+      "AKP"
+    ]
+  },
+  {
+    "id": "AKN",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "AKQ"
+    ]
+  },
+  {
+    "id": "AKQ",
+    "type": "afw",
+    "text": "Afw: Situatie beoordelen:",
+    "next": [
+      "AKR",
+      "AKS"
+    ]
+  },
+  {
+    "id": "AKR",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic",
+    "next": [
+      "AKT"
+    ]
+  },
+  {
+    "id": "AKT",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AKU",
+      "AKV"
+    ]
+  },
+  {
+    "id": "AKU",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AKV",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AKS",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "AKW"
+    ]
+  },
+  {
+    "id": "AKW",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AKX",
+      "AKY"
+    ]
+  },
+  {
+    "id": "AKX",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AKY",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AKO",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "AKZ"
+    ]
+  },
+  {
+    "id": "AKZ",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic met ADD250",
+    "next": [
+      "ALA"
+    ]
+  },
+  {
+    "id": "ALA",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ALB",
+      "ALC"
+    ]
+  },
+  {
+    "id": "ALB",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALC",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AKP",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "ALD"
+    ]
+  },
+  {
+    "id": "ALD",
+    "type": "systeem",
+    "text": "Sys: DOS Basic (2x BS3000)",
+    "next": [
+      "ALE"
+    ]
+  },
+  {
+    "id": "ALE",
+    "type": "vraag",
+    "text": "Vrg: wil je antislip?",
+    "next": [
+      "ALF",
+      "ALG"
+    ]
+  },
+  {
+    "id": "ALF",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "ALH"
+    ]
+  },
+  {
+    "id": "ALH",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ALI",
+      "ALJ"
+    ]
+  },
+  {
+    "id": "ALI",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALJ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALG",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "ALK"
+    ]
+  },
+  {
+    "id": "ALK",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ALL",
+      "ALM"
+    ]
+  },
+  {
+    "id": "ALL",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALM",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALN",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "ALO"
+    ]
+  },
+  {
+    "id": "ALO",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "ALP",
+      "ALZ",
+      "AMJ"
+    ]
+  },
+  {
+    "id": "ALP",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "ALQ"
+    ]
+  },
+  {
+    "id": "ALQ",
+    "type": "afw",
+    "text": "Afw: Afw: Ondergrond vs levensduur",
+    "next": [
+      "ALR",
+      "ALS"
+    ]
+  },
+  {
+    "id": "ALR",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic",
+    "next": [
+      "ALT"
+    ]
+  },
+  {
+    "id": "ALT",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ALU",
+      "ALV"
+    ]
+  },
+  {
+    "id": "ALU",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALV",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALS",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "ALW"
+    ]
+  },
+  {
+    "id": "ALW",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ALX",
+      "ALY"
+    ]
+  },
+  {
+    "id": "ALX",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALY",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ALZ",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "AMA"
+    ]
+  },
+  {
+    "id": "AMA",
+    "type": "afw",
+    "text": "Afw: Ondergrond vs levensduur",
+    "next": [
+      "AMB",
+      "AMC"
+    ]
+  },
+  {
+    "id": "AMB",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic met ADD250",
+    "next": [
+      "AMD"
+    ]
+  },
+  {
+    "id": "AMD",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AME",
+      "AMF"
+    ]
+  },
+  {
+    "id": "AME",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMF",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMC",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "AMG"
+    ]
+  },
+  {
+    "id": "AMG",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AMH",
+      "AMI"
+    ]
+  },
+  {
+    "id": "AMH",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMI",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMJ",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "AMK"
+    ]
+  },
+  {
+    "id": "AMK",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met BS3000",
+    "next": [
+      "AML"
+    ]
+  },
+  {
+    "id": "AML",
+    "type": "vraag",
+    "text": "Vrg: wil je antislip?",
+    "next": [
+      "AMM",
+      "AMN"
+    ]
+  },
+  {
+    "id": "AMM",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "AMO"
+    ]
+  },
+  {
+    "id": "AMO",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AMP",
+      "AMQ"
+    ]
+  },
+  {
+    "id": "AMP",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMN",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AMR"
+    ]
+  },
+  {
+    "id": "AMR",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AMS",
+      "AMT"
+    ]
+  },
+  {
+    "id": "AMS",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMT",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMU",
+    "type": "antwoord",
+    "text": "Antw: Intensief heftrucks",
+    "next": [
+      "AMV"
+    ]
+  },
+  {
+    "id": "AMV",
+    "type": "vraag",
+    "text": "Vrg: Welke levensduur",
+    "next": [
+      "AMW",
+      "AMX",
+      "AMY"
+    ]
+  },
+  {
+    "id": "AMW",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Premium",
+    "next": [
+      "AMZ"
+    ]
+  },
+  {
+    "id": "AMZ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ANA",
+      "ANB"
+    ]
+  },
+  {
+    "id": "ANA",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANB",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMX",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "ANC"
+    ]
+  },
+  {
+    "id": "ANC",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AND",
+      "ANE"
+    ]
+  },
+  {
+    "id": "AND",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANE",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AMY",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Excellent",
+    "next": [
+      "ANF"
+    ]
+  },
+  {
+    "id": "ANF",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ANG",
+      "ANH"
+    ]
+  },
+  {
+    "id": "ANG",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANH",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANI",
+    "type": "antwoord",
+    "text": "Antw: Auto's",
+    "next": [
+      "ANJ"
+    ]
+  },
+  {
+    "id": "ANJ",
+    "type": "vraag",
+    "text": "Vrg: Wat voor ruimte is het?",
+    "next": [
+      "ANK",
+      "ANU"
+    ]
+  },
+  {
+    "id": "ANK",
+    "type": "antwoord",
+    "text": "Antw: Showroom",
+    "next": [
+      "ANL"
+    ]
+  },
+  {
+    "id": "ANL",
+    "type": "afw",
+    "text": "Afw: Ondergrond vs levensduur",
+    "next": [
+      "ANM",
+      "ANN"
+    ]
+  },
+  {
+    "id": "ANM",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic + AG lak",
+    "next": [
+      "ANO"
+    ]
+  },
+  {
+    "id": "ANO",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ANP",
+      "ANQ"
+    ]
+  },
+  {
+    "id": "ANP",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANN",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic + AG lak",
+    "next": [
+      "ANR"
+    ]
+  },
+  {
+    "id": "ANR",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ANS",
+      "ANT"
+    ]
+  },
+  {
+    "id": "ANS",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANT",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANU",
+    "type": "antwoord",
+    "text": "Antw: (parkeer)Garage",
+    "next": [
+      "ANV"
+    ]
+  },
+  {
+    "id": "ANV",
+    "type": "vraag",
+    "text": "Vrg: Hoe intensief verkeer?",
+    "next": [
+      "ANW",
+      "ANX"
+    ]
+  },
+  {
+    "id": "ANW",
+    "type": "antwoord",
+    "text": "Antw: Regelmatig gebruik (VVE)",
+    "next": [
+      "ANY"
+    ]
+  },
+  {
+    "id": "ANY",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Optimum",
+    "next": [
+      "ANZ"
+    ]
+  },
+  {
+    "id": "ANZ",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "AOA",
+      "AOB"
+    ]
+  },
+  {
+    "id": "AOA",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AOB",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ANX",
+    "type": "antwoord",
+    "text": "Antw: Intensief gebruik (Ikea parkeerplaats)",
+    "next": [
+      "AOC"
+    ]
+  },
+  {
+    "id": "AOC",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "AOD"
+    ]
+  },
+  {
+    "id": "AOD",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "AOE",
+      "AOF"
+    ]
+  },
+  {
+    "id": "AOE",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "AOG"
+    ]
+  },
+  {
+    "id": "AOG",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "AOH",
+      "AOI"
+    ]
+  },
+  {
+    "id": "AOH",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AOI",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AOF",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "AOJ"
+    ]
+  },
+  {
+    "id": "AOJ",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "AOK",
+      "AOL"
+    ]
+  },
+  {
+    "id": "AOK",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AOL",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AOO",
+    "type": "antwoord",
+    "text": "Antw: Vrachtauto/mechanisatie",
+    "next": [
+      "AOP"
+    ]
+  },
+  {
+    "id": "AOP",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "AOQ"
+    ]
+  },
+  {
+    "id": "AOQ",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "AOR",
+      "AOS"
+    ]
+  },
+  {
+    "id": "AOR",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "AOT"
+    ]
+  },
+  {
+    "id": "AOT",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken",
+    "next": [
+      "AOU",
+      "AOV"
+    ]
+  },
+  {
+    "id": "AOU",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AOV",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AOS",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "AOW"
+    ]
+  },
+  {
+    "id": "AOW",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken",
+    "next": [
+      "AOX",
+      "AOY"
+    ]
+  },
+  {
+    "id": "AOX",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AOY",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AOZ",
+    "type": "antwoord",
+    "text": "Antw: Ruwe beton (onder de rei gestort/ingevreten beton)",
+    "next": [
+      "APA"
+    ]
+  },
+  {
+    "id": "APA",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "APC",
+      "APZ",
+      "AQX",
+      "ARL",
+      "ASE"
+    ]
+  },
+  {
+    "id": "APC",
+    "type": "antwoord",
+    "text": "Antw: Loopverkeer",
+    "next": [
+      "APD"
+    ]
+  },
+  {
+    "id": "APD",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "APE",
+      "APF",
+      "APG"
+    ]
+  },
+  {
+    "id": "APE",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "APH"
+    ]
+  },
+  {
+    "id": "APH",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "API"
+    ]
+  },
+  {
+    "id": "API",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "APJ",
+      "APK"
+    ]
+  },
+  {
+    "id": "APJ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APK",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APF",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "APL"
+    ]
+  },
+  {
+    "id": "APL",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "APM"
+    ]
+  },
+  {
+    "id": "APM",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "APN",
+      "APO"
+    ]
+  },
+  {
+    "id": "APN",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APO",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APG",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "APP"
+    ]
+  },
+  {
+    "id": "APP",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium (BS3000)",
+    "next": [
+      "APQ"
+    ]
+  },
+  {
+    "id": "APQ",
+    "type": "vraag",
+    "text": "Vrg: wil je antislip?",
+    "next": [
+      "APR",
+      "APS"
+    ]
+  },
+  {
+    "id": "APR",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "APT"
+    ]
+  },
+  {
+    "id": "APT",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "APU",
+      "APV"
+    ]
+  },
+  {
+    "id": "APU",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APV",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APS",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "APW"
+    ]
+  },
+  {
+    "id": "APW",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "APX",
+      "APY"
+    ]
+  },
+  {
+    "id": "APX",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APY",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "APZ",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "AQA"
+    ]
+  },
+  {
+    "id": "AQA",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AQB",
+      "AQC",
+      "AQD"
+    ]
+  },
+  {
+    "id": "AQB",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "AQE"
+    ]
+  },
+  {
+    "id": "AQE",
+    "type": "systeem",
+    "text": "Sys: Gietcoating",
+    "next": [
+      "AQF"
+    ]
+  },
+  {
+    "id": "AQF",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AQG",
+      "AQH"
+    ]
+  },
+  {
+    "id": "AQG",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQH",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQC",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "AQI"
+    ]
+  },
+  {
+    "id": "AQI",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "AQJ"
+    ]
+  },
+  {
+    "id": "AQJ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AQK",
+      "AQL"
+    ]
+  },
+  {
+    "id": "AQK",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQD",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "AQM"
+    ]
+  },
+  {
+    "id": "AQM",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met BS3000",
+    "next": [
+      "AQN"
+    ]
+  },
+  {
+    "id": "AQN",
+    "type": "vraag",
+    "text": "Vrg: wil je antislip?",
+    "next": [
+      "AQO",
+      "AQP"
+    ]
+  },
+  {
+    "id": "AQO",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "AQQ"
+    ]
+  },
+  {
+    "id": "AQQ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AQR",
+      "AQS"
+    ]
+  },
+  {
+    "id": "AQR",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQS",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQP",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AQT"
+    ]
+  },
+  {
+    "id": "AQT",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AQU",
+      "AQV"
+    ]
+  },
+  {
+    "id": "AQU",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQV",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AQX",
+    "type": "antwoord",
+    "text": "Antw: Intensief heftrucks",
+    "next": [
+      "AQY"
+    ]
+  },
+  {
+    "id": "AQY",
+    "type": "vraag",
+    "text": "Vrg: Welke levensduur",
+    "next": [
+      "AQZ",
+      "BFD",
+      "ARB"
+    ]
+  },
+  {
+    "id": "AQZ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Premium",
+    "next": [
+      "ARC"
+    ]
+  },
+  {
+    "id": "ARC",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ARD",
+      "ARE"
+    ]
+  },
+  {
+    "id": "ARD",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARE",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BFD",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "ARF"
+    ]
+  },
+  {
+    "id": "ARF",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ARG",
+      "ARH"
+    ]
+  },
+  {
+    "id": "ARG",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARH",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARB",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Excellent",
+    "next": [
+      "ARI"
+    ]
+  },
+  {
+    "id": "ARI",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ARJ",
+      "ARK"
+    ]
+  },
+  {
+    "id": "ARJ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARK",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARL",
+    "type": "antwoord",
+    "text": "Antw: Auto’s",
+    "next": [
+      "ARM"
+    ]
+  },
+  {
+    "id": "ARM",
+    "type": "vraag",
+    "text": "Vrg: Wat voor ruimte is het?",
+    "next": [
+      "ARN",
+      "ARO"
+    ]
+  },
+  {
+    "id": "ARN",
+    "type": "antwoord",
+    "text": "Antw: Showroom",
+    "next": [
+      "ARP"
+    ]
+  },
+  {
+    "id": "ARP",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic + AG lak",
+    "next": [
+      "ARQ"
+    ]
+  },
+  {
+    "id": "ARQ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ARR",
+      "ARS"
+    ]
+  },
+  {
+    "id": "ARR",
+    "type": "antwoord",
+    "text": "Abtw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARS",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARO",
+    "type": "antwoord",
+    "text": "Antw: (parkeer)Garage",
+    "next": [
+      "ART"
+    ]
+  },
+  {
+    "id": "ART",
+    "type": "vraag",
+    "text": "Vrg: Hoe intensief verkeer?",
+    "next": [
+      "ARU",
+      "ARV"
+    ]
+  },
+  {
+    "id": "ARU",
+    "type": "antwoord",
+    "text": "Antw: Regelmatig gebruik (VVE)",
+    "next": [
+      "ARW"
+    ]
+  },
+  {
+    "id": "ARW",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Optimum",
+    "next": [
+      "ARX"
+    ]
+  },
+  {
+    "id": "ARX",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "ARY",
+      "ARZ"
+    ]
+  },
+  {
+    "id": "ARY",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARZ",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ARV",
+    "type": "antwoord",
+    "text": "Antw: Intensief gebruik (Ikea parkeerplaats)",
+    "next": [
+      "ASA"
+    ]
+  },
+  {
+    "id": "ASA",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "ASB"
+    ]
+  },
+  {
+    "id": "ASB",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "ASC",
+      "ASD"
+    ]
+  },
+  {
+    "id": "ASC",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "ASD",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ASE",
+    "type": "antwoord",
+    "text": "Antw: Vrachtauto/mechanisatie",
+    "next": [
+      "ASF"
+    ]
+  },
+  {
+    "id": "ASF",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "ASG"
+    ]
+  },
+  {
+    "id": "ASG",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "ASH",
+      "ASI"
+    ]
+  },
+  {
+    "id": "ASH",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "ASJ"
+    ]
+  },
+  {
+    "id": "ASJ",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "ASK",
+      "ASL"
+    ]
+  },
+  {
+    "id": "ASK",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "ASL",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ASI",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "ASM"
+    ]
+  },
+  {
+    "id": "ASM",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "ASN",
+      "ASO"
+    ]
+  },
+  {
+    "id": "ASN",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "ASO",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ASP",
+    "type": "antwoord",
+    "text": "Antw: Coating",
+    "next": [
+      "ASQ"
+    ]
+  },
+  {
+    "id": "ASQ",
+    "type": "vraag",
+    "text": "Vrg: Laat de coating op sommige plaatsen los?",
+    "next": [
+      "ASR",
+      "AWO"
+    ]
+  },
+  {
+    "id": "ASR",
+    "type": "antwoord",
+    "text": "Antw: Ja",
+    "next": [
+      "ASS"
+    ]
+  },
+  {
+    "id": "ASS",
+    "type": "xtr",
+    "text": "Xtr: Meerwerk kaalschuren.",
+    "next": [
+      "AST"
+    ]
+  },
+  {
+    "id": "AST",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "ASU",
+      "ATR",
+      "AUO",
+      "AVC",
+      "AWB"
+    ]
+  },
+  {
+    "id": "ASU",
+    "type": "antwoord",
+    "text": "Antw: Loopverkeer",
+    "next": [
+      "ASV"
+    ]
+  },
+  {
+    "id": "ASV",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "ASW",
+      "ASX",
+      "ASY"
+    ]
+  },
+  {
+    "id": "ASW",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "ASZ"
+    ]
+  },
+  {
+    "id": "ASZ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "ATA"
+    ]
+  },
+  {
+    "id": "ATA",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ATB",
+      "ATC"
+    ]
+  },
+  {
+    "id": "ATB",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATC",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ASX",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "ATD"
+    ]
+  },
+  {
+    "id": "ATD",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "ATE"
+    ]
+  },
+  {
+    "id": "ATE",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ATF",
+      "ATG"
+    ]
+  },
+  {
+    "id": "ATF",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATG",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ASY",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "ATH"
+    ]
+  },
+  {
+    "id": "ATH",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met BS3000",
+    "next": [
+      "ATI"
+    ]
+  },
+  {
+    "id": "ATI",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip?",
+    "next": [
+      "ATJ",
+      "ATK"
+    ]
+  },
+  {
+    "id": "ATJ",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "ATL"
+    ]
+  },
+  {
+    "id": "ATL",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ATM",
+      "ATN"
+    ]
+  },
+  {
+    "id": "ATM",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATN",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATK",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "ATO"
+    ]
+  },
+  {
+    "id": "ATO",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ATP",
+      "ATQ"
+    ]
+  },
+  {
+    "id": "ATP",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATR",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "ATS"
+    ]
+  },
+  {
+    "id": "ATS",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "ATT",
+      "ATU",
+      "ATV"
+    ]
+  },
+  {
+    "id": "ATT",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "ATW"
+    ]
+  },
+  {
+    "id": "ATW",
+    "type": "systeem",
+    "text": "Sys: Gietcoating",
+    "next": [
+      "ATX"
+    ]
+  },
+  {
+    "id": "ATX",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "ATY",
+      "ATZ"
+    ]
+  },
+  {
+    "id": "ATY",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen (Nxt: END",
+    "next": []
+  },
+  {
+    "id": "ATZ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATU",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "AUA"
+    ]
+  },
+  {
+    "id": "AUA",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "AUB"
+    ]
+  },
+  {
+    "id": "AUB",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AUC",
+      "AUD"
+    ]
+  },
+  {
+    "id": "AUC",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUD",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "ATV",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "AUE"
+    ]
+  },
+  {
+    "id": "AUE",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met BS3000",
+    "next": [
+      "AUF"
+    ]
+  },
+  {
+    "id": "AUF",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip?",
+    "next": [
+      "AUG",
+      "AUH"
+    ]
+  },
+  {
+    "id": "AUG",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "AUI"
+    ]
+  },
+  {
+    "id": "AUI",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AUJ",
+      "AUK"
+    ]
+  },
+  {
+    "id": "AUJ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUK",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUH",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "AUL"
+    ]
+  },
+  {
+    "id": "AUL",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AUM",
+      "AUN"
+    ]
+  },
+  {
+    "id": "AUM",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUN",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUO",
+    "type": "antwoord",
+    "text": "Antw: Intensief heftrucks",
+    "next": [
+      "AUP"
+    ]
+  },
+  {
+    "id": "AUP",
+    "type": "vraag",
+    "text": "Vrg: Welke levensduur?",
+    "next": [
+      "AUQ",
+      "AUR",
+      "AUS"
+    ]
+  },
+  {
+    "id": "AUQ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating premium",
+    "next": [
+      "AUT"
+    ]
+  },
+  {
+    "id": "AUT",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AUU",
+      "AUV"
+    ]
+  },
+  {
+    "id": "AUU",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUV",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUR",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "AUW"
+    ]
+  },
+  {
+    "id": "AUW",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AUX",
+      "AUY"
+    ]
+  },
+  {
+    "id": "AUX",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUY",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AUS",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Excellent",
+    "next": [
+      "AUZ"
+    ]
+  },
+  {
+    "id": "AUZ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AVA",
+      "AVB"
+    ]
+  },
+  {
+    "id": "AVA",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AVB",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AVC",
+    "type": "antwoord",
+    "text": "Antw: Auto's",
+    "next": [
+      "AVD"
+    ]
+  },
+  {
+    "id": "AVD",
+    "type": "vraag",
+    "text": "Vrg: Wat voor ruimte is het?",
+    "next": [
+      "AVE",
+      "AVF"
+    ]
+  },
+  {
+    "id": "AVE",
+    "type": "antwoord",
+    "text": "Antw: Showroom",
+    "next": [
+      "AVG"
+    ]
+  },
+  {
+    "id": "AVG",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic + AG lak",
+    "next": [
+      "AVH"
+    ]
+  },
+  {
+    "id": "AVH",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AVI",
+      "AVJ"
+    ]
+  },
+  {
+    "id": "AVI",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AVJ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AVF",
+    "type": "antwoord",
+    "text": "Antw: (parkeer)Garage",
+    "next": [
+      "AVK"
+    ]
+  },
+  {
+    "id": "AVK",
+    "type": "vraag",
+    "text": "Vrg: Hoe intensief verkeer?",
+    "next": [
+      "AVL",
+      "AVM"
+    ]
+  },
+  {
+    "id": "AVL",
+    "type": "antwoord",
+    "text": "Antw: Regelmatig gebruik (VVE)",
+    "next": [
+      "AVN"
+    ]
+  },
+  {
+    "id": "AVN",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Optimum",
+    "next": [
+      "AVO"
+    ]
+  },
+  {
+    "id": "AVO",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "AVP",
+      "AVQ"
+    ]
+  },
+  {
+    "id": "AVP",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AVQ",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AVM",
+    "type": "antwoord",
+    "text": "Antw: Intensief gebruik (Ikea parkeerplaats)",
+    "next": [
+      "AVR"
+    ]
+  },
+  {
+    "id": "AVR",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "AVS"
+    ]
+  },
+  {
+    "id": "AVS",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "AVT",
+      "BFE"
+    ]
+  },
+  {
+    "id": "AVT",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "AVV"
+    ]
+  },
+  {
+    "id": "AVV",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "AVW",
+      "AVX"
+    ]
+  },
+  {
+    "id": "AVW",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AVX",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BFE",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BFF"
+    ]
+  },
+  {
+    "id": "BFF",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "AVZ",
+      "AWA"
+    ]
+  },
+  {
+    "id": "AVZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AWA",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AWB",
+    "type": "antwoord",
+    "text": "Antw: Vrachtauto/mechanisatie",
+    "next": [
+      "AWC"
+    ]
+  },
+  {
+    "id": "AWC",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "AWD"
+    ]
+  },
+  {
+    "id": "AWD",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "AWE",
+      "AWF"
+    ]
+  },
+  {
+    "id": "AWE",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "AWG"
+    ]
+  },
+  {
+    "id": "AWG",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "AWH",
+      "AWI"
+    ]
+  },
+  {
+    "id": "AWH",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AWI",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AWF",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BFG"
+    ]
+  },
+  {
+    "id": "BFG",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "AWK",
+      "AWL"
+    ]
+  },
+  {
+    "id": "AWK",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "AWL",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AWO",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "AWP"
+    ]
+  },
+  {
+    "id": "AWP",
+    "type": "vraag",
+    "text": "Vrg: Wat voor coating is het?",
+    "next": [
+      "AWQ",
+      "BBE"
+    ]
+  },
+  {
+    "id": "AWQ",
+    "type": "antwoord",
+    "text": "Antw: Epoxy",
+    "next": [
+      "AWR"
+    ]
+  },
+  {
+    "id": "AWR",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "AWS",
+      "AXU",
+      "AZB",
+      "AZP",
+      "BAT"
+    ]
+  },
+  {
+    "id": "AWS",
+    "type": "antwoord",
+    "text": "Antw: Loopverkeer",
+    "next": [
+      "AWT"
+    ]
+  },
+  {
+    "id": "AWT",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AWU",
+      "AWV",
+      "AWW"
+    ]
+  },
+  {
+    "id": "AWU",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "AWX"
+    ]
+  },
+  {
+    "id": "AWX",
+    "type": "afw",
+    "text": "Afw: Situatie beoordelen:",
+    "next": [
+      "AWY",
+      "AWZ"
+    ]
+  },
+  {
+    "id": "AWY",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic",
+    "next": [
+      "AXA"
+    ]
+  },
+  {
+    "id": "AXA",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AXB",
+      "AXC"
+    ]
+  },
+  {
+    "id": "AXB",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXC",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AWZ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "AXD"
+    ]
+  },
+  {
+    "id": "AXD",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AXE",
+      "AXF"
+    ]
+  },
+  {
+    "id": "AXE",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXF",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AWV",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "AXG"
+    ]
+  },
+  {
+    "id": "AXG",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic met ADD250",
+    "next": [
+      "AXH"
+    ]
+  },
+  {
+    "id": "AXH",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AXI",
+      "AXJ"
+    ]
+  },
+  {
+    "id": "AXI",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXJ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AWW",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "AXK"
+    ]
+  },
+  {
+    "id": "AXK",
+    "type": "systeem",
+    "text": "Sys: DOS Basic (BS3000)",
+    "next": [
+      "AXL"
+    ]
+  },
+  {
+    "id": "AXL",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip?",
+    "next": [
+      "AXM",
+      "AXN"
+    ]
+  },
+  {
+    "id": "AXM",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "AXO"
+    ]
+  },
+  {
+    "id": "AXO",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AXP",
+      "AXQ"
+    ]
+  },
+  {
+    "id": "AXP",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXN",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AXR"
+    ]
+  },
+  {
+    "id": "AXR",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AXS",
+      "AXT"
+    ]
+  },
+  {
+    "id": "AXS",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXT",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXU",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "AXV"
+    ]
+  },
+  {
+    "id": "AXV",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "AXW",
+      "AXX",
+      "AXY"
+    ]
+  },
+  {
+    "id": "AXW",
+    "type": "vraag",
+    "text": "Vrg: Strak",
+    "next": [
+      "AXZ"
+    ]
+  },
+  {
+    "id": "AXZ",
+    "type": "afw",
+    "text": "Afw: Ondergrond vs levensduur",
+    "next": [
+      "AYA",
+      "AYB"
+    ]
+  },
+  {
+    "id": "AYA",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic",
+    "next": [
+      "AYC"
+    ]
+  },
+  {
+    "id": "AYC",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AYD",
+      "AYE"
+    ]
+  },
+  {
+    "id": "AYD",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYE",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYB",
+    "type": "systeem",
+    "text": "Sys: Gietcoating",
+    "next": [
+      "AYF"
+    ]
+  },
+  {
+    "id": "AYF",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AYG",
+      "AYH"
+    ]
+  },
+  {
+    "id": "AYG",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYH",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXX",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "AYI"
+    ]
+  },
+  {
+    "id": "AYI",
+    "type": "afw",
+    "text": "Afw: Ondergrond vs levensduur",
+    "next": [
+      "AYJ",
+      "AYK"
+    ]
+  },
+  {
+    "id": "AYJ",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic met ADD250",
+    "next": [
+      "AYL"
+    ]
+  },
+  {
+    "id": "AYL",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AYM",
+      "AYN"
+    ]
+  },
+  {
+    "id": "AYM",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYN",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYK",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "AYO"
+    ]
+  },
+  {
+    "id": "AYO",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AYP",
+      "AYQ"
+    ]
+  },
+  {
+    "id": "AYP",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AXY",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "AYR"
+    ]
+  },
+  {
+    "id": "AYR",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met BS3000",
+    "next": [
+      "AYS"
+    ]
+  },
+  {
+    "id": "AYS",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip?",
+    "next": [
+      "AYT",
+      "AYU"
+    ]
+  },
+  {
+    "id": "AYT",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "AYV"
+    ]
+  },
+  {
+    "id": "AYV",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AYW",
+      "AYX"
+    ]
+  },
+  {
+    "id": "AYW",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYX",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AYU",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "AYY"
+    ]
+  },
+  {
+    "id": "AYY",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AYZ",
+      "AZA"
+    ]
+  },
+  {
+    "id": "AYZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZA",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZB",
+    "type": "antwoord",
+    "text": "Antw: Intensief heftrucks",
+    "next": [
+      "AZC"
+    ]
+  },
+  {
+    "id": "AZC",
+    "type": "vraag",
+    "text": "Vrg: Welke levensduur?",
+    "next": [
+      "AZD",
+      "AZE",
+      "AZF"
+    ]
+  },
+  {
+    "id": "AZD",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Premium",
+    "next": [
+      "AZG"
+    ]
+  },
+  {
+    "id": "AZG",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AZH",
+      "AZI"
+    ]
+  },
+  {
+    "id": "AZH",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZI",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZE",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "AZJ"
+    ]
+  },
+  {
+    "id": "AZJ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AZK",
+      "AZL"
+    ]
+  },
+  {
+    "id": "AZK",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZL",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZF",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Excellent",
+    "next": [
+      "AZM"
+    ]
+  },
+  {
+    "id": "AZM",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AZN",
+      "AZO"
+    ]
+  },
+  {
+    "id": "AZN",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZO",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZP",
+    "type": "antwoord",
+    "text": "Antw: Auto’s",
+    "next": [
+      "AZQ"
+    ]
+  },
+  {
+    "id": "AZQ",
+    "type": "vraag",
+    "text": "Vrg: Wat voor ruimte is het?",
+    "next": [
+      "AZR",
+      "AZS"
+    ]
+  },
+  {
+    "id": "AZR",
+    "type": "antwoord",
+    "text": "Antw: Showroom",
+    "next": [
+      "AZT"
+    ]
+  },
+  {
+    "id": "AZT",
+    "type": "afw",
+    "text": "Afw: Ondergrond vs levensduur",
+    "next": [
+      "AZU",
+      "AZV"
+    ]
+  },
+  {
+    "id": "AZU",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Basic + AG lak",
+    "next": [
+      "AZW"
+    ]
+  },
+  {
+    "id": "AZW",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "AZX",
+      "AZY"
+    ]
+  },
+  {
+    "id": "AZX",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZY",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZV",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic + AG lak",
+    "next": [
+      "AZZ"
+    ]
+  },
+  {
+    "id": "AZZ",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BAA",
+      "BAB"
+    ]
+  },
+  {
+    "id": "BAA",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BAB",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "AZS",
+    "type": "antwoord",
+    "text": "Antw: (parkeer)Garage",
+    "next": [
+      "BAC"
+    ]
+  },
+  {
+    "id": "BAC",
+    "type": "vraag",
+    "text": "Vrg: Hoe intensief verkeer?",
+    "next": [
+      "BAD",
+      "BAE"
+    ]
+  },
+  {
+    "id": "BAD",
+    "type": "antwoord",
+    "text": "Antw: Regelmatig gebruik (VVE)",
+    "next": [
+      "BAF"
+    ]
+  },
+  {
+    "id": "BAF",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Optimum",
+    "next": [
+      "BAG"
+    ]
+  },
+  {
+    "id": "BAG",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BAH",
+      "BAI"
+    ]
+  },
+  {
+    "id": "BAH",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BAI",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BAE",
+    "type": "antwoord",
+    "text": "Antw: Intensief gebruik (Ikea parkeerplaats)",
+    "next": [
+      "BAJ"
+    ]
+  },
+  {
+    "id": "BAJ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "BAK"
+    ]
+  },
+  {
+    "id": "BAK",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BAL",
+      "BAP"
+    ]
+  },
+  {
+    "id": "BAL",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "BAN"
+    ]
+  },
+  {
+    "id": "BAN",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BAO",
+      "BAP"
+    ]
+  },
+  {
+    "id": "BAO",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BAP",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BAQ"
+    ]
+  },
+  {
+    "id": "BAQ",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BAR",
+      "BAS"
+    ]
+  },
+  {
+    "id": "BAR",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BAS",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BAT",
+    "type": "antwoord",
+    "text": "Antw: Vrachtauto/mechanisatie",
+    "next": [
+      "BAU"
+    ]
+  },
+  {
+    "id": "BAU",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "BAV"
+    ]
+  },
+  {
+    "id": "BAV",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BAW",
+      "BAX"
+    ]
+  },
+  {
+    "id": "BAW",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "BAY"
+    ]
+  },
+  {
+    "id": "BAY",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BAZ",
+      "BBA"
+    ]
+  },
+  {
+    "id": "BAZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BBA",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BAX",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BBB"
+    ]
+  },
+  {
+    "id": "BBB",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BBC",
+      "BBD"
+    ]
+  },
+  {
+    "id": "BBC",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BBD",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BBE",
+    "type": "antwoord",
+    "text": "Antw: PU",
+    "next": [
+      "BBF"
+    ]
+  },
+  {
+    "id": "BBF",
+    "type": "xtr",
+    "text": "Xtr: Meerwerk kaalschuren.",
+    "next": [
+      "BBG"
+    ]
+  },
+  {
+    "id": "BBG",
+    "type": "vraag",
+    "text": "Vrg: Welke belasting komt er op de vloer?",
+    "next": [
+      "BBH",
+      "BCE",
+      "BDB",
+      "BDP",
+      "BEO"
+    ]
+  },
+  {
+    "id": "BBH",
+    "type": "antwoord",
+    "text": "Antw: Loopverkeer",
+    "next": [
+      "BBI"
+    ]
+  },
+  {
+    "id": "BBI",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "BBJ",
+      "BBK",
+      "BBL"
+    ]
+  },
+  {
+    "id": "BBJ",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "BBM"
+    ]
+  },
+  {
+    "id": "BBM",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "BBN"
+    ]
+  },
+  {
+    "id": "BBN",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BBO",
+      "BBP"
+    ]
+  },
+  {
+    "id": "BBO",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BBP",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BBK",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "BBQ"
+    ]
+  },
+  {
+    "id": "BBQ",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "BBR"
+    ]
+  },
+  {
+    "id": "BBR",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BBS",
+      "BBT"
+    ]
+  },
+  {
+    "id": "BBS",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BBT",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BBL",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "BBU"
+    ]
+  },
+  {
+    "id": "BBU",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met BS3000",
+    "next": [
+      "BBV"
+    ]
+  },
+  {
+    "id": "BBV",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip?",
+    "next": [
+      "BBW",
+      "BBX"
+    ]
+  },
+  {
+    "id": "BBW",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "BBY"
+    ]
+  },
+  {
+    "id": "BBY",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BBZ",
+      "BCA"
+    ]
+  },
+  {
+    "id": "BBZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCA",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BBX",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BCB"
+    ]
+  },
+  {
+    "id": "BCB",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BCC",
+      "BCD"
+    ]
+  },
+  {
+    "id": "BCC",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCD",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCE",
+    "type": "antwoord",
+    "text": "Antw: Pallet en pompwagen, incidenteel heftruck",
+    "next": [
+      "BCF"
+    ]
+  },
+  {
+    "id": "BCF",
+    "type": "vraag",
+    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
+    "next": [
+      "BCG",
+      "BCH",
+      "BCI"
+    ]
+  },
+  {
+    "id": "BCG",
+    "type": "antwoord",
+    "text": "Antw: Strak",
+    "next": [
+      "BCJ"
+    ]
+  },
+  {
+    "id": "BCJ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "BCK"
+    ]
+  },
+  {
+    "id": "BCK",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BCL",
+      "BCM"
+    ]
+  },
+  {
+    "id": "BCL",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCM",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCH",
+    "type": "antwoord",
+    "text": "Antw: Niet glad",
+    "next": [
+      "BCN"
+    ]
+  },
+  {
+    "id": "BCN",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met ADD250",
+    "next": [
+      "BCO"
+    ]
+  },
+  {
+    "id": "BCO",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BCP",
+      "BCQ"
+    ]
+  },
+  {
+    "id": "BCP",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCQ",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCI",
+    "type": "antwoord",
+    "text": "Antw: Geen glans",
+    "next": [
+      "BCR"
+    ]
+  },
+  {
+    "id": "BCR",
+    "type": "systeem",
+    "text": "Sys: Rolcoating Premium met BS3000",
+    "next": [
+      "BCS"
+    ]
+  },
+  {
+    "id": "BCS",
+    "type": "vraag",
+    "text": "Vrg: Wil je antislip?",
+    "next": [
+      "BCT",
+      "BCU"
+    ]
+  },
+  {
+    "id": "BCT",
+    "type": "antwoord",
+    "text": "Antw: ADD250 toevoegen",
+    "next": [
+      "BCV"
+    ]
+  },
+  {
+    "id": "BCV",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BCW",
+      "BCX"
+    ]
+  },
+  {
+    "id": "BCW",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCX",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BCU",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BCY"
+    ]
+  },
+  {
+    "id": "BCY",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BCZ",
+      "BDA"
+    ]
+  },
+  {
+    "id": "BCZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDA",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDB",
+    "type": "antwoord",
+    "text": "Antw: Intensief heftrucks",
+    "next": [
+      "BDC"
+    ]
+  },
+  {
+    "id": "BDC",
+    "type": "afw",
+    "text": "Afw: Levensduur",
+    "next": [
+      "BDD",
+      "BDH",
+      "BDL"
+    ]
+  },
+  {
+    "id": "BDD",
+    "type": "systeem",
+    "text": "Sys: Gietcoating premium",
+    "next": [
+      "BDE"
+    ]
+  },
+  {
+    "id": "BDE",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BDF",
+      "BDG"
+    ]
+  },
+  {
+    "id": "BDF",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDG",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDH",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Basic",
+    "next": [
+      "BDI"
+    ]
+  },
+  {
+    "id": "BDI",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BDJ",
+      "BDK"
+    ]
+  },
+  {
+    "id": "BDJ",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDK",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDL",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Excellent",
+    "next": [
+      "BDM"
+    ]
+  },
+  {
+    "id": "BDM",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BDN",
+      "BDO"
+    ]
+  },
+  {
+    "id": "BDN",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDO",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDP",
+    "type": "antwoord",
+    "text": "Antw: Auto's",
+    "next": [
+      "BDQ"
+    ]
+  },
+  {
+    "id": "BDQ",
+    "type": "vraag",
+    "text": "Vrg: Wat voor ruimte is het?",
+    "next": [
+      "BDR",
+      "BDW"
+    ]
+  },
+  {
+    "id": "BDR",
+    "type": "antwoord",
+    "text": "Antw: Showroom",
+    "next": [
+      "BDT"
+    ]
+  },
+  {
+    "id": "BDS",
+    "type": "antwoord",
+    "text": "Antw: (parkeer)Garage",
+    "next": [
+      "BDT"
+    ]
+  },
+  {
+    "id": "BDT",
+    "type": "vraag",
+    "text": "Vrg: Wil je versiering?",
+    "next": [
+      "BDU",
+      "BDV"
+    ]
+  },
+  {
+    "id": "BDU",
+    "type": "antwoord",
+    "text": "Antw: Ja, DecoFlakes toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDV",
+    "type": "antwoord",
+    "text": "Antw: nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BDW",
+    "type": "antwoord",
+    "text": "Antw: (parkeer)Garage",
+    "next": [
+      "BDX"
+    ]
+  },
+  {
+    "id": "BDX",
+    "type": "vraag",
+    "text": "Vrg: Hoe instesief verkeer?",
+    "next": [
+      "BDY",
+      "BED"
+    ]
+  },
+  {
+    "id": "BDY",
+    "type": "antwoord",
+    "text": "Antw: Regelmatig gebruik (VVE)",
+    "next": [
+      "BDZ"
+    ]
+  },
+  {
+    "id": "BDZ",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Optimum",
+    "next": [
+      "BEA"
+    ]
+  },
+  {
+    "id": "BEA",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BEB",
+      "BEC"
+    ]
+  },
+  {
+    "id": "BEB",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BEC",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BED",
+    "type": "antwoord",
+    "text": "Antw: Intensief gebruik (Ikea parkeerplaats)",
+    "next": [
+      "BEE"
+    ]
+  },
+  {
+    "id": "BEE",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "BEF"
+    ]
+  },
+  {
+    "id": "BEF",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BEG",
+      "BEH"
+    ]
+  },
+  {
+    "id": "BEG",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "BEI"
+    ]
+  },
+  {
+    "id": "BEI",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BEJ",
+      "BEM"
+    ]
+  },
+  {
+    "id": "BEJ",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BEM",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BEH",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BEK"
+    ]
+  },
+  {
+    "id": "BEK",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BEL",
+      "BEN"
+    ]
+  },
+  {
+    "id": "BEL",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BEN",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BEO",
+    "type": "antwoord",
+    "text": "Antw: Vrachtauto/mechanisatie",
+    "next": [
+      "BEP"
+    ]
+  },
+  {
+    "id": "BEP",
+    "type": "systeem",
+    "text": "Sys: Gietcoating Extreme",
+    "next": [
+      "BEQ"
+    ]
+  },
+  {
+    "id": "BEQ",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BER",
+      "BES"
+    ]
+  },
+  {
+    "id": "BER",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "next": [
+      "BET"
+    ]
+  },
+  {
+    "id": "BET",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BEV",
+      "BEW"
+    ]
+  },
+  {
+    "id": "BEV",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BEW",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BES",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BEU"
+    ]
+  },
+  {
+    "id": "BEU",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BEX",
+      "BEY"
+    ]
+  },
+  {
+    "id": "BEX",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "next": [
+      "END"
+    ],
+    "price_per_m2": 15.93
+  },
+  {
+    "id": "BEY",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  }
+]
