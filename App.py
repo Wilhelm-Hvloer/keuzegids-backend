@@ -74,7 +74,7 @@ def bereken_prijs(systeem, opp, ruimtes):
 # API ROUTES
 # -------------------------------------------------------
 
-@app.route("/api/start", method=["GET"])
+@app.route("/api/start", methods=["GET"])
 def start():
     """Startvraag (BFC) ophalen."""
     node = find_node("BFC")
@@ -91,7 +91,7 @@ def start():
 
 @app.route("/api/next", methods=["POST"])
 def next_step():
-    """Ontvangt node_id + user_choice, geeft volgende node terug."""
+    """Ontvangt node_id + keuze, geeft volgende node terug."""
     data = request.json
     node_id = data.get("node_id")
     choice = data.get("choice")
@@ -140,7 +140,6 @@ def price():
     ruimtes = int(data["ruimtes"])
 
     pr = bereken_prijs(systeem, opp, ruimtes)
-
     return jsonify(pr)
 
 
