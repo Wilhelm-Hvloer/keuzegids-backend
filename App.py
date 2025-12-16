@@ -14,16 +14,24 @@ with open("keuzeboom.json", encoding="utf-8") as f:
 with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
     PRIJZEN = json.load(f)
 
-# Index voor snelle lookup
+# Snelle lookup
 NODE_INDEX = {node["id"]: node for node in KEUZEBOOM}
+
+# =========================
+# EENVOUDIGE SERVER-STATE
+# (per server instance)
+# =========================
+STATE = {
+    "system": None
+}
 
 # =========================
 # HULPFUNCTIES
 # =========================
 def expand_node(node):
     """
-    Breidt next: ["A","B"] uit naar volledige nodes
-    BEHOUDT bestaande structuur
+    Breidt next: ["A","B"] uit naar volledige node-objecten
+    zonder bestaande data te verwijderen
     """
     expanded = dict(node)
     expanded_next = []
@@ -52,7 +60,7 @@ def get_staffel_index(oppervlakte, staffels):
 # =========================
 @app.route("/api/start", methods=["GET"])
 def start():
-    # gebruik eerste node als start (zoals eerder)
+    STATE["system"] = None  # reset bij nieuwe sessie
     start_node = KEUZEBOOM[0]
     return jsonify(expand_node(start_node))
 
@@ -81,21 +89,32 @@ def next_node():
     if not next_node:
         return jsonify({"error": "Volgende node niet gevonden"}), 404
 
+    # 🔑 SYSTEEM ONTHOUDEN
+    if next_node.get("type") == "systeem":
+        STATE["system"] = next_node.get("text")
+
     return jsonify(expand_node(next_node))
 
 
 # =========================
 # API: PRIJSBEREKENING
 # =========================
-@app.route("/api/calculate", methods=["POST"])
-def calculate():
+@app.route("/api/price", methods=["POST"])
+def calculate_price():
     data = request.json
-    systeem = data.get("system")
-    oppervlakte = data.get("oppervlakte")
+    oppervlakte = data.get("m2")
     ruimtes = data.get("ruimtes")
 
+    systeem = STATE.get("system")
+
+    if not systeem:
+        return jsonify({"error": "Geen systeem geselecteerd"}), 400
+
     if systeem not in PRIJZEN:
-        return jsonify({"error": "Onbekend systeem"}), 400
+        return jsonify({"error": "Systeem niet gevonden in prijstabellen"}), 400
+
+    if not oppervlakte or not ruimtes:
+        return jsonify({"error": "Oppervlakte en ruimtes zijn verplicht"}), 400
 
     prijsdata = PRIJZEN[systeem]
     staffels = prijsdata["staffel"]
@@ -113,12 +132,12 @@ def calculate():
         "ruimtes": ruimtes,
         "staffel": staffels[staffel_index],
         "prijs_per_m2": prijs_pm2,
-        "basisprijs": totaal
+        "totaalprijs": totaal
     })
 
 
 # =========================
-# RUN
+# RUN (voor lokaal, stoort Render niet)
 # =========================
 if __name__ == "__main__":
     app.run(debug=True)
