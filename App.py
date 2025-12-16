@@ -5,6 +5,9 @@ import json
 
 app = FastAPI()
 
+# =========================
+# CORS
+# =========================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,7 +27,7 @@ with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
 # =========================
 # BESLISBOOM HELPERS
 # =========================
-def find_node(node_id):
+def find_node(node_id: str):
     for node in KEUZEBOOM:
         if node.get("id") == node_id:
             return node
@@ -32,13 +35,16 @@ def find_node(node_id):
 
 
 def normalize_node(node):
+    """
+    Zorgt dat frontend altijd dezelfde structuur krijgt
+    """
     return {
         "id": node.get("id"),
         "type": node.get("type"),
         "text": node.get("text"),
         "answers": node.get("answers", []),
         "next": node.get("next", []),
-        "system": node.get("system")
+        "system": node.get("system"),
     }
 
 # =========================
@@ -46,6 +52,8 @@ def normalize_node(node):
 # =========================
 @app.get("/api/start")
 def start():
+    if not KEUZEBOOM:
+        raise HTTPException(500, "Keuzeboom is leeg")
     return normalize_node(KEUZEBOOM[0])
 
 # =========================
@@ -73,21 +81,31 @@ def next_node(req: NextRequest):
     return normalize_node(next_node)
 
 # =========================
-# PRIJSBEREKENING
+# PRIJSBEREKENING HELPERS
+# =========================
+def staffel_index(oppervlakte: float, staffels: list[str]) -> int:
+    """
+    Bepaalt de staffel-index op basis van staffel-strings zoals:
+    "30-50", "50-70", "300+"
+    """
+    for i, s in enumerate(staffels):
+        if "+" in s:
+            return i
+
+        onder, boven = s.split("-")
+        if float(onder) <= oppervlakte <= float(boven):
+            return i
+
+    return len(staffels) - 1
+
+
+# =========================
+# API: CALCULATE
 # =========================
 class CalculateRequest(BaseModel):
     system: str
     oppervlakte: float
     ruimtes: int
-
-def staffel_index(oppervlakte, staffels):
-    for i, s in enumerate(staffels):
-        if "+" in s:
-            return i
-        onder, boven = s.split("-")
-        if float(onder) <= oppervlakte <= float(boven):
-            return i
-    return len(staffels) - 1
 
 @app.post("/api/calculate")
 def calculate(req: CalculateRequest):
@@ -97,13 +115,19 @@ def calculate(req: CalculateRequest):
         raise HTTPException(400, "Onbekend systeem")
 
     data = PRIJZEN[systeem]
+
     staffels = data["staffel"]
     prijzen = data["prijzen"]
 
     staffel_i = staffel_index(req.oppervlakte, staffels)
 
+    # Ruimtes: 1, 2 of 3+
     ruimtes_key = "3" if req.ruimtes >= 3 else str(req.ruimtes)
-    prijs_pm2 = prijzen[ruimtes_key][staffel_i]
+
+    try:
+        prijs_pm2 = prijzen[ruimtes_key][staffel_i]
+    except Exception:
+        raise HTTPException(400, "Prijs niet gevonden voor deze combinatie")
 
     basisprijs = prijs_pm2 * req.oppervlakte
 
@@ -111,6 +135,7 @@ def calculate(req: CalculateRequest):
         "systeem": systeem,
         "oppervlakte": req.oppervlakte,
         "ruimtes": req.ruimtes,
+        "staffel": staffels[staffel_i],
         "prijs_per_m2": prijs_pm2,
-        "basisprijs": round(basisprijs, 2)
+        "basisprijs": round(basisprijs, 2),
     }
