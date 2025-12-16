@@ -2,13 +2,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import json
-from typing import Any, Dict, List
 
 app = FastAPI()
 
-# =======================
-# CORS
-# =======================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,107 +12,105 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# =======================
-# KEUZEBOOM LADEN
-# =======================
-with open("keuzeboom.json", "r", encoding="utf-8") as f:
-    KEUZEBOOM: List[Dict[str, Any]] = json.load(f)
+# =========================
+# DATA LADEN
+# =========================
+with open("keuzeboom.json", encoding="utf-8") as f:
+    KEUZEBOOM = json.load(f)
 
-# =======================
-# HULPFUNCTIES
-# =======================
-def find_node(node_id: str) -> Dict[str, Any] | None:
+with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
+    PRIJZEN = json.load(f)
+
+# =========================
+# BESLISBOOM HELPERS
+# =========================
+def find_node(node_id):
     for node in KEUZEBOOM:
         if node.get("id") == node_id:
             return node
     return None
 
 
-def extract_label(node: Dict[str, Any]) -> str:
-    """
-    Bepaalt het knop-label op basis van de next-node.
-    """
-    if node.get("label"):
-        return node["label"]
-
-    if node.get("answer"):
-        return node["answer"]
-
-    text = node.get("text", "")
-    for prefix in ("Antw:", "Vrg:"):
-        if text.startswith(prefix):
-            text = text[len(prefix):].strip()
-
-    return text or node.get("id")
-
-
-def normalize_node(node: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Zorgt dat frontend altijd:
-    - id
-    - type
-    - text
-    - answers (afgeleid uit next-nodes)
-    - next
-    krijgt
-    """
-    answers: List[str] = []
-
-    if node.get("type") == "vraag" and "next" in node:
-        for next_id in node["next"]:
-            next_node = find_node(next_id)
-            if next_node:
-                answers.append(extract_label(next_node))
-            else:
-                answers.append(next_id)
-
+def normalize_node(node):
     return {
         "id": node.get("id"),
         "type": node.get("type"),
         "text": node.get("text"),
-        "answers": answers,
+        "answers": node.get("answers", []),
         "next": node.get("next", []),
-        # extra info voor vervolg
-        "answer": node.get("answer"),
-        "system": node.get("system"),
-        "systems": node.get("systems"),
+        "system": node.get("system")
     }
 
-# =======================
-# START
-# =======================
+# =========================
+# API: START
+# =========================
 @app.get("/api/start")
 def start():
-    if not KEUZEBOOM:
-        raise HTTPException(status_code=500, detail="Keuzeboom is leeg")
-
     return normalize_node(KEUZEBOOM[0])
 
-# =======================
-# NEXT
-# =======================
+# =========================
+# API: NEXT
+# =========================
 class NextRequest(BaseModel):
     node_id: str
     choice: int
 
-
 @app.post("/api/next")
 def next_node(req: NextRequest):
-    current_node = find_node(req.node_id)
+    current = find_node(req.node_id)
+    if not current:
+        raise HTTPException(404, "Node niet gevonden")
 
-    if not current_node:
-        raise HTTPException(status_code=400, detail="Huidige node niet gevonden")
+    try:
+        next_id = current["next"][req.choice]
+    except Exception:
+        raise HTTPException(400, "Ongeldige keuze")
 
-    if "next" not in current_node:
-        raise HTTPException(status_code=400, detail="Node heeft geen vervolgstappen")
-
-    if req.choice < 0 or req.choice >= len(current_node["next"]):
-        raise HTTPException(status_code=400, detail="Ongeldige keuze-index")
-
-    next_node_id = current_node["next"][req.choice]
-    next_node = find_node(next_node_id)
-
+    next_node = find_node(next_id)
     if not next_node:
-        raise HTTPException(status_code=400, detail="Volgende node niet gevonden")
+        raise HTTPException(404, "Volgende node niet gevonden")
 
     return normalize_node(next_node)
+
+# =========================
+# PRIJSBEREKENING
+# =========================
+class CalculateRequest(BaseModel):
+    system: str
+    oppervlakte: float
+    ruimtes: int
+
+def staffel_index(oppervlakte, staffels):
+    for i, s in enumerate(staffels):
+        if "+" in s:
+            return i
+        onder, boven = s.split("-")
+        if float(onder) <= oppervlakte <= float(boven):
+            return i
+    return len(staffels) - 1
+
+@app.post("/api/calculate")
+def calculate(req: CalculateRequest):
+    systeem = req.system
+
+    if systeem not in PRIJZEN:
+        raise HTTPException(400, "Onbekend systeem")
+
+    data = PRIJZEN[systeem]
+    staffels = data["staffel"]
+    prijzen = data["prijzen"]
+
+    staffel_i = staffel_index(req.oppervlakte, staffels)
+
+    ruimtes_key = "3" if req.ruimtes >= 3 else str(req.ruimtes)
+    prijs_pm2 = prijzen[ruimtes_key][staffel_i]
+
+    basisprijs = prijs_pm2 * req.oppervlakte
+
+    return {
+        "systeem": systeem,
+        "oppervlakte": req.oppervlakte,
+        "ruimtes": req.ruimtes,
+        "prijs_per_m2": prijs_pm2,
+        "basisprijs": round(basisprijs, 2)
+    }
