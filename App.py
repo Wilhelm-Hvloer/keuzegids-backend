@@ -1,19 +1,9 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
 
-app = FastAPI()
-
-# =========================
-# CORS
-# =========================
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app = Flask(__name__)
+CORS(app)
 
 # =========================
 # DATA LADEN
@@ -24,118 +14,111 @@ with open("keuzeboom.json", encoding="utf-8") as f:
 with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
     PRIJZEN = json.load(f)
 
-# =========================
-# BESLISBOOM HELPERS
-# =========================
-def find_node(node_id: str):
-    for node in KEUZEBOOM:
-        if node.get("id") == node_id:
-            return node
-    return None
+# Index voor snelle lookup
+NODE_INDEX = {node["id"]: node for node in KEUZEBOOM}
 
-
-def normalize_node(node):
+# =========================
+# HULPFUNCTIES
+# =========================
+def expand_node(node):
     """
-    Zorgt dat frontend altijd dezelfde structuur krijgt
+    Breidt next: ["A","B"] uit naar volledige nodes
+    BEHOUDT bestaande structuur
     """
-    return {
-        "id": node.get("id"),
-        "type": node.get("type"),
-        "text": node.get("text"),
-        "answers": node.get("answers", []),
-        "next": node.get("next", []),
-        "system": node.get("system"),
-    }
+    expanded = dict(node)
+    expanded_next = []
 
-# =========================
-# API: START
-# =========================
-@app.get("/api/start")
-def start():
-    if not KEUZEBOOM:
-        raise HTTPException(500, "Keuzeboom is leeg")
-    return normalize_node(KEUZEBOOM[0])
+    for nid in node.get("next", []):
+        next_node = NODE_INDEX.get(nid)
+        if next_node:
+            expanded_next.append(dict(next_node))
 
-# =========================
-# API: NEXT
-# =========================
-class NextRequest(BaseModel):
-    node_id: str
-    choice: int
+    expanded["next"] = expanded_next
+    return expanded
 
-@app.post("/api/next")
-def next_node(req: NextRequest):
-    current = find_node(req.node_id)
-    if not current:
-        raise HTTPException(404, "Node niet gevonden")
 
-    try:
-        next_id = current["next"][req.choice]
-    except Exception:
-        raise HTTPException(400, "Ongeldige keuze")
-
-    next_node = find_node(next_id)
-    if not next_node:
-        raise HTTPException(404, "Volgende node niet gevonden")
-
-    return normalize_node(next_node)
-
-# =========================
-# PRIJSBEREKENING HELPERS
-# =========================
-def staffel_index(oppervlakte: float, staffels: list[str]) -> int:
-    """
-    Bepaalt de staffel-index op basis van staffel-strings zoals:
-    "30-50", "50-70", "300+"
-    """
+def get_staffel_index(oppervlakte, staffels):
     for i, s in enumerate(staffels):
         if "+" in s:
             return i
-
         onder, boven = s.split("-")
         if float(onder) <= oppervlakte <= float(boven):
             return i
-
     return len(staffels) - 1
 
 
 # =========================
-# API: CALCULATE
+# API: START
 # =========================
-class CalculateRequest(BaseModel):
-    system: str
-    oppervlakte: float
-    ruimtes: int
+@app.route("/api/start", methods=["GET"])
+def start():
+    # gebruik eerste node als start (zoals eerder)
+    start_node = KEUZEBOOM[0]
+    return jsonify(expand_node(start_node))
 
-@app.post("/api/calculate")
-def calculate(req: CalculateRequest):
-    systeem = req.system
+
+# =========================
+# API: NEXT
+# =========================
+@app.route("/api/next", methods=["POST"])
+def next_node():
+    data = request.json
+    node_id = data.get("node_id")
+    choice = data.get("choice")
+
+    if node_id not in NODE_INDEX:
+        return jsonify({"error": "Node niet gevonden"}), 400
+
+    node = NODE_INDEX[node_id]
+    next_ids = node.get("next", [])
+
+    if choice is None or choice >= len(next_ids):
+        return jsonify({"error": "Ongeldige keuze"}), 400
+
+    next_id = next_ids[choice]
+    next_node = NODE_INDEX.get(next_id)
+
+    if not next_node:
+        return jsonify({"error": "Volgende node niet gevonden"}), 404
+
+    return jsonify(expand_node(next_node))
+
+
+# =========================
+# API: PRIJSBEREKENING
+# =========================
+@app.route("/api/calculate", methods=["POST"])
+def calculate():
+    data = request.json
+    systeem = data.get("system")
+    oppervlakte = data.get("oppervlakte")
+    ruimtes = data.get("ruimtes")
 
     if systeem not in PRIJZEN:
-        raise HTTPException(400, "Onbekend systeem")
+        return jsonify({"error": "Onbekend systeem"}), 400
 
-    data = PRIJZEN[systeem]
+    prijsdata = PRIJZEN[systeem]
+    staffels = prijsdata["staffel"]
+    prijzen = prijsdata["prijzen"]
 
-    staffels = data["staffel"]
-    prijzen = data["prijzen"]
+    staffel_index = get_staffel_index(oppervlakte, staffels)
+    ruimte_key = "3" if ruimtes >= 3 else str(ruimtes)
 
-    staffel_i = staffel_index(req.oppervlakte, staffels)
+    prijs_pm2 = prijzen[ruimte_key][staffel_index]
+    totaal = round(prijs_pm2 * oppervlakte, 2)
 
-    # Ruimtes: 1, 2 of 3+
-    ruimtes_key = "3" if req.ruimtes >= 3 else str(req.ruimtes)
-
-    try:
-        prijs_pm2 = prijzen[ruimtes_key][staffel_i]
-    except Exception:
-        raise HTTPException(400, "Prijs niet gevonden voor deze combinatie")
-
-    basisprijs = prijs_pm2 * req.oppervlakte
-
-    return {
+    return jsonify({
         "systeem": systeem,
-        "oppervlakte": req.oppervlakte,
-        "ruimtes": req.ruimtes,
-        "staffel": staffels[staffel_i],
+        "oppervlakte": oppervlakte,
+        "ruimtes": ruimtes,
+        "staffel": staffels[staffel_index],
         "prijs_per_m2": prijs_pm2,
-        "basisprijs": round(basisprijs, 2),
-    }
+        "basisprijs": totaal
+    })
+
+
+# =========================
+# RUN
+# =========================
+if __name__ == "__main__":
+    app.run(debug=True)
