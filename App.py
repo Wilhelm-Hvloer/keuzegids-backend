@@ -19,7 +19,7 @@ STATE = {
 # DATA LADEN
 # =========================
 with open(os.path.join(BASE_DIR, "keuzeboom.json"), encoding="utf-8") as f:
-    KEUZEBOOM = json.load(f)
+    KEUZEBOOM = json.load(f)  # ← dit is een LIST
 
 with open(os.path.join(BASE_DIR, "Prijstabellen coatingsystemen.json"), encoding="utf-8") as f:
     PRIJS_DATA = json.load(f)
@@ -28,12 +28,18 @@ with open(os.path.join(BASE_DIR, "Prijstabellen coatingsystemen.json"), encoding
 # HULPFUNCTIES
 # =========================
 def get_node(node_id):
-    return KEUZEBOOM.get(node_id)
+    """
+    Zoekt node op ID in keuzeboom (list)
+    """
+    for node in KEUZEBOOM:
+        if node.get("id") == node_id:
+            return node
+    return None
 
 
 def expand_node(node):
     """
-    Vervangt next-id’s door volledige nodes
+    Vervangt next-id’s door minimale node-info
     """
     expanded = dict(node)
     expanded_next = []
@@ -59,6 +65,8 @@ def expand_node(node):
 def start():
     STATE["system"] = None
     start_node = get_node("BFC")  # start-node id
+    if not start_node:
+        return jsonify({"error": "start-node niet gevonden"}), 500
     return jsonify(expand_node(start_node))
 
 
@@ -77,26 +85,25 @@ def next_node():
 
     try:
         next_id = node["next"][choice_index]
-    except (IndexError, KeyError):
+    except (IndexError, KeyError, TypeError):
         return jsonify({"error": "ongeldige keuze"}), 400
 
-    next_node = get_node(next_id)
-    if not next_node:
+    next_node_obj = get_node(next_id)
+    if not next_node_obj:
         return jsonify({"error": "volgende node niet gevonden"}), 404
 
     # =========================
     # SYSTEEM GEKOZEN → PRIJSFASE
     # =========================
-    if next_node.get("type") == "systeem":
-        STATE["system"] = next_node.get("text")
+    if next_node_obj.get("type") == "systeem":
+        STATE["system"] = next_node_obj.get("text")
 
-        response = expand_node(next_node)
-        response["price_ready"] = True  # 🔑 EXPLICIET SIGNAAL
+        response = expand_node(next_node_obj)
+        response["price_ready"] = True
         response["system"] = STATE["system"]
         return jsonify(response)
 
-    # Normale vraag / antwoord
-    return jsonify(expand_node(next_node))
+    return jsonify(expand_node(next_node_obj))
 
 
 @app.route("/api/price", methods=["POST"])
@@ -113,7 +120,7 @@ def calculate_price():
     if not m2 or not ruimtes:
         return jsonify({"error": "m2 en ruimtes verplicht"}), 400
 
-    system_key = system.replace("Sys: ", "").strip()
+    system_key = system.replace("Sys:", "").strip()
 
     prijsinfo = PRIJS_DATA.get(system_key)
     if not prijsinfo:
@@ -134,7 +141,6 @@ def calculate_price():
         return jsonify({"error": "geen staffel gevonden"}), 400
 
     ruimte_toeslag = prijsinfo["ruimtes"].get(ruimtes, 0)
-
     totaal = (staffel_prijs * m2) + ruimte_toeslag
 
     return jsonify({
