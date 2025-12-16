@@ -6,14 +6,14 @@ app = Flask(__name__)
 CORS(app)
 
 # =========================
-# GLOBAL STATE
+# GLOBAL STATE (BESTAAND)
 # =========================
 STATE = {
     "system": None
 }
 
 # =========================
-# DATA LADEN
+# DATA LADEN (BESTAAND + PRIJS)
 # =========================
 with open("keuzeboom.json", encoding="utf-8") as f:
     KEUZEBOOM = json.load(f)
@@ -85,7 +85,7 @@ def next_node():
     if not next_node_obj:
         return jsonify({"error": "volgende node niet gevonden"}), 404
 
-    # === BESTAANDE LOGICA: systeem onthouden ===
+    # === SYSTEEM NODE → PRIJSFLOW START ===
     if next_node_obj.get("type") == "systeem":
         STATE["system"] = next_node_obj.get("text")
         response = expand_node(next_node_obj)
@@ -96,56 +96,58 @@ def next_node():
     return jsonify(expand_node(next_node_obj))
 
 
-# ==================================================
-# 🆕 TOEVOEGING: PRIJSBEREKENING (NIEUW)
-# ==================================================
+# =========================
+# 🆕 API: PRIJSBEREKENING
+# =========================
 @app.route("/api/price", methods=["POST"])
 def calculate_price():
     data = request.json
 
-    m2 = data.get("oppervlakte")
+    oppervlakte = data.get("oppervlakte")
     ruimtes = str(data.get("ruimtes"))
     systeem = STATE.get("system")
 
     if not systeem:
         return jsonify({"error": "geen systeem gekozen"}), 400
 
-    if not m2 or not ruimtes:
+    if oppervlakte is None or ruimtes is None:
         return jsonify({"error": "oppervlakte en ruimtes verplicht"}), 400
 
     try:
-        m2 = float(m2)
+        oppervlakte = float(oppervlakte)
     except ValueError:
         return jsonify({"error": "ongeldige oppervlakte"}), 400
 
+    # Systeemnaam opschonen
     systeem_key = systeem.replace("Sys:", "").strip()
-    prijsinfo = PRIJS_DATA.get(systeem_key)
 
-    if not prijsinfo:
+    prijs_systeem = PRIJS_DATA.get(systeem_key)
+    if not prijs_systeem:
         return jsonify({"error": "prijssysteem niet gevonden"}), 404
 
     prijs_per_m2 = None
-    for staffel in prijsinfo["staffels"]:
-        if staffel["min"] <= m2 <= staffel["max"]:
+
+    for staffel in prijs_systeem.get("staffels", []):
+        if staffel["min"] <= oppervlakte <= staffel["max"]:
             prijs_per_m2 = staffel["prijzen"].get(ruimtes)
             break
 
     if prijs_per_m2 is None:
         return jsonify({"error": "geen passende staffel gevonden"}), 400
 
-    totaalprijs = round(prijs_per_m2 * m2)
+    totaalprijs = round(prijs_per_m2 * oppervlakte)
 
     return jsonify({
         "systeem": systeem_key,
         "prijs_per_m2": round(prijs_per_m2, 2),
-        "oppervlakte": m2,
+        "oppervlakte": oppervlakte,
         "ruimtes": int(ruimtes),
         "totaalprijs": totaalprijs
     })
 
 
 # =========================
-# HEALTHCHECK (BESTAAND)
+# HEALTHCHECK
 # =========================
 @app.route("/")
 def health():
