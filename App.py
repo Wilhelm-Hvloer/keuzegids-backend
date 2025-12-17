@@ -115,7 +115,7 @@ def calculate_price():
 
     try:
         oppervlakte = float(oppervlakte)
-    except ValueError:
+    except (ValueError, TypeError):
         return jsonify({"error": "ongeldige oppervlakte"}), 400
 
     # Systeemnaam opschonen
@@ -125,25 +125,25 @@ def calculate_price():
     if not prijs_systeem:
         return jsonify({"error": "prijssysteem niet gevonden"}), 404
 
-staffels = prijs_systeem.get("staffel", [])
-prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
+    staffels = prijs_systeem.get("staffel", [])
+    prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
-if not prijzen:
-    return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
+    if not prijzen:
+        return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
 
-prijs_per_m2 = None
+    prijs_per_m2 = None
 
-for index, bereik in enumerate(staffels):
-    if bereik.endswith("+"):
-        min_m2 = float(bereik.replace("+", ""))
-        if oppervlakte >= min_m2:
-            prijs_per_m2 = prijzen[index]
-            break
-    else:
-        min_m2, max_m2 = map(float, bereik.split("-"))
-        if min_m2 <= oppervlakte <= max_m2:
-            prijs_per_m2 = prijzen[index]
-            break
+    for index, bereik in enumerate(staffels):
+        if bereik.endswith("+"):
+            min_m2 = float(bereik.replace("+", ""))
+            if oppervlakte >= min_m2:
+                prijs_per_m2 = prijzen[index]
+                break
+        else:
+            min_m2, max_m2 = map(float, bereik.split("-"))
+            if min_m2 <= oppervlakte <= max_m2:
+                prijs_per_m2 = prijzen[index]
+                break
 
     if prijs_per_m2 is None:
         return jsonify({"error": "geen passende staffel gevonden"}), 400
