@@ -105,7 +105,7 @@ def calculate_price():
 
     oppervlakte = data.get("oppervlakte")
     ruimtes = str(data.get("ruimtes"))
-    systeem = STATE.get("system")
+    systeem = data.get("systeem") or STATE.get("system")
 
     if not systeem:
         return jsonify({"error": "geen systeem gekozen"}), 400
@@ -125,11 +125,24 @@ def calculate_price():
     if not prijs_systeem:
         return jsonify({"error": "prijssysteem niet gevonden"}), 404
 
-    prijs_per_m2 = None
+staffels = prijs_systeem.get("staffel", [])
+prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
-    for staffel in prijs_systeem.get("staffels", []):
-        if staffel["min"] <= oppervlakte <= staffel["max"]:
-            prijs_per_m2 = staffel["prijzen"].get(ruimtes)
+if not prijzen:
+    return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
+
+prijs_per_m2 = None
+
+for index, bereik in enumerate(staffels):
+    if bereik.endswith("+"):
+        min_m2 = float(bereik.replace("+", ""))
+        if oppervlakte >= min_m2:
+            prijs_per_m2 = prijzen[index]
+            break
+    else:
+        min_m2, max_m2 = map(float, bereik.split("-"))
+        if min_m2 <= oppervlakte <= max_m2:
+            prijs_per_m2 = prijzen[index]
             break
 
     if prijs_per_m2 is None:
