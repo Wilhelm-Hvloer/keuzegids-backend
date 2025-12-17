@@ -121,42 +121,68 @@ def calculate_price():
     # Systeemnaam opschonen
     systeem_key = systeem.replace("Sys:", "").strip()
 
-    prijs_systeem = PRIJS_DATA.get(systeem_key)
-    if not prijs_systeem:
-        return jsonify({"error": "prijssysteem niet gevonden"}), 404
+prijs_systeem = PRIJS_DATA.get(systeem_key)
+if not prijs_systeem:
+    return jsonify({"error": "prijssysteem niet gevonden"}), 404
 
-    staffels = prijs_systeem.get("staffel", [])
-    prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
+# ===== BASISPRIJS =====
+staffels = prijs_systeem.get("staffel", [])
+prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
-    if not prijzen:
-        return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
+if not prijzen:
+    return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
 
-    prijs_per_m2 = None
+prijs_per_m2 = None
 
-    for index, bereik in enumerate(staffels):
-        if bereik.endswith("+"):
-            min_m2 = float(bereik.replace("+", ""))
-            if oppervlakte >= min_m2:
-                prijs_per_m2 = prijzen[index]
-                break
-        else:
-            min_m2, max_m2 = map(float, bereik.split("-"))
-            if min_m2 <= oppervlakte <= max_m2:
-                prijs_per_m2 = prijzen[index]
-                break
+for index, bereik in enumerate(staffels):
+    if bereik.endswith("+"):
+        min_m2 = float(bereik.replace("+", ""))
+        if oppervlakte >= min_m2:
+            prijs_per_m2 = prijzen[index]
+            break
+    else:
+        min_m2, max_m2 = map(float, bereik.split("-"))
+        if min_m2 <= oppervlakte <= max_m2:
+            prijs_per_m2 = prijzen[index]
+            break
 
-    if prijs_per_m2 is None:
-        return jsonify({"error": "geen passende staffel gevonden"}), 400
+if prijs_per_m2 is None:
+    return jsonify({"error": "geen passende staffel gevonden"}), 400
 
-    totaalprijs = round(prijs_per_m2 * oppervlakte)
+basisprijs = prijs_per_m2 * oppervlakte
 
-    return jsonify({
-        "systeem": systeem_key,
-        "prijs_per_m2": round(prijs_per_m2, 2),
-        "oppervlakte": oppervlakte,
-        "ruimtes": int(ruimtes),
-        "totaalprijs": totaalprijs
+# ===== EXTRA OPTIES (CENTRAAL) =====
+gekozen_extras = data.get("extras", [])  # verwacht lijst van strings
+extras_prijslijst = PRIJS_DATA.get("extras", {})
+
+extra_totaal = 0
+extra_details = []
+
+for extra_naam in gekozen_extras:
+    extra = extras_prijslijst.get(extra_naam)
+    if not extra:
+        continue  # onbekende extra → negeren
+
+    prijs_extra = extra["prijs_per_m2"] * oppervlakte
+    extra_totaal += prijs_extra
+
+    extra_details.append({
+        "naam": extra_naam,
+        "prijs_per_m2": extra["prijs_per_m2"],
+        "totaal": round(prijs_extra)
     })
+
+totaalprijs = round(basisprijs + extra_totaal)
+
+return jsonify({
+    "systeem": systeem_key,
+    "oppervlakte": oppervlakte,
+    "ruimtes": int(ruimtes),
+    "basisprijs": round(basisprijs),
+    "prijs_per_m2": round(prijs_per_m2, 2),
+    "extras": extra_details,
+    "totaalprijs": totaalprijs
+})
 
 
 # =========================

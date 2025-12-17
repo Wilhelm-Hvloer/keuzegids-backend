@@ -1,4 +1,16 @@
 {
+  "extras": {
+    "ADD250": {
+      "prijs_per_m2": 2.5
+    },
+    "DecoFlakes": {
+      "prijs_per_m2": 2.5
+    },
+    "Durakorrel": {
+      "prijs_per_m2": 15.93
+    }
+  },
+
   "Rolcoating Basic": {
     "staffel": [
       "30-50",
