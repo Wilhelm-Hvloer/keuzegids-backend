@@ -5,6 +5,12 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+# =========================
+# GLOBAL STATE (BESTAAND)
+# =========================
+STATE = {
+    "system": None
+}
 
 # =========================
 # DATA LADEN (BESTAAND + PRIJS)
@@ -47,11 +53,11 @@ def expand_node(node):
 # =========================
 @app.route("/api/start", methods=["GET"])
 def start():
+    STATE["system"] = None
     start_node = get_node("BFC")
     if not start_node:
         return jsonify({"error": "start-node niet gevonden"}), 500
     return jsonify(expand_node(start_node))
-
 
 
 # =========================
@@ -81,11 +87,11 @@ def next_node():
 
     # === SYSTEEM NODE → PRIJSFLOW START ===
     if next_node_obj.get("type") == "systeem":
-    response = expand_node(next_node_obj)
-    response["price_ready"] = True
-    response["system"] = next_node_obj.get("text")
-    return jsonify(response)
-
+        STATE["system"] = next_node_obj.get("text")
+        response = expand_node(next_node_obj)
+        response["price_ready"] = True
+        response["system"] = STATE["system"]
+        return jsonify(response)
 
     return jsonify(expand_node(next_node_obj))
 
@@ -99,10 +105,10 @@ def calculate_price():
 
     oppervlakte = data.get("oppervlakte")
     ruimtes = str(data.get("ruimtes"))
-    systeem = data.get("systeem") 
+    systeem = data.get("systeem") or STATE.get("system")
 
     if not systeem:
-        return jsonify({"error": "geen systeem opgegeven"}), 400
+        return jsonify({"error": "geen systeem gekozen"}), 400
 
     if oppervlakte is None or ruimtes is None:
         return jsonify({"error": "oppervlakte en ruimtes verplicht"}), 400
@@ -119,7 +125,6 @@ def calculate_price():
     if not prijs_systeem:
         return jsonify({"error": "prijssysteem niet gevonden"}), 404
 
-    # ===== BASISPRIJS =====
     staffels = prijs_systeem.get("staffel", [])
     prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
@@ -143,41 +148,15 @@ def calculate_price():
     if prijs_per_m2 is None:
         return jsonify({"error": "geen passende staffel gevonden"}), 400
 
-    basisprijs = prijs_per_m2 * oppervlakte
-
-    # ===== EXTRA OPTIES (CENTRAAL) =====
-    gekozen_extras = data.get("extras", [])
-    extras_prijslijst = PRIJS_DATA.get("extras", {})
-
-    extra_totaal = 0
-    extra_details = []
-
-    for extra_naam in gekozen_extras:
-        extra = extras_prijslijst.get(extra_naam)
-        if not extra:
-            continue
-
-        prijs_extra = extra["prijs_per_m2"] * oppervlakte
-        extra_totaal += prijs_extra
-
-        extra_details.append({
-            "naam": extra_naam,
-            "prijs_per_m2": extra["prijs_per_m2"],
-            "totaal": round(prijs_extra)
-        })
-
-    totaalprijs = round(basisprijs + extra_totaal)
+    totaalprijs = round(prijs_per_m2 * oppervlakte)
 
     return jsonify({
         "systeem": systeem_key,
+        "prijs_per_m2": round(prijs_per_m2, 2),
         "oppervlakte": oppervlakte,
         "ruimtes": int(ruimtes),
-        "basisprijs": round(basisprijs),
-        "prijs_per_m2": round(prijs_per_m2, 2),
-        "extras": extra_details,
         "totaalprijs": totaalprijs
     })
-
 
 
 # =========================
