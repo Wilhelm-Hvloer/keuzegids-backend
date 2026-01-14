@@ -81,10 +81,10 @@ def next_node():
 
     # === SYSTEEM NODE → PRIJSFLOW START ===
     if next_node_obj.get("type") == "systeem":
-    response = expand_node(next_node_obj)
-    response["price_ready"] = True
-    response["system"] = next_node_obj.get("text")
-    return jsonify(response)
+      response = expand_node(next_node_obj)
+      response["price_ready"] = True
+      response["system"] = next_node_obj.get("text")
+      return jsonify(response)
 
 
     return jsonify(expand_node(next_node_obj))
