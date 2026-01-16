@@ -79,12 +79,16 @@ def next_node():
     if not next_node_obj:
         return jsonify({"error": "volgende node niet gevonden"}), 404
 
-    # === SYSTEEM NODE → PRIJSFLOW START ===
+
+
+    # === SYSTEEM NODE → SYSTEEM GESELECTEERD (frontend bepaalt vervolg) ===
+
     if next_node_obj.get("type") == "systeem":
       response = expand_node(next_node_obj)
-      response["price_ready"] = True
+      response["system_selected"] = True
       response["system"] = next_node_obj.get("text")
       return jsonify(response)
+
 
 
     return jsonify(expand_node(next_node_obj))
