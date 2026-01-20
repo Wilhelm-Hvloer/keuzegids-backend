@@ -4271,7 +4271,9 @@
     "id": "ATY",
     "type": "antwoord",
     "text": "Antw: Ja, DecoFlakes toevoegen (Nxt: END",
-    "next": []
+    "next": [
+      "END"
+    ]
   },
   {
     "id": "ATZ",
@@ -4715,8 +4717,8 @@
   },
   {
     "id": "BFF",
-    "type": "antwoord",
-    "text": "Antw: Nee",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
     "next": [
       "AVZ",
       "AWA"
