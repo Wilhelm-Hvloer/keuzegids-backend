@@ -119,9 +119,13 @@ def calculate_price():
     # Systeemnaam opschonen
     systeem_key = systeem.replace("Sys:", "").strip()
 
-    prijs_systeem = PRIJS_DATA.get(systeem_key)
+    # ===== SYSTEEM OPHALEN (NIEUWE JSON-STRUCTUUR) =====
+    systemen = PRIJS_DATA.get("systemen", {})
+    prijs_systeem = systemen.get(systeem_key)
+
     if not prijs_systeem:
-        return jsonify({"error": "prijssysteem niet gevonden"}), 404
+        return jsonify({"error": f"prijssysteem '{systeem_key}' niet gevonden"}), 404
+
 
     # ===== BASISPRIJS =====
     staffels = prijs_systeem.get("staffel", [])
@@ -149,26 +153,34 @@ def calculate_price():
 
     basisprijs = prijs_per_m2 * oppervlakte
 
-    # ===== EXTRA OPTIES (CENTRAAL) =====
+
+    # ===== EXTRA OPTIES (NIEUWE JSON-STRUCTUUR) =====
     gekozen_extras = data.get("extras", [])
     extras_prijslijst = PRIJS_DATA.get("extras", {})
 
     extra_totaal = 0
     extra_details = []
 
-    for extra_naam in gekozen_extras:
-        extra = extras_prijslijst.get(extra_naam)
+    for extra_key in gekozen_extras:
+        extra = extras_prijslijst.get(extra_key)
         if not extra:
             continue
 
-        prijs_extra = extra["prijs_per_m2"] * oppervlakte
+        if extra.get("type") == "per_m2":
+            prijs_extra = extra["prijs"] * oppervlakte
+        else:
+            prijs_extra = extra["prijs"]
+
         extra_totaal += prijs_extra
 
         extra_details.append({
-            "naam": extra_naam,
-            "prijs_per_m2": extra["prijs_per_m2"],
+            "naam": extra["naam"],
+            "prijs_per_m2": extra["prijs"],
             "totaal": round(prijs_extra)
         })
+
+
+
 
     totaalprijs = round(basisprijs + extra_totaal)
 
