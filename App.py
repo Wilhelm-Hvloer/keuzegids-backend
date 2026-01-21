@@ -163,6 +163,11 @@ def calculate_price():
     # EXTRA OPTIES
     # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
+
+    # 🔎 DEBUG — ZO VROEG MOGELIJK
+    print("DEBUG gekozen_extras:", gekozen_extras)
+    print("DEBUG extras_prijslijst:", extras_prijslijst)
+
     extra_totaal = 0
     extra_details = []
 
@@ -192,6 +197,9 @@ def calculate_price():
 
     totaalprijs = round(basisprijs + extra_totaal)
 
+    # 🔎 DEBUG — RESULTAAT
+    print("DEBUG extra_details:", extra_details)
+
     return jsonify({
         "systeem": systeem_key,
         "oppervlakte": oppervlakte,
@@ -201,6 +209,7 @@ def calculate_price():
         "extras": extra_details,
         "totaalprijs": totaalprijs
     })
+
 
 
 
