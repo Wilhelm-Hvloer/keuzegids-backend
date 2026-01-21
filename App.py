@@ -94,16 +94,19 @@ def next_node():
     return jsonify(expand_node(next_node_obj))
 
 
+
+
 # =========================
 # 🆕 API: PRIJSBEREKENING
 # =========================
 @app.route("/api/price", methods=["POST"])
 def calculate_price():
-    data = request.json
+    data = request.json or {}
 
     oppervlakte = data.get("oppervlakte")
-    ruimtes = str(data.get("ruimtes"))
-    systeem = data.get("systeem") 
+    ruimtes = data.get("ruimtes")
+    systeem = data.get("systeem")
+    gekozen_extras = data.get("extras", [])
 
     if not systeem:
         return jsonify({"error": "geen systeem opgegeven"}), 400
@@ -113,21 +116,24 @@ def calculate_price():
 
     try:
         oppervlakte = float(oppervlakte)
+        ruimtes = str(ruimtes)
     except (ValueError, TypeError):
-        return jsonify({"error": "ongeldige oppervlakte"}), 400
+        return jsonify({"error": "ongeldige invoer"}), 400
 
-    # Systeemnaam opschonen
+    # =========================
+    # SYSTEEM OPHALEN
+    # =========================
     systeem_key = systeem.replace("Sys:", "").strip()
 
-    # ===== SYSTEEM OPHALEN (NIEUWE JSON-STRUCTUUR) =====
     systemen = PRIJS_DATA.get("systemen", {})
     prijs_systeem = systemen.get(systeem_key)
 
     if not prijs_systeem:
         return jsonify({"error": f"prijssysteem '{systeem_key}' niet gevonden"}), 404
 
-
-    # ===== BASISPRIJS =====
+    # =========================
+    # BASISPRIJS
+    # =========================
     staffels = prijs_systeem.get("staffel", [])
     prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
@@ -153,31 +159,48 @@ def calculate_price():
 
     basisprijs = prijs_per_m2 * oppervlakte
 
-
-    # ===== EXTRA OPTIES (NIEUWE JSON-STRUCTUUR) =====
-    gekozen_extras = data.get("extras", [])
+    # =========================
+    # EXTRA OPTIES
+    # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
-
     extra_totaal = 0
     extra_details = []
 
     for extra_key in gekozen_extras:
         extra = extras_prijslijst.get(extra_key)
+
         if not extra:
+            print(f"⚠️ Extra niet gevonden: {extra_key}")
             continue
 
-        if extra.get("type") == "per_m2":
-            prijs_extra = extra["prijs"] * oppervlakte
-        else:
-            prijs_extra = extra["prijs"]
+        prijs = float(extra.get("prijs", 0))
 
+        if extra.get("type") == "per_m2":
+            prijs_extra = prijs * oppervlakte
+        else:
+            prijs_extra = prijs
+
+        prijs_extra = round(prijs_extra)
         extra_totaal += prijs_extra
 
         extra_details.append({
-            "naam": extra["naam"],
-            "prijs_per_m2": extra["prijs"],
-            "totaal": round(prijs_extra)
+            "key": extra_key,
+            "naam": extra.get("naam", extra_key),
+            "prijs": prijs,
+            "totaal": prijs_extra
         })
+
+    totaalprijs = round(basisprijs + extra_totaal)
+
+    return jsonify({
+        "systeem": systeem_key,
+        "oppervlakte": oppervlakte,
+        "ruimtes": int(ruimtes),
+        "basisprijs": round(basisprijs),
+        "prijs_per_m2": round(prijs_per_m2, 2),
+        "extras": extra_details,
+        "totaalprijs": totaalprijs
+    })
 
 
 
