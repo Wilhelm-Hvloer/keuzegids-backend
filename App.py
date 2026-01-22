@@ -51,6 +51,53 @@ def expand_node(node):
     return expanded
 
 
+
+
+# =========================
+# BESLISLOGICA: VOLGENDE NODE BEPALEN
+# =========================
+def resolve_next_node(current_node, choice_index):
+    """
+    Backend-brein:
+    - bepaalt de volgende node
+    - voert auto-doorloop uit bij exact 1 vervolg
+    """
+
+    # 1️⃣ Bepaal eerst expliciet de volgende node-id
+    try:
+        next_id = current_node["next"][choice_index]
+    except (IndexError, KeyError, TypeError):
+        return None
+
+    next_node = get_node(next_id)
+    if not next_node:
+        return None
+
+    # 2️⃣ AUTO-DOORLOOP:
+    # zolang:
+    # - er exact 1 vervolg is
+    # - EN de node géén systeem-node is
+    while (
+        next_node.get("type") != "systeem"
+        and isinstance(next_node.get("next"), list)
+        and len(next_node.get("next")) == 1
+    ):
+        auto_next_id = next_node["next"][0]
+        auto_next_node = get_node(auto_next_id)
+
+        if not auto_next_node:
+            break
+
+        next_node = auto_next_node
+
+    # 3️⃣ Eindresultaat teruggeven
+    return next_node
+
+
+
+
+
+
 # =========================
 # API: START
 # =========================
