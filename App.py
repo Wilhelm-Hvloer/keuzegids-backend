@@ -27,7 +27,7 @@ def get_node(node_id):
 
 
 # =========================
-# HULPFUNCTIE: NODE EXPANDEN
+# HULPFUNCTIE: NODE EXPANDEN (GECORRIGEERD)
 # =========================
 def expand_node(node):
     expanded = dict(node)
@@ -44,12 +44,12 @@ def expand_node(node):
 
     expanded["next"] = expanded_next
 
-    # UI-hint vanuit backend
+    # 🔑 BACKEND-LEIDEND: systeem expliciet maken
     if node.get("type") == "systeem":
         expanded["ui_mode"] = "prijsfase"
+        expanded["system"] = node.get("text")  # 👈 CRUCIAAL
 
     return expanded
-
 
 
 
