@@ -18,13 +18,6 @@ with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
 # =========================
 # HULPFUNCTIES (BESTAAND)
 # =========================
-def get_node(node_id):
-    for node in KEUZEBOOM:
-        if node.get("id") == node_id:
-            return node
-    return None
-
-
 def expand_node(node):
     expanded = dict(node)
     expanded_next = []
@@ -39,7 +32,13 @@ def expand_node(node):
             })
 
     expanded["next"] = expanded_next
+
+    # 🔑 expliciete UI-hint vanuit backend
+    if node.get("type") == "systeem":
+        expanded["ui_mode"] = "prijsfase"
+
     return expanded
+
 
 
 # =========================
@@ -55,7 +54,7 @@ def start():
 
 
 # =========================
-# API: NEXT (BESTAAND)
+# API: NEXT (BACKEND-LEIDEND)
 # =========================
 @app.route("/api/next", methods=["POST"])
 def next_node():
@@ -79,20 +78,8 @@ def next_node():
     if not next_node_obj:
         return jsonify({"error": "volgende node niet gevonden"}), 404
 
-
-
-    # === SYSTEEM NODE → SYSTEEM GESELECTEERD (frontend bepaalt vervolg) ===
-
-    if next_node_obj.get("type") == "systeem":
-      response = expand_node(next_node_obj)
-      response["system_selected"] = True
-      response["system"] = next_node_obj.get("text")
-      return jsonify(response)
-
-
-
+    # 🔑 GEEN uitzonderingen meer: backend is altijd leidend
     return jsonify(expand_node(next_node_obj))
-
 
 
 
