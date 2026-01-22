@@ -7,7 +7,7 @@ CORS(app)
 
 
 # =========================
-# DATA LADEN (BESTAAND + PRIJS)
+# DATA LADEN
 # =========================
 with open("keuzeboom.json", encoding="utf-8") as f:
     KEUZEBOOM = json.load(f)
@@ -15,8 +15,19 @@ with open("keuzeboom.json", encoding="utf-8") as f:
 with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
     PRIJS_DATA = json.load(f)
 
+
 # =========================
-# HULPFUNCTIES (BESTAAND)
+# HULPFUNCTIE: NODE OPHALEN
+# =========================
+def get_node(node_id):
+    for node in KEUZEBOOM:
+        if node.get("id") == node_id:
+            return node
+    return None
+
+
+# =========================
+# HULPFUNCTIE: NODE EXPANDEN
 # =========================
 def expand_node(node):
     expanded = dict(node)
@@ -33,7 +44,7 @@ def expand_node(node):
 
     expanded["next"] = expanded_next
 
-    # 🔑 expliciete UI-hint vanuit backend
+    # UI-hint vanuit backend
     if node.get("type") == "systeem":
         expanded["ui_mode"] = "prijsfase"
 
@@ -41,39 +52,31 @@ def expand_node(node):
 
 
 # =========================
-# API: START (BACKEND-LEIDEND, JSON-ONLY)
+# API: START
 # =========================
 @app.route("/api/start", methods=["GET"])
 def start():
     try:
         start_node = get_node("BFC")
         if not start_node:
-            return jsonify({
-                "error": "start-node niet gevonden"
-            }), 500
+            return jsonify({"error": "start-node niet gevonden"}), 500
 
         response = expand_node(start_node)
-
-        # 🔑 Backend bepaalt expliciet de start-flow
         response["ui_mode"] = "keuzegids"
         response["paused"] = False
 
         return jsonify(response), 200
 
     except Exception as e:
-        # 🔥 Log voor debugging (Render / logs)
         print("❌ API /start error:", e)
-
-        # ⛔ Altijd JSON, nooit HTML
         return jsonify({
             "error": "interne serverfout bij start",
             "details": str(e)
         }), 500
 
 
-
 # =========================
-# API: NEXT (BACKEND-LEIDEND)
+# API: NEXT
 # =========================
 @app.route("/api/next", methods=["POST"])
 def next_node():
@@ -97,9 +100,7 @@ def next_node():
     if not next_node_obj:
         return jsonify({"error": "volgende node niet gevonden"}), 404
 
-    # 🔑 GEEN uitzonderingen meer: backend is altijd leidend
-    return jsonify(expand_node(next_node_obj))
-
+    return jsonify(expand_node(next_node_obj)), 200
 
 
 # =========================
