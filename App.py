@@ -40,17 +40,30 @@ def expand_node(node):
     return expanded
 
 
-
 # =========================
-# API: START (BESTAAND)
+# API: START (GECORRIGEERD)
 # =========================
 @app.route("/api/start", methods=["GET"])
 def start():
-    start_node = get_node("BFC")
-    if not start_node:
-        return jsonify({"error": "start-node niet gevonden"}), 500
-    return jsonify(expand_node(start_node))
+    try:
+        start_node = get_node("BFC")
+        if not start_node:
+            return jsonify({"error": "start-node niet gevonden"}), 500
 
+        response = expand_node(start_node)
+
+        # 🔑 backend bepaalt start-flow
+        response["ui_mode"] = "keuzegids"
+        response["paused"] = False
+
+        return jsonify(response)
+
+    except Exception as e:
+        # ⛔ NOOIT HTML teruggeven
+        return jsonify({
+            "error": "interne serverfout bij start",
+            "details": str(e)
+        }), 500
 
 
 # =========================
