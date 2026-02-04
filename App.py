@@ -30,32 +30,43 @@ def get_node(node_id):
             return node
     return None
 
-
 # =========================
-# HULPFUNCTIE: NODE EXPANDEN (GECORRIGEERD)
+# HULPFUNCTIE: NODE EXPANDEN (BACKEND-LEIDEND)
 # =========================
 def expand_node(node):
-    expanded = dict(node)
+    expanded = {
+        "id": node.get("id"),
+        "type": node.get("type"),
+        "text": node.get("text", "")
+    }
+
+    # =========================
+    # NEXT-NODES EXPANDEN
+    # =========================
     expanded_next = []
 
     for nid in node.get("next", []):
         n = get_node(nid)
-        if n:
-            expanded_next.append({
-                "id": n["id"],
-                "type": n["type"],
-                "text": n.get("text", "")
-            })
+        if not n:
+            continue
+
+        expanded_next.append({
+            "id": n.get("id"),
+            "type": n.get("type"),
+            "text": n.get("text", "")
+        })
 
     expanded["next"] = expanded_next
 
-    # 🔑 BACKEND-LEIDEND: systeem expliciet maken
+    # =========================
+    # SYSTEEM-NODE = PRIJSFASE
+    # =========================
     if node.get("type") == "systeem":
-        expanded["ui_mode"] = "prijsfase"
-        expanded["system"] = node.get("text")  # 👈 CRUCIAAL
+        expanded["ui_mode"] = "prijs"
+        expanded["system"] = node.get("text")          # bv. "Sys: DOS Basic"
+        expanded["requires_price"] = True               # expliciet signaal
 
     return expanded
-
 
 
 # =========================
@@ -139,24 +150,22 @@ def next_node():
     if node_id is None or choice_index is None:
         return jsonify({"error": "node_id en choice verplicht"}), 400
 
-    node = get_node(node_id)
-    if not node:
+    current_node = get_node(node_id)
+    if not current_node:
         return jsonify({"error": "node niet gevonden"}), 404
 
-    try:
-        next_id = node["next"][choice_index]
-    except (IndexError, KeyError, TypeError):
-        return jsonify({"error": "ongeldige keuze"}), 400
+    # 🔑 BACKEND IS BREIN
+    next_node_obj = resolve_next_node(current_node, choice_index)
 
-    next_node_obj = get_node(next_id)
     if not next_node_obj:
         return jsonify({"error": "volgende node niet gevonden"}), 404
 
     return jsonify(expand_node(next_node_obj)), 200
 
 
+
 # =========================
-# 🆕 API: PRIJSBEREKENING
+# API: PRIJSBEREKENING
 # =========================
 @app.route("/api/price", methods=["POST"])
 def calculate_price():
@@ -167,6 +176,9 @@ def calculate_price():
     systeem = data.get("systeem")
     gekozen_extras = data.get("extras", [])
 
+    # =========================
+    # VALIDATIE
+    # =========================
     if not systeem:
         return jsonify({"error": "geen systeem opgegeven"}), 400
 
@@ -175,7 +187,7 @@ def calculate_price():
 
     try:
         oppervlakte = float(oppervlakte)
-        ruimtes = str(ruimtes)
+        ruimtes = str(int(ruimtes))
     except (ValueError, TypeError):
         return jsonify({"error": "ongeldige invoer"}), 400
 
@@ -184,20 +196,22 @@ def calculate_price():
     # =========================
     systeem_key = systeem.replace("Sys:", "").strip()
 
-    systemen = PRIJS_DATA.get("systemen", {})
-    prijs_systeem = systemen.get(systeem_key)
-
+    prijs_systeem = PRIJS_DATA.get("systemen", {}).get(systeem_key)
     if not prijs_systeem:
-        return jsonify({"error": f"prijssysteem '{systeem_key}' niet gevonden"}), 404
+        return jsonify({
+            "error": f"prijssysteem '{systeem_key}' niet gevonden"
+        }), 404
 
     # =========================
-    # BASISPRIJS
+    # BASISPRIJS BEREKENEN
     # =========================
     staffels = prijs_systeem.get("staffel", [])
     prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
     if not prijzen:
-        return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
+        return jsonify({
+            "error": "geen prijzen voor dit aantal ruimtes"
+        }), 400
 
     prijs_per_m2 = None
 
@@ -214,27 +228,23 @@ def calculate_price():
                 break
 
     if prijs_per_m2 is None:
-        return jsonify({"error": "geen passende staffel gevonden"}), 400
+        return jsonify({
+            "error": "geen passende staffel gevonden"
+        }), 400
 
-    basisprijs = prijs_per_m2 * oppervlakte
+    basisprijs = round(prijs_per_m2 * oppervlakte)
 
     # =========================
     # EXTRA OPTIES
     # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
 
-    # 🔎 DEBUG — ZO VROEG MOGELIJK
-    print("DEBUG gekozen_extras:", gekozen_extras)
-    print("DEBUG extras_prijslijst:", extras_prijslijst)
-
     extra_totaal = 0
     extra_details = []
 
     for extra_key in gekozen_extras:
         extra = extras_prijslijst.get(extra_key)
-
         if not extra:
-            print(f"⚠️ Extra niet gevonden: {extra_key}")
             continue
 
         prijs = float(extra.get("prijs", 0))
@@ -254,17 +264,17 @@ def calculate_price():
             "totaal": prijs_extra
         })
 
-    totaalprijs = round(basisprijs + extra_totaal)
+    totaalprijs = basisprijs + extra_totaal
 
-    # 🔎 DEBUG — RESULTAAT
-    print("DEBUG extra_details:", extra_details)
-
+    # =========================
+    # RESULTAAT
+    # =========================
     return jsonify({
         "systeem": systeem_key,
         "oppervlakte": oppervlakte,
         "ruimtes": int(ruimtes),
-        "basisprijs": round(basisprijs),
         "prijs_per_m2": round(prijs_per_m2, 2),
+        "basisprijs": basisprijs,
         "extras": extra_details,
         "totaalprijs": totaalprijs
     })
