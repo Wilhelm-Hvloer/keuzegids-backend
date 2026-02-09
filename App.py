@@ -177,6 +177,15 @@ def calculate_price():
     gekozen_extras = data.get("extras", [])
 
     # =========================
+    # EXTRA ARBEID & MATERIAAL (HANDMATIG)
+    # =========================
+    meerwerk_bedrag = data.get("meerwerk_bedrag", 0)
+    meerwerk_toelichting = data.get("meerwerk_toelichting", "")
+
+    materiaal_bedrag = data.get("materiaal_bedrag", 0)
+    materiaal_toelichting = data.get("materiaal_toelichting", "")
+
+    # =========================
     # VALIDATIE
     # =========================
     if not systeem:
@@ -235,7 +244,7 @@ def calculate_price():
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
     # =========================
-    # EXTRA OPTIES
+    # EXTRA OPTIES (KEUZEBOOM)
     # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
 
@@ -260,11 +269,41 @@ def calculate_price():
         extra_details.append({
             "key": extra_key,
             "naam": extra.get("naam", extra_key),
-            "prijs": prijs,
             "totaal": prijs_extra
         })
 
+    # =========================
+    # TOTAALPRIJS
+    # =========================
     totaalprijs = basisprijs + extra_totaal
+
+    # =========================
+    # EXTRA ARBEID (MEERWERK)
+    # =========================
+    if meerwerk_bedrag and float(meerwerk_bedrag) > 0:
+        meerwerk_bedrag = round(float(meerwerk_bedrag))
+        totaalprijs += meerwerk_bedrag
+
+        extra_details.append({
+            "key": "meerwerk",
+            "naam": "Meerwerk",
+            "toelichting": meerwerk_toelichting,
+            "totaal": meerwerk_bedrag
+        })
+
+    # =========================
+    # EXTRA MATERIAAL
+    # =========================
+    if materiaal_bedrag and float(materiaal_bedrag) > 0:
+        materiaal_bedrag = round(float(materiaal_bedrag))
+        totaalprijs += materiaal_bedrag
+
+        extra_details.append({
+            "key": "extra_materiaal",
+            "naam": "Extra materiaal",
+            "toelichting": materiaal_toelichting,
+            "totaal": materiaal_bedrag
+        })
 
     # =========================
     # RESULTAAT
@@ -283,17 +322,7 @@ def calculate_price():
 
 
 
-    totaalprijs = round(basisprijs + extra_totaal)
 
-    return jsonify({
-        "systeem": systeem_key,
-        "oppervlakte": oppervlakte,
-        "ruimtes": int(ruimtes),
-        "basisprijs": round(basisprijs),
-        "prijs_per_m2": round(prijs_per_m2, 2),
-        "extras": extra_details,
-        "totaalprijs": totaalprijs
-    })
 
 
 
