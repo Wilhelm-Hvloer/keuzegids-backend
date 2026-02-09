@@ -76,10 +76,10 @@ def resolve_next_node(current_node, choice_index):
     """
     Backend-brein:
     - bepaalt de volgende node
-    - voert auto-doorloop uit bij exact 1 vervolg
+    - voert auto-doorloop UITSLUITEND uit bij antwoord-nodes
     """
 
-    # 1️⃣ Bepaal eerst expliciet de volgende node-id
+    # 1️⃣ Bepaal expliciet de volgende node-id
     try:
         next_id = current_node["next"][choice_index]
     except (IndexError, KeyError, TypeError):
@@ -89,12 +89,9 @@ def resolve_next_node(current_node, choice_index):
     if not next_node:
         return None
 
-    # 2️⃣ AUTO-DOORLOOP:
-    # zolang:
-    # - er exact 1 vervolg is
-    # - EN de node géén systeem-node is
+    # 2️⃣ AUTO-DOORLOOP (ALLEEN antwoord-nodes)
     while (
-        next_node.get("type") != "systeem"
+        next_node.get("type") == "antwoord"
         and isinstance(next_node.get("next"), list)
         and len(next_node.get("next")) == 1
     ):
@@ -106,8 +103,9 @@ def resolve_next_node(current_node, choice_index):
 
         next_node = auto_next_node
 
-    # 3️⃣ Eindresultaat teruggeven
+    # 3️⃣ Eindresultaat
     return next_node
+
 
 
 
@@ -177,6 +175,12 @@ def calculate_price():
     gekozen_extras = data.get("extras", [])
 
     # =========================
+    # XTR – MEERWERK COATING VERWIJDEREN
+    # =========================
+    xtr_uren = data.get("xtr_coating_verwijderen_uren", 0)
+    XTR_TARIEF = 120
+
+    # =========================
     # EXTRA ARBEID & MATERIAAL (HANDMATIG)
     # =========================
     meerwerk_bedrag = data.get("meerwerk_bedrag", 0)
@@ -226,8 +230,7 @@ def calculate_price():
 
     for index, bereik in enumerate(staffels):
         if bereik.endswith("+"):
-            min_m2 = float(bereik.replace("+", ""))
-            if oppervlakte >= min_m2:
+            if oppervlakte >= float(bereik.replace("+", "")):
                 prijs_per_m2 = prijzen[index]
                 break
         else:
@@ -237,9 +240,7 @@ def calculate_price():
                 break
 
     if prijs_per_m2 is None:
-        return jsonify({
-            "error": "geen passende staffel gevonden"
-        }), 400
+        return jsonify({"error": "geen passende staffel gevonden"}), 400
 
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
@@ -247,9 +248,8 @@ def calculate_price():
     # EXTRA OPTIES (KEUZEBOOM)
     # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
-
-    extra_totaal = 0
     extra_details = []
+    extra_totaal = 0
 
     for extra_key in gekozen_extras:
         extra = extras_prijslijst.get(extra_key)
@@ -257,15 +257,10 @@ def calculate_price():
             continue
 
         prijs = float(extra.get("prijs", 0))
-
-        if extra.get("type") == "per_m2":
-            prijs_extra = prijs * oppervlakte
-        else:
-            prijs_extra = prijs
-
+        prijs_extra = prijs * oppervlakte if extra.get("type") == "per_m2" else prijs
         prijs_extra = round(prijs_extra)
-        extra_totaal += prijs_extra
 
+        extra_totaal += prijs_extra
         extra_details.append({
             "key": extra_key,
             "naam": extra.get("naam", extra_key),
@@ -273,36 +268,53 @@ def calculate_price():
         })
 
     # =========================
-    # TOTAALPRIJS
+    # TOTAALPRIJS (START)
     # =========================
     totaalprijs = basisprijs + extra_totaal
 
     # =========================
-    # EXTRA ARBEID (MEERWERK)
+    # XTR – MEERWERK COATING VERWIJDEREN
+    # =========================
+    if xtr_uren and float(xtr_uren) > 0:
+        uren = float(xtr_uren)
+        bedrag = round(uren * XTR_TARIEF)
+
+        totaalprijs += bedrag
+
+        extra_details.append({
+            "key": "meerwerk_coating_verwijderen",
+            "naam": "Meerwerk coating verwijderen",
+            "uren": uren,
+            "tarief": XTR_TARIEF,
+            "totaal": bedrag
+        })
+
+    # =========================
+    # EXTRA ARBEID (HANDMATIG)
     # =========================
     if meerwerk_bedrag and float(meerwerk_bedrag) > 0:
-        meerwerk_bedrag = round(float(meerwerk_bedrag))
-        totaalprijs += meerwerk_bedrag
+        bedrag = round(float(meerwerk_bedrag))
+        totaalprijs += bedrag
 
         extra_details.append({
             "key": "meerwerk",
             "naam": "Meerwerk",
             "toelichting": meerwerk_toelichting,
-            "totaal": meerwerk_bedrag
+            "totaal": bedrag
         })
 
     # =========================
     # EXTRA MATERIAAL
     # =========================
     if materiaal_bedrag and float(materiaal_bedrag) > 0:
-        materiaal_bedrag = round(float(materiaal_bedrag))
-        totaalprijs += materiaal_bedrag
+        bedrag = round(float(materiaal_bedrag))
+        totaalprijs += bedrag
 
         extra_details.append({
             "key": "extra_materiaal",
             "naam": "Extra materiaal",
             "toelichting": materiaal_toelichting,
-            "totaal": materiaal_bedrag
+            "totaal": bedrag
         })
 
     # =========================
@@ -317,7 +329,6 @@ def calculate_price():
         "extras": extra_details,
         "totaalprijs": totaalprijs
     })
-
 
 
 
