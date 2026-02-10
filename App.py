@@ -161,7 +161,6 @@ def next_node():
     return jsonify(expand_node(next_node_obj)), 200
 
 
-
 # =========================
 # API: PRIJSBEREKENING
 # =========================
@@ -174,24 +173,28 @@ def calculate_price():
     systeem = data.get("systeem")
     gekozen_extras = data.get("extras", [])
 
-    # =========================
-    # XTR – MEERWERK COATING VERWIJDEREN
-    # =========================
+# =========================
+# XTR – MEERWERK COATING VERWIJDEREN (UREN)
+# =========================
     xtr_uren = data.get("xtr_coating_verwijderen_uren", 0)
     XTR_TARIEF = 120
 
-    # =========================
-    # EXTRA ARBEID & MATERIAAL (HANDMATIG)
-    # =========================
-    meerwerk_bedrag = data.get("meerwerk_bedrag", 0)
+# =========================
+# ALGEMEEN MEERWERK (UREN + TOELICHTING)
+# =========================
+    meerwerk_uren = data.get("meerwerk_bedrag", 0)  # frontend stuurt uren
     meerwerk_toelichting = data.get("meerwerk_toelichting", "")
+    MEERWERK_TARIEF = 120
 
+# =========================
+# EXTRA MATERIAAL
+# =========================
     materiaal_bedrag = data.get("materiaal_bedrag", 0)
     materiaal_toelichting = data.get("materiaal_toelichting", "")
 
-    # =========================
-    # VALIDATIE
-    # =========================
+# =========================
+# VALIDATIE
+# =========================
     if not systeem:
         return jsonify({"error": "geen systeem opgegeven"}), 400
 
@@ -204,9 +207,9 @@ def calculate_price():
     except (ValueError, TypeError):
         return jsonify({"error": "ongeldige invoer"}), 400
 
-    # =========================
-    # SYSTEEM OPHALEN
-    # =========================
+# =========================
+# SYSTEEM OPHALEN
+# =========================
     systeem_key = systeem.replace("Sys:", "").strip()
 
     prijs_systeem = PRIJS_DATA.get("systemen", {}).get(systeem_key)
@@ -215,9 +218,9 @@ def calculate_price():
             "error": f"prijssysteem '{systeem_key}' niet gevonden"
         }), 404
 
-    # =========================
-    # BASISPRIJS BEREKENEN
-    # =========================
+# =========================
+# BASISPRIJS BEREKENEN
+# =========================
     staffels = prijs_systeem.get("staffel", [])
     prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
@@ -244,9 +247,9 @@ def calculate_price():
 
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
-    # =========================
-    # EXTRA OPTIES (KEUZEBOOM)
-    # =========================
+# =========================
+# EXTRA OPTIES (KEUZEBOOM)
+# =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
     extra_details = []
     extra_totaal = 0
@@ -267,49 +270,50 @@ def calculate_price():
             "totaal": prijs_extra
         })
 
-    # =========================
-    # TOTAALPRIJS (START)
-    # =========================
+# =========================
+# TOTAALPRIJS (START)
+# =========================
     totaalprijs = basisprijs + extra_totaal
 
-    # =========================
-    # XTR – MEERWERK COATING VERWIJDEREN
-    # =========================
+# =========================
+# XTR – MEERWERK COATING VERWIJDEREN
+# =========================
     if xtr_uren and float(xtr_uren) > 0:
         uren = float(xtr_uren)
         bedrag = round(uren * XTR_TARIEF)
 
         totaalprijs += bedrag
-
         extra_details.append({
-            "key": "meerwerk_coating_verwijderen",
-            "naam": "Meerwerk coating verwijderen",
+            "key": "xtr_coating_verwijderen",
+            "naam": "Meerwerk – coating verwijderen",
             "uren": uren,
             "tarief": XTR_TARIEF,
             "totaal": bedrag
         })
 
-    # =========================
-    # EXTRA ARBEID (HANDMATIG)
-    # =========================
-    if meerwerk_bedrag and float(meerwerk_bedrag) > 0:
-        bedrag = round(float(meerwerk_bedrag))
-        totaalprijs += bedrag
+# =========================
+# ALGEMEEN MEERWERK (UREN × TARIEF)
+# =========================
+    if meerwerk_uren and float(meerwerk_uren) > 0:
+        uren = float(meerwerk_uren)
+        bedrag = round(uren * MEERWERK_TARIEF)
 
+        totaalprijs += bedrag
         extra_details.append({
-            "key": "meerwerk",
-            "naam": "Meerwerk",
+            "key": "algemeen_meerwerk",
+            "naam": "Meerwerk (handmatig)",
+            "uren": uren,
+            "tarief": MEERWERK_TARIEF,
             "toelichting": meerwerk_toelichting,
             "totaal": bedrag
         })
 
-    # =========================
-    # EXTRA MATERIAAL
-    # =========================
+# =========================
+# EXTRA MATERIAAL
+# =========================
     if materiaal_bedrag and float(materiaal_bedrag) > 0:
         bedrag = round(float(materiaal_bedrag))
         totaalprijs += bedrag
-
         extra_details.append({
             "key": "extra_materiaal",
             "naam": "Extra materiaal",
@@ -317,9 +321,9 @@ def calculate_price():
             "totaal": bedrag
         })
 
-    # =========================
-    # RESULTAAT
-    # =========================
+# =========================
+# RESULTAAT
+# =========================
     return jsonify({
         "systeem": systeem_key,
         "oppervlakte": oppervlakte,
@@ -329,8 +333,6 @@ def calculate_price():
         "extras": extra_details,
         "totaalprijs": totaalprijs
     })
-
-
 
 
 
