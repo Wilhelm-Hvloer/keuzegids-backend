@@ -2638,7 +2638,8 @@
   {
     "id": "AMC",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "AMG"
     ]
@@ -3310,7 +3311,8 @@
   {
     "id": "APL",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "APM"
     ]
@@ -3501,7 +3503,8 @@
   {
     "id": "AQI",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "AQJ"
     ]
@@ -4105,7 +4108,8 @@
   {
     "id": "ATD",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "ATE"
     ]
@@ -4296,7 +4300,8 @@
   {
     "id": "AUA",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "AUB"
     ]
@@ -4985,7 +4990,8 @@
   {
     "id": "AXG",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic met ADD250",
+    "text": "Sys: Rolcoating Basic",
+    "forced_extras": ["ADD250"],
     "next": [
       "AXH"
     ]
@@ -5227,7 +5233,8 @@
   {
     "id": "AYJ",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic met ADD250",
+    "text": "Sys: Rolcoating Basic",
+    "forced_extras": ["ADD250"],
     "next": [
       "AYL"
     ]
@@ -5260,7 +5267,8 @@
   {
     "id": "AYK",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "AYO"
     ]
@@ -5932,7 +5940,8 @@
   {
     "id": "BBQ",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "BBR"
     ]
@@ -6123,7 +6132,8 @@
   {
     "id": "BCN",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met ADD250",
+    "text": "Sys: Rolcoating Premium",
+    "forced_extras": ["ADD250"],
     "next": [
       "BCO"
     ]
