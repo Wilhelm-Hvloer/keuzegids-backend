@@ -171,7 +171,16 @@ def calculate_price():
     oppervlakte = data.get("oppervlakte")
     ruimtes = data.get("ruimtes")
     systeem = data.get("systeem")
+
     gekozen_extras = data.get("extras", [])
+    forced_extras = data.get("forced_extras", [])
+
+# =========================
+# ZORG DAT FORCED EXTRAS ALTIJD MEEGENOMEN WORDEN
+# =========================
+    for fx in forced_extras:
+        if fx not in gekozen_extras:
+            gekozen_extras.append(fx)
 
 # =========================
 # XTR – MEERWERK COATING VERWIJDEREN (UREN)
@@ -248,7 +257,7 @@ def calculate_price():
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
 # =========================
-# EXTRA OPTIES (KEUZEBOOM)
+# EXTRA OPTIES (KEUZEBOOM + FORCED)
 # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
     extra_details = []
@@ -267,7 +276,8 @@ def calculate_price():
         extra_details.append({
             "key": extra_key,
             "naam": extra.get("naam", extra_key),
-            "totaal": prijs_extra
+            "totaal": prijs_extra,
+            "forced": extra_key in forced_extras
         })
 
 # =========================
@@ -288,7 +298,8 @@ def calculate_price():
             "naam": "Meerwerk – coating verwijderen",
             "uren": uren,
             "tarief": XTR_TARIEF,
-            "totaal": bedrag
+            "totaal": bedrag,
+            "forced": False
         })
 
 # =========================
@@ -305,7 +316,8 @@ def calculate_price():
             "uren": uren,
             "tarief": MEERWERK_TARIEF,
             "toelichting": meerwerk_toelichting,
-            "totaal": bedrag
+            "totaal": bedrag,
+            "forced": False
         })
 
 # =========================
@@ -318,7 +330,8 @@ def calculate_price():
             "key": "extra_materiaal",
             "naam": "Extra materiaal",
             "toelichting": materiaal_toelichting,
-            "totaal": bedrag
+            "totaal": bedrag,
+            "forced": False
         })
 
 # =========================
@@ -333,7 +346,6 @@ def calculate_price():
         "extras": extra_details,
         "totaalprijs": totaalprijs
     })
-
 
 
 
