@@ -2603,7 +2603,8 @@
   {
     "id": "AMB",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic met ADD250",
+    "text": "Sys: Rolcoating Basic",
+    "forced_extras": ["ADD250"],
     "next": [
       "AMD"
     ]
