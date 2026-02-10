@@ -30,6 +30,7 @@ def get_node(node_id):
             return node
     return None
 
+
 # =========================
 # HULPFUNCTIE: NODE EXPANDEN (BACKEND-LEIDEND)
 # =========================
@@ -63,10 +64,14 @@ def expand_node(node):
     # =========================
     if node.get("type") == "systeem":
         expanded["ui_mode"] = "prijs"
-        expanded["system"] = node.get("text")          # bv. "Sys: DOS Basic"
+        expanded["system"] = node.get("text")          # bv. "Sys: Rolcoating Basic"
         expanded["requires_price"] = True               # expliciet signaal
 
+        # 🔑 NIEUW: forced extras doorgeven
+        expanded["forced_extras"] = node.get("forced_extras", [])
+
     return expanded
+
 
 
 # =========================
