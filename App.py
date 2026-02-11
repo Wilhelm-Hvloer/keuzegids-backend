@@ -41,9 +41,6 @@ def expand_node(node):
         "text": node.get("text", "")
     }
 
-    # =========================
-    # NEXT-NODES EXPANDEN
-    # =========================
     expanded_next = []
 
     for nid in node.get("next", []):
@@ -51,11 +48,16 @@ def expand_node(node):
         if not n:
             continue
 
-        expanded_next.append({
-            "id": n.get("id"),
-            "type": n.get("type"),
-            "text": n.get("text", "")
-        })
+        # 🔑 BELANGRIJK:
+        # Als het een systeemnode is → volledig expanden
+        if n.get("type") == "systeem":
+            expanded_next.append(expand_node(n))
+        else:
+            expanded_next.append({
+                "id": n.get("id"),
+                "type": n.get("type"),
+                "text": n.get("text", "")
+            })
 
     expanded["next"] = expanded_next
 
@@ -64,13 +66,12 @@ def expand_node(node):
     # =========================
     if node.get("type") == "systeem":
         expanded["ui_mode"] = "prijs"
-        expanded["system"] = node.get("text")          # bv. "Sys: Rolcoating Basic"
-        expanded["requires_price"] = True               # expliciet signaal
-
-        # 🔑 NIEUW: forced extras doorgeven
+        expanded["system"] = node.get("text")
+        expanded["requires_price"] = True
         expanded["forced_extras"] = node.get("forced_extras", [])
 
     return expanded
+
 
 
 
