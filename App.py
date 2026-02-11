@@ -41,6 +41,12 @@ def expand_node(node):
         "text": node.get("text", "")
     }
 
+    # =========================
+    # 🔑 CHOSEN EXTRA DOORGEVEN
+    # =========================
+    if node.get("chosen_extra"):
+        expanded["chosen_extra"] = node.get("chosen_extra")
+
     expanded_next = []
 
     for nid in node.get("next", []):
@@ -48,8 +54,7 @@ def expand_node(node):
         if not n:
             continue
 
-        # 🔑 BELANGRIJK:
-        # Als het een systeemnode is → volledig expanden
+        # 🔑 Als het een systeemnode is → volledig expanden
         if n.get("type") == "systeem":
             expanded_next.append(expand_node(n))
         else:
@@ -71,7 +76,6 @@ def expand_node(node):
         expanded["forced_extras"] = node.get("forced_extras", [])
 
     return expanded
-
 
 
 
