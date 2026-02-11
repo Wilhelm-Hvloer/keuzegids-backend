@@ -39,37 +39,13 @@ def expand_node(node):
     expanded = {
         "id": node.get("id"),
         "type": node.get("type"),
-        "text": node.get("text", "")
+        "text": node.get("text", ""),
+        "next": node.get("next", [])  # 🔑 altijd next meesturen
     }
 
-    # 🔑 CHOSEN EXTRA OP DEZE NODE DOORGEVEN
+    # 🔑 chosen_extra doorgeven (antwoord-nodes)
     if node.get("chosen_extra"):
         expanded["chosen_extra"] = node.get("chosen_extra")
-
-    expanded_next = []
-
-    for nid in node.get("next", []):
-        n = get_node(nid)
-        if not n:
-            continue
-
-        child = {
-            "id": n.get("id"),
-            "type": n.get("type"),
-            "text": n.get("text", "")
-        }
-
-        # 🔑 CHOSEN EXTRA OOK OP ANTWOORD-NODES DOORGEVEN
-        if n.get("chosen_extra"):
-            child["chosen_extra"] = n.get("chosen_extra")
-
-        # 🔑 SYSTEEMNODES VOLLEDIG EXPANDEN
-        if n.get("type") == "systeem":
-            child = expand_node(n)
-
-        expanded_next.append(child)
-
-    expanded["next"] = expanded_next
 
     # =========================
     # SYSTEEM-NODE = PRIJSFASE
@@ -80,7 +56,32 @@ def expand_node(node):
         expanded["requires_price"] = True
         expanded["forced_extras"] = node.get("forced_extras", [])
 
+    # =========================
+    # CHILD NODES EXPANDEN
+    # =========================
+    expanded_next = []
+
+    for nid in node.get("next", []):
+        child_node = get_node(nid)
+        if not child_node:
+            continue
+
+        # 🔑 systeemnodes volledig expanden
+        if child_node.get("type") == "systeem":
+            expanded_next.append(expand_node(child_node))
+        else:
+            expanded_next.append({
+                "id": child_node.get("id"),
+                "type": child_node.get("type"),
+                "text": child_node.get("text", ""),
+                "next": child_node.get("next", []),
+                "chosen_extra": child_node.get("chosen_extra")
+            })
+
+    expanded["next"] = expanded_next
+
     return expanded
+
 
 
 # =========================
