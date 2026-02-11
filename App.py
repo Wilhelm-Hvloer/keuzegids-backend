@@ -35,15 +35,14 @@ def get_node(node_id):
 # HULPFUNCTIE: NODE EXPANDEN (BACKEND-LEIDEND)
 # =========================
 def expand_node(node):
+
     expanded = {
         "id": node.get("id"),
         "type": node.get("type"),
         "text": node.get("text", "")
     }
 
-    # =========================
-    # 🔑 CHOSEN EXTRA DOORGEVEN
-    # =========================
+    # 🔑 CHOSEN EXTRA OP DEZE NODE DOORGEVEN
     if node.get("chosen_extra"):
         expanded["chosen_extra"] = node.get("chosen_extra")
 
@@ -54,15 +53,21 @@ def expand_node(node):
         if not n:
             continue
 
-        # 🔑 Als het een systeemnode is → volledig expanden
+        child = {
+            "id": n.get("id"),
+            "type": n.get("type"),
+            "text": n.get("text", "")
+        }
+
+        # 🔑 CHOSEN EXTRA OOK OP ANTWOORD-NODES DOORGEVEN
+        if n.get("chosen_extra"):
+            child["chosen_extra"] = n.get("chosen_extra")
+
+        # 🔑 SYSTEEMNODES VOLLEDIG EXPANDEN
         if n.get("type") == "systeem":
-            expanded_next.append(expand_node(n))
-        else:
-            expanded_next.append({
-                "id": n.get("id"),
-                "type": n.get("type"),
-                "text": n.get("text", "")
-            })
+            child = expand_node(n)
+
+        expanded_next.append(child)
 
     expanded["next"] = expanded_next
 
@@ -76,7 +81,6 @@ def expand_node(node):
         expanded["forced_extras"] = node.get("forced_extras", [])
 
     return expanded
-
 
 
 # =========================
