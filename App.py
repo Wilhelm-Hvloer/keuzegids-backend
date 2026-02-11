@@ -81,8 +81,8 @@ def expand_node(node):
 def resolve_next_node(current_node, choice_index):
     """
     Backend-brein:
-    - bepaalt de volgende node
-    - voert auto-doorloop UITSLUITEND uit bij antwoord-nodes
+    - bepaalt uitsluitend de expliciete volgende node
+    - GEEN auto-doorloop meer (frontend handelt dat af)
     """
 
     # 1️⃣ Bepaal expliciet de volgende node-id
@@ -91,26 +91,14 @@ def resolve_next_node(current_node, choice_index):
     except (IndexError, KeyError, TypeError):
         return None
 
+    # 2️⃣ Haal node op
     next_node = get_node(next_id)
     if not next_node:
         return None
 
-    # 2️⃣ AUTO-DOORLOOP (ALLEEN antwoord-nodes)
-    while (
-        next_node.get("type") == "antwoord"
-        and isinstance(next_node.get("next"), list)
-        and len(next_node.get("next")) == 1
-    ):
-        auto_next_id = next_node["next"][0]
-        auto_next_node = get_node(auto_next_id)
-
-        if not auto_next_node:
-            break
-
-        next_node = auto_next_node
-
-    # 3️⃣ Eindresultaat
+    # 3️⃣ Geen automatische doorsprong meer
     return next_node
+
 
 
 
