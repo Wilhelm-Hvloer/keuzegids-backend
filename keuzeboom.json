@@ -2198,6 +2198,7 @@
     "id": "AKF",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -3081,6 +3082,7 @@
     "id": "AOH",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -3115,6 +3117,7 @@
     "id": "AOK",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -3174,6 +3177,7 @@
     "id": "AOU",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -3208,6 +3212,7 @@
     "id": "AOX",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -3887,6 +3892,7 @@
     "id": "ASC",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -3946,6 +3952,7 @@
     "id": "ASK",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -3980,6 +3987,7 @@
     "id": "ASN",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -4794,10 +4802,10 @@
     "id": "AWH",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
-    "price_per_m2": 15.93
   },
   {
     "id": "AWI",
@@ -4828,10 +4836,10 @@
     "id": "AWK",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
-    "price_per_m2": 15.93
   },
   {
     "id": "AWL",
@@ -5710,6 +5718,7 @@
     "id": "BAO",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
@@ -5736,6 +5745,7 @@
     "id": "BAR",
     "type": "antwoord",
     "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
     "next": [
       "END"
     ],
