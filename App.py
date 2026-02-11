@@ -12,6 +12,26 @@ CORS(
 
 
 # =========================
+# DATA LADEN
+# =========================
+with open("keuzeboom.json", encoding="utf-8") as f:
+    KEUZEBOOM = json.load(f)
+
+with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
+    PRIJS_DATA = json.load(f)
+
+
+# =========================
+# HULPFUNCTIE: NODE OPHALEN
+# =========================
+def get_node(node_id):
+    for node in KEUZEBOOM:
+        if node.get("id") == node_id:
+            return node
+    return None
+
+
+# =========================
 # HULPFUNCTIE: NODE EXPANDEN (BACKEND-LEIDEND)
 # =========================
 def expand_node(node):
@@ -31,19 +51,11 @@ def expand_node(node):
         if not n:
             continue
 
-        item = {
+        expanded_next.append({
             "id": n.get("id"),
             "type": n.get("type"),
             "text": n.get("text", "")
-        }
-
-        # 🔑 CRUCIAAL: systeemnodes volledig doorgeven
-        if n.get("type") == "systeem":
-            item["system"] = n.get("text")
-            item["requires_price"] = True
-            item["forced_extras"] = n.get("forced_extras", [])
-
-        expanded_next.append(item)
+        })
 
     expanded["next"] = expanded_next
 
@@ -52,11 +64,53 @@ def expand_node(node):
     # =========================
     if node.get("type") == "systeem":
         expanded["ui_mode"] = "prijs"
-        expanded["system"] = node.get("text")
-        expanded["requires_price"] = True
+        expanded["system"] = node.get("text")          # bv. "Sys: Rolcoating Basic"
+        expanded["requires_price"] = True               # expliciet signaal
+
+        # 🔑 NIEUW: forced extras doorgeven
         expanded["forced_extras"] = node.get("forced_extras", [])
 
     return expanded
+
+
+
+# =========================
+# BESLISLOGICA: VOLGENDE NODE BEPALEN
+# =========================
+def resolve_next_node(current_node, choice_index):
+    """
+    Backend-brein:
+    - bepaalt de volgende node
+    - voert auto-doorloop UITSLUITEND uit bij antwoord-nodes
+    """
+
+    # 1️⃣ Bepaal expliciet de volgende node-id
+    try:
+        next_id = current_node["next"][choice_index]
+    except (IndexError, KeyError, TypeError):
+        return None
+
+    next_node = get_node(next_id)
+    if not next_node:
+        return None
+
+    # 2️⃣ AUTO-DOORLOOP (ALLEEN antwoord-nodes)
+    while (
+        next_node.get("type") == "antwoord"
+        and isinstance(next_node.get("next"), list)
+        and len(next_node.get("next")) == 1
+    ):
+        auto_next_id = next_node["next"][0]
+        auto_next_node = get_node(auto_next_id)
+
+        if not auto_next_node:
+            break
+
+        next_node = auto_next_node
+
+    # 3️⃣ Eindresultaat
+    return next_node
+
 
 
 
