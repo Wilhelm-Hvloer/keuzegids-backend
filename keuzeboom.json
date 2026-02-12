@@ -4411,7 +4411,7 @@
   {
     "id": "ATY",
     "type": "antwoord",
-    "text": "Antw: Ja, DecoFlakes toevoegen 
+    "text": "Antw: Ja, DecoFlakes toevoegen", 
     "chosen_extra": "DecoFlakes",
     "next": [
       "END"
