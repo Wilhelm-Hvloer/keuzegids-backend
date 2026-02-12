@@ -194,7 +194,7 @@ def calculate_price():
     # =========================
     # ALGEMEEN MEERWERK (UREN + TOELICHTING)
     # =========================
-    meerwerk_uren = data.get("meerwerk_bedrag", 0)  # frontend stuurt uren
+    meerwerk_uren = data.get("meerwerk_bedrag", 0)
     meerwerk_toelichting = data.get("meerwerk_toelichting", "")
     MEERWERK_TARIEF = 120
 
@@ -260,28 +260,60 @@ def calculate_price():
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
     # =========================
-    # EXTRA OPTIES (KEUZEBOOM + FORCED)
+    # EXTRA OPTIES (KEUZEBOOM + FORCED + VARIABLE SURFACE)
     # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
     extra_details = []
     extra_totaal = 0
 
-    for extra_key in gekozen_extras:
-        extra = extras_prijslijst.get(extra_key)
-        if not extra:
-            continue
+    for extra_item in gekozen_extras:
 
-        prijs = float(extra.get("prijs", 0))
-        prijs_extra = prijs * oppervlakte if extra.get("type") == "per_m2" else prijs
-        prijs_extra = round(prijs_extra)
+        # 1️⃣ NORMALE EXTRA (STRING)
+        if isinstance(extra_item, str):
 
-        extra_totaal += prijs_extra
-        extra_details.append({
-            "key": extra_key,
-            "naam": extra.get("naam", extra_key),
-            "totaal": prijs_extra,
-            "forced": extra_key in forced_extras
-        })
+            extra = extras_prijslijst.get(extra_item)
+            if not extra:
+                continue
+
+            prijs = float(extra.get("prijs", 0))
+            prijs_extra = prijs * oppervlakte if extra.get("type") == "per_m2" else prijs
+            prijs_extra = round(prijs_extra)
+
+            extra_totaal += prijs_extra
+
+            extra_details.append({
+                "key": extra_item,
+                "naam": extra.get("naam", extra_item),
+                "totaal": prijs_extra,
+                "forced": extra_item in forced_extras
+            })
+
+        # 2️⃣ VARIABLE SURFACE EXTRA (OBJECT MET m2)
+        elif isinstance(extra_item, dict):
+
+            extra_key = extra_item.get("key")
+            m2 = float(extra_item.get("m2", 0))
+
+            if not extra_key or m2 <= 0:
+                continue
+
+            extra = extras_prijslijst.get(extra_key)
+            if not extra:
+                continue
+
+            prijs = float(extra.get("prijs", 0))
+            prijs_extra = round(prijs * m2)
+
+            extra_totaal += prijs_extra
+
+            extra_details.append({
+                "key": extra_key,
+                "naam": extra.get("naam", extra_key),
+                "m2": m2,
+                "prijs_per_m2": prijs,
+                "totaal": prijs_extra,
+                "forced": False
+            })
 
     # =========================
     # TOTAALPRIJS (START)
@@ -296,6 +328,7 @@ def calculate_price():
         bedrag = round(uren * XTR_TARIEF)
 
         totaalprijs += bedrag
+
         extra_details.append({
             "key": "xtr_coating_verwijderen",
             "naam": "Meerwerk – coating verwijderen",
@@ -306,13 +339,14 @@ def calculate_price():
         })
 
     # =========================
-    # ALGEMEEN MEERWERK (UREN × TARIEF)
+    # ALGEMEEN MEERWERK
     # =========================
     if meerwerk_uren and float(meerwerk_uren) > 0:
         uren = float(meerwerk_uren)
         bedrag = round(uren * MEERWERK_TARIEF)
 
         totaalprijs += bedrag
+
         extra_details.append({
             "key": "algemeen_meerwerk",
             "naam": "Meerwerk (handmatig)",
@@ -329,6 +363,7 @@ def calculate_price():
     if materiaal_bedrag and float(materiaal_bedrag) > 0:
         bedrag = round(float(materiaal_bedrag))
         totaalprijs += bedrag
+
         extra_details.append({
             "key": "extra_materiaal",
             "naam": "Extra materiaal",
