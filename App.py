@@ -167,33 +167,21 @@ def calculate_price():
     ruimtes = data.get("ruimtes")
     systeem = data.get("systeem")
 
-    # extras uit keuzeboom + forced extras
     gekozen_extras = data.get("extras", []) or []
     forced_extras = data.get("forced_extras", []) or []
 
-    # =========================
-    # ZORG DAT FORCED EXTRAS ALTIJD MEEGENOMEN WORDEN
-    # =========================
+    # Forced extras altijd meenemen
     for fx in forced_extras:
         if fx not in gekozen_extras:
             gekozen_extras.append(fx)
 
-    # =========================
-    # XTR – MEERWERK COATING VERWIJDEREN (UREN)
-    # =========================
     xtr_uren = data.get("xtr_coating_verwijderen_uren", 0)
     XTR_TARIEF = 120
 
-    # =========================
-    # ALGEMEEN MEERWERK (UREN + TOELICHTING)
-    # =========================
     meerwerk_uren = data.get("meerwerk_bedrag", 0)
     meerwerk_toelichting = data.get("meerwerk_toelichting", "")
     MEERWERK_TARIEF = 120
 
-    # =========================
-    # EXTRA MATERIAAL
-    # =========================
     materiaal_bedrag = data.get("materiaal_bedrag", 0)
     materiaal_toelichting = data.get("materiaal_toelichting", "")
 
@@ -213,26 +201,19 @@ def calculate_price():
         return jsonify({"error": "ongeldige invoer"}), 400
 
     # =========================
-    # SYSTEEM OPHALEN
+    # BASISSYSTEEM
     # =========================
     systeem_key = systeem.replace("Sys:", "").strip()
 
     prijs_systeem = PRIJS_DATA.get("systemen", {}).get(systeem_key)
     if not prijs_systeem:
-        return jsonify({
-            "error": f"prijssysteem '{systeem_key}' niet gevonden"
-        }), 404
+        return jsonify({"error": f"prijssysteem '{systeem_key}' niet gevonden"}), 404
 
-    # =========================
-    # BASISPRIJS BEREKENEN
-    # =========================
     staffels = prijs_systeem.get("staffel", [])
     prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
 
     if not prijzen:
-        return jsonify({
-            "error": "geen prijzen voor dit aantal ruimtes"
-        }), 400
+        return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
 
     prijs_per_m2 = None
 
@@ -253,15 +234,58 @@ def calculate_price():
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
     # =========================
-    # EXTRA OPTIES (KEUZEBOOM + FORCED + VARIABLE SURFACE)
+    # EXTRA VERWERKING
     # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
+    extra_systemen = PRIJS_DATA.get("extra_systemen", {})
+
     extra_details = []
     extra_totaal = 0
 
     for extra_item in gekozen_extras:
 
-        # 1️⃣ NORMALE EXTRA (STRING)
+        # =========================
+        # 1️⃣ COMPLEXE EXTRA (STAFFEL)
+        # =========================
+        if isinstance(extra_item, str) and extra_item in extra_systemen:
+
+            addon = extra_systemen.get(extra_item)
+            staffels_addon = addon.get("staffel", [])
+            prijzen_addon = addon.get("prijzen", {}).get(ruimtes)
+
+            if not prijzen_addon:
+                continue
+
+            prijs_per_m2_addon = None
+
+            for index, bereik in enumerate(staffels_addon):
+                if bereik.endswith("+"):
+                    if oppervlakte >= float(bereik.replace("+", "")):
+                        prijs_per_m2_addon = prijzen_addon[index]
+                        break
+                else:
+                    min_m2, max_m2 = map(float, bereik.split("-"))
+                    if min_m2 <= oppervlakte <= max_m2:
+                        prijs_per_m2_addon = prijzen_addon[index]
+                        break
+
+            if prijs_per_m2_addon is not None:
+                totaal_addon = round(prijs_per_m2_addon * oppervlakte)
+                extra_totaal += totaal_addon
+
+                extra_details.append({
+                    "key": extra_item,
+                    "naam": extra_item,
+                    "prijs_per_m2": prijs_per_m2_addon,
+                    "totaal": totaal_addon,
+                    "forced": extra_item in forced_extras
+                })
+
+            continue
+
+        # =========================
+        # 2️⃣ NORMALE EXTRA
+        # =========================
         if isinstance(extra_item, str):
 
             extra = extras_prijslijst.get(extra_item)
@@ -281,7 +305,9 @@ def calculate_price():
                 "forced": extra_item in forced_extras
             })
 
-        # 2️⃣ VARIABLE SURFACE EXTRA (OBJECT MET m2)
+        # =========================
+        # 3️⃣ VARIABLE SURFACE EXTRA
+        # =========================
         elif isinstance(extra_item, dict):
 
             extra_key = extra_item.get("key")
@@ -308,18 +334,14 @@ def calculate_price():
                 "forced": False
             })
 
-    # =========================
-    # TOTAALPRIJS (START)
-    # =========================
     totaalprijs = basisprijs + extra_totaal
 
     # =========================
-    # XTR – MEERWERK COATING VERWIJDEREN
+    # MEERWERK
     # =========================
     if xtr_uren and float(xtr_uren) > 0:
         uren = float(xtr_uren)
         bedrag = round(uren * XTR_TARIEF)
-
         totaalprijs += bedrag
 
         extra_details.append({
@@ -331,13 +353,9 @@ def calculate_price():
             "forced": False
         })
 
-    # =========================
-    # ALGEMEEN MEERWERK
-    # =========================
     if meerwerk_uren and float(meerwerk_uren) > 0:
         uren = float(meerwerk_uren)
         bedrag = round(uren * MEERWERK_TARIEF)
-
         totaalprijs += bedrag
 
         extra_details.append({
@@ -350,9 +368,6 @@ def calculate_price():
             "forced": False
         })
 
-    # =========================
-    # EXTRA MATERIAAL
-    # =========================
     if materiaal_bedrag and float(materiaal_bedrag) > 0:
         bedrag = round(float(materiaal_bedrag))
         totaalprijs += bedrag
