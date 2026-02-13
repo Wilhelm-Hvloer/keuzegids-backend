@@ -2741,7 +2741,8 @@
   {
     "id": "AMK",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met BS3000",
+    "text": "Sys: Rolcoating Premium",
+    "chosen_extra": "toplaag BS3000",
     "next": [
       "AML"
     ]
@@ -2980,7 +2981,8 @@
   {
     "id": "ANM",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic + AG lak",
+    "text": "Sys: Rolcoating Basic",
+    "chosen_extra": "AG lak",
     "next": [
       "ANO"
     ]
@@ -3014,7 +3016,8 @@
   {
     "id": "ANN",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic + AG lak",
+    "text": "Sys: Gietcoating Basic",
+    "chosen_extra": "AG lak",
     "next": [
       "ANR"
     ]
@@ -3423,7 +3426,8 @@
   {
     "id": "APP",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium (BS3000)",
+    "text": "Sys: Rolcoating Premium",
+    "chosen_extra": "toplaag BS3000",
     "next": [
       "APQ"
     ]
@@ -3849,7 +3853,8 @@
   {
     "id": "ARP",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic + AG lak",
+    "text": "Sys: Gietcoating Basic",
+    "chosen_extra": "AG lak",
     "next": [
       "ARQ"
     ]
@@ -4479,7 +4484,8 @@
   {
     "id": "AUE",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met BS3000",
+    "text": "Sys: Rolcoating Premium",
+    "chosen_extra": "toplaag BS3000",
     "next": [
       "AUF"
     ]
@@ -4709,7 +4715,8 @@
   {
     "id": "AVG",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic + AG lak",
+    "text": "Sys: Gietcoating Basic",
+    "chosen_extra": "AG lak",
     "next": [
       "AVH"
     ]
@@ -5178,7 +5185,7 @@
   {
     "id": "AXK",
     "type": "systeem",
-    "text": "Sys: DOS Basic (BS3000)",
+    "text": "Sys: DOS Basic",
     "next": [
       "AXL"
     ]
@@ -5461,7 +5468,8 @@
   {
     "id": "AYR",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met BS3000",
+    "text": "Sys: Rolcoating Premium",
+    "chosen_extra": "toplaag BS3000",
     "next": [
       "AYS"
     ]
@@ -5700,7 +5708,8 @@
   {
     "id": "AZU",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic + AG lak",
+    "text": "Sys: Rolcoating Basic",
+    "chosen_extra": "AG lak",
     "next": [
       "AZW"
     ]
@@ -5734,7 +5743,8 @@
   {
     "id": "AZV",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic + AG lak",
+    "text": "Sys: Gietcoating Basic",
+    "chosen_extra": "AG lak",
     "next": [
       "AZZ"
     ]
@@ -6143,7 +6153,8 @@
   {
     "id": "BBU",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met BS3000",
+    "text": "Sys: Rolcoating Premium",
+    "chosen_extra": "toplaag BS3000",
     "next": [
       "BBV"
     ]
@@ -6339,7 +6350,8 @@
   {
     "id": "BCR",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met BS3000",
+    "text": "Sys: Rolcoating Premium",
+    "chosen_extra": "toplaag BS3000",
     "next": [
       "BCS"
     ]
