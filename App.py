@@ -40,7 +40,7 @@ def expand_node(node):
         "id": node.get("id"),
         "type": node.get("type"),
         "text": node.get("text", ""),
-        "next": node.get("next", [])  # 🔑 altijd next meesturen
+        "next": []
     }
 
     # 🔑 chosen_extra doorgeven (antwoord-nodes)
@@ -57,28 +57,21 @@ def expand_node(node):
         expanded["forced_extras"] = node.get("forced_extras", [])
 
     # =========================
-    # CHILD NODES EXPANDEN
+    # CHILD NODES EXPANDEN (ALTIJD VOLLEDIGE OBJECTEN)
     # =========================
-    expanded_next = []
+    for child in node.get("next", []):
 
-    for nid in node.get("next", []):
-        child_node = get_node(nid)
+        # Als child al een object is (bijv. bij afweging)
+        if isinstance(child, dict):
+            expanded["next"].append(child)
+            continue
+
+        # Anders is het een ID → ophalen en volledig expanden
+        child_node = get_node(child)
         if not child_node:
             continue
 
-        # 🔑 systeemnodes volledig expanden
-        if child_node.get("type") == "systeem":
-            expanded_next.append(expand_node(child_node))
-        else:
-            expanded_next.append({
-                "id": child_node.get("id"),
-                "type": child_node.get("type"),
-                "text": child_node.get("text", ""),
-                "next": child_node.get("next", []),
-                "chosen_extra": child_node.get("chosen_extra")
-            })
-
-    expanded["next"] = expanded_next
+        expanded["next"].append(expand_node(child_node))
 
     return expanded
 
