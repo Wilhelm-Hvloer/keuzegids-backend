@@ -2206,6 +2206,15 @@
     ]
   },
   {
+    "id": "BFQ",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BFR",
+      "BFS"
+    ]
+  },
+  {
     "id": "BFR",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
