@@ -2021,7 +2021,8 @@
   {
     "id": "AJD",
     "type": "systeem",
-    "text": "Sys: Gietcoating Optimum met WHG + Onafhankelijke keuring",
+    "text": "Sys: Gietcoating Optimum",
+    "forced_extras": "aftop WHG",
     "next": [
       "END"
     ]
@@ -2037,7 +2038,8 @@
   {
     "id": "AJE",
     "type": "systeem",
-    "text": "Sys: Gietcoating Extreme met WHG + Onafhankelijke keuring",
+    "text": "Sys: Gietcoating Extreme",
+    "forced_extras": "aftop WHG",
     "next": [
       "END"
     ]
@@ -2046,39 +2048,6 @@
     "id": "AIZ",
     "type": "antwoord",
     "text": "Antw: nee",
-    "next": [
-      "AJF"
-    ]
-  },
-  {
-    "id": "AJF",
-    "type": "vraag",
-    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
-    "next": [
-      "AJG",
-      "AJJ"
-    ]
-  },
-  {
-    "id": "AJG",
-    "type": "antwoord",
-    "text": "Antw: Kleine oneffenheden zijn oke",
-    "next": [
-      "AJH"
-    ]
-  },
-  {
-    "id": "AJH",
-    "type": "systeem",
-    "text": "Sys: Gietcoating Basic met WHG + keuring",
-    "next": [
-      "END"
-    ]
-  },
-  {
-    "id": "AJJ",
-    "type": "antwoord",
-    "text": "Antw: Geen oneffenheden",
     "next": [
       "AJK"
     ]
@@ -2095,7 +2064,8 @@
   {
     "id": "AJL",
     "type": "systeem",
-    "text": "Sys: Gietcoating Premium met WHG + keuring",
+    "text": "Sys: Gietcoating Basic",
+    "forced_extras": "giet 1,5 WHG",
     "next": [
       "END"
     ]
@@ -2103,7 +2073,8 @@
   {
     "id": "AJM",
     "type": "systeem",
-    "text": "Sys: Gietcoating Excellent met WHG + keuring",
+    "text": "Sys: Gietcoating Premium",
+    "forced_extras": "giet 2 WHG",
     "next": [
       "END"
     ]
@@ -2112,39 +2083,6 @@
     "id": "AJN",
     "type": "antwoord",
     "text": "Antw: HACCP",
-    "next": [
-      "AJO"
-    ]
-  },
-  {
-    "id": "AJO",
-    "type": "vraag",
-    "text": "Vrg: Wat zijn je wensen voor uitstraling?",
-    "next": [
-      "AJP",
-      "AJS"
-    ]
-  },
-  {
-    "id": "AJP",
-    "type": "antwoord",
-    "text": "Antw: Kleine oneffenheden zijn oke",
-    "next": [
-      "AJQ"
-    ]
-  },
-  {
-    "id": "AJQ",
-    "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
-    "next": [
-      "END"
-    ]
-  },
-  {
-    "id": "AJS",
-    "type": "antwoord",
-    "text": "Antw: Geen oneffenheden",
     "next": [
       "AJT"
     ]
@@ -2161,7 +2099,8 @@
   {
     "id": "AJU",
     "type": "systeem",
-    "text": "Sys: Gietcoating Premium met WHG + keuring",
+    "text": "Sys: Gietcoating Basic",
+    "forced_extras": "giet 1,5 WHG",
     "next": [
       "END"
     ]
@@ -2169,8 +2108,11 @@
   {
     "id": "AJV",
     "type": "systeem",
-    "text": "Sys: Gietcoating Excelent met WHG + keuring",
-    "next": []
+    "text": "Sys: Gietcoating Premium",
+    "forced_extras": "giet 2 WHG",
+    "next": [
+      "END"
+    ]
   },
   {
     "id": "AJW",
@@ -2183,7 +2125,7 @@
   {
     "id": "AJX",
     "type": "systeem",
-    "text": "Sys: Stralen en 350gram FAS100",
+    "text": "Sys: Boeren coating",
     "next": [
       "END"
     ]
@@ -2218,6 +2160,32 @@
     "type": "systeem",
     "text": "Sys: Gietcoating Optimum",
     "next": [
+      "BFN"
+    ]
+  },
+  {
+    "id": "BFN",
+    "type": "vraag",
+    "text": "Vrg: Extra uitvlaklaag?",
+    "next": [
+      "BFO",
+      "BFP"
+    ]
+  },
+  {
+    "id": "BFO",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BFP",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
       "END"
     ]
   },
@@ -2234,7 +2202,24 @@
     "type": "systeem",
     "text": "Sys: Gietcoating Extreme",
     "next": [
+      "BFQ"
+    ]
+  },
+  {
+    "id": "BFR",
+    "type": "antwoord",
+    "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
+    "next": [
       "AKE"
+    ]
+  },
+  {
+    "id": "BFS",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "BFT"
     ]
   },
   {
@@ -2257,6 +2242,32 @@
   },
   {
     "id": "AKG",
+    "type": "antwoord",
+    "text": "Antw: Nee",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BFT",
+    "type": "vraag",
+    "text": "Vrg: Versteviging intensieve plekken?",
+    "next": [
+      "BFU",
+      "BFV"
+    ]
+  },
+  {
+    "id": "BFU",
+    "type": "antwoord",
+    "text": "Antw: Ja, Durakorrel",
+    "chosen_extra": "DuraKorrel",
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BFV",
     "type": "antwoord",
     "text": "Antw: Nee",
     "next": [
