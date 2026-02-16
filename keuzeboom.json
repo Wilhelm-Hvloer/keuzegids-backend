@@ -56,7 +56,7 @@
   {
     "id": "AAE",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "AAH"
     ]
@@ -150,7 +150,7 @@
   {
     "id": "AAR",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "AAS"
     ]
@@ -278,7 +278,7 @@
   {
     "id": "ABG",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "ABH"
     ]
@@ -372,7 +372,7 @@
   {
     "id": "ABR",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "ABS"
     ]
@@ -466,7 +466,7 @@
   {
     "id": "ACC",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "ACD"
     ]
@@ -594,7 +594,7 @@
   {
     "id": "ACT",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "ACU"
     ]
@@ -688,7 +688,7 @@
   {
     "id": "ADD",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "ADE"
     ]
@@ -782,7 +782,7 @@
   {
     "id": "ADN",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "ADO"
     ]
@@ -935,7 +935,7 @@
   {
     "id": "AEF",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "AEG"
     ]
@@ -1028,7 +1028,7 @@
   {
     "id": "AEQ",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "AER"
     ]
@@ -1114,7 +1114,7 @@
   {
     "id": "AFB",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "AFC"
     ]
@@ -1259,7 +1259,7 @@
   {
     "id": "AFS",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "AFT"
     ]
@@ -1353,7 +1353,7 @@
   {
     "id": "AGD",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "AGE"
     ]
@@ -1447,7 +1447,7 @@
   {
     "id": "AGO",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "AGP"
     ]
@@ -1592,7 +1592,7 @@
   {
     "id": "AHF",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "AHG"
     ]
@@ -1660,7 +1660,7 @@
   {
     "id": "AHN",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "AHO"
     ]
@@ -1754,7 +1754,7 @@
   {
     "id": "AHY",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "AHZ"
     ]
@@ -1856,7 +1856,7 @@
   {
     "id": "AIK",
     "type": "systeem",
-    "text": "Sys: DOS Premium",
+    "text": "Sys: DOS-coating Premium",
     "next": [
       "AIL"
     ]
@@ -2458,7 +2458,7 @@
   {
     "id": "ALD",
     "type": "systeem",
-    "text": "Sys: DOS Basic (2x BS3000)",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "ALE"
     ]
@@ -2476,6 +2476,7 @@
     "id": "ALF",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "ALH"
     ]
@@ -2760,6 +2761,7 @@
     "id": "AMM",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "AMO"
     ]
@@ -3445,6 +3447,7 @@
     "id": "APR",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "APT"
     ]
@@ -3641,6 +3644,7 @@
     "id": "AQO",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "AQQ"
     ]
@@ -4306,6 +4310,7 @@
     "id": "ATJ",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "ATL"
     ]
@@ -4503,6 +4508,7 @@
     "id": "AUG",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "AUI"
     ]
@@ -5185,7 +5191,7 @@
   {
     "id": "AXK",
     "type": "systeem",
-    "text": "Sys: DOS Basic",
+    "text": "Sys: DOS-coating Basic",
     "next": [
       "AXL"
     ]
@@ -5203,6 +5209,7 @@
     "id": "AXM",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "AXO"
     ]
@@ -5487,6 +5494,7 @@
     "id": "AYT",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "AYV"
     ]
@@ -6172,6 +6180,7 @@
     "id": "BBW",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "BBY"
     ]
@@ -6369,6 +6378,7 @@
     "id": "BCT",
     "type": "antwoord",
     "text": "Antw: ADD250 toevoegen",
+    "chosen_extra": "ADD250",
     "next": [
       "BCV"
     ]
