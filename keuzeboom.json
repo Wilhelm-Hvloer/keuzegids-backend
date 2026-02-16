@@ -3096,6 +3096,7 @@
     "id": "AOA",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "END"
     ]
@@ -3137,6 +3138,7 @@
     "id": "AOE",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "AOG"
     ]
@@ -3230,6 +3232,7 @@
     "id": "AOR",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "AOT"
     ]
@@ -3935,6 +3938,7 @@
     "id": "ARY",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "END"
     ]
@@ -3976,6 +3980,7 @@
     "id": "ASC",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "END"
     ]
@@ -4069,6 +4074,7 @@
     "id": "ASH",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "ASJ"
     ]
@@ -4799,6 +4805,7 @@
     "id": "AVP",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "END"
     ]
@@ -4840,6 +4847,7 @@
     "id": "AVT",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "AVV"
     ]
@@ -4933,6 +4941,7 @@
     "id": "AWE",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "AWG"
     ]
@@ -5829,6 +5838,7 @@
     "id": "BAH",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "END"
     ]
@@ -5870,6 +5880,7 @@
     "id": "BAL",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "BAN"
     ]
@@ -5955,6 +5966,7 @@
     "id": "BAW",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "BAY"
     ]
@@ -6668,6 +6680,7 @@
     "id": "BEB",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "END"
     ]
@@ -6709,6 +6722,7 @@
     "id": "BEG",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "BEI"
     ]
@@ -6802,6 +6816,7 @@
     "id": "BER",
     "type": "antwoord",
     "text": "Antw: Ja, extra uitvlaklaag toevoegen",
+    "chosen_extra": "extra uitvlaklaag",
     "next": [
       "BET"
     ]
