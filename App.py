@@ -239,56 +239,68 @@ def calculate_price():
     extras_prijslijst = PRIJS_DATA.get("extras", {})
     extra_systemen = PRIJS_DATA.get("extra_systemen", {})
 
+    # 🔐 Normalized lookup map voor complexe extras
+    normalized_extra_systemen = {
+        key.strip().lower(): key
+        for key in extra_systemen.keys()
+    }
+
     extra_details = []
     extra_totaal = 0
 
     for extra_item in gekozen_extras:
 
         # =========================
-        # 1️⃣ COMPLEXE EXTRA (STAFFEL)
-        # =========================
-        if isinstance(extra_item, str) and extra_item in extra_systemen:
-
-            addon = extra_systemen.get(extra_item)
-            staffels_addon = addon.get("staffel", [])
-            prijzen_addon = addon.get("prijzen", {}).get(ruimtes)
-
-            if not prijzen_addon:
-                continue
-
-            prijs_per_m2_addon = None
-
-            for index, bereik in enumerate(staffels_addon):
-                if bereik.endswith("+"):
-                    if oppervlakte >= float(bereik.replace("+", "")):
-                        prijs_per_m2_addon = prijzen_addon[index]
-                        break
-                else:
-                    min_m2, max_m2 = map(float, bereik.split("-"))
-                    if min_m2 <= oppervlakte <= max_m2:
-                        prijs_per_m2_addon = prijzen_addon[index]
-                        break
-
-            if prijs_per_m2_addon is not None:
-                totaal_addon = round(prijs_per_m2_addon * oppervlakte)
-                extra_totaal += totaal_addon
-
-                extra_details.append({
-                    "key": extra_item,
-                    "naam": extra_item,
-                    "prijs_per_m2": prijs_per_m2_addon,
-                    "totaal": totaal_addon,
-                    "forced": extra_item in forced_extras
-                })
-
-            continue
-
-        # =========================
-        # 2️⃣ NORMALE EXTRA
+        # COMPLEXE EXTRA (STAFFEL)
         # =========================
         if isinstance(extra_item, str):
 
-            extra = extras_prijslijst.get(extra_item)
+            normalized_key = extra_item.strip().lower()
+
+            if normalized_key in normalized_extra_systemen:
+
+                echte_key = normalized_extra_systemen[normalized_key]
+                addon = extra_systemen.get(echte_key)
+
+                staffels_addon = addon.get("staffel", [])
+                prijzen_addon = addon.get("prijzen", {}).get(ruimtes)
+
+                if not prijzen_addon:
+                    continue
+
+                prijs_per_m2_addon = None
+
+                for index, bereik in enumerate(staffels_addon):
+                    if bereik.endswith("+"):
+                        if oppervlakte >= float(bereik.replace("+", "")):
+                            prijs_per_m2_addon = prijzen_addon[index]
+                            break
+                    else:
+                        min_m2, max_m2 = map(float, bereik.split("-"))
+                        if min_m2 <= oppervlakte <= max_m2:
+                            prijs_per_m2_addon = prijzen_addon[index]
+                            break
+
+                if prijs_per_m2_addon is not None:
+                    totaal_addon = round(prijs_per_m2_addon * oppervlakte)
+                    extra_totaal += totaal_addon
+
+                    extra_details.append({
+                        "key": echte_key,
+                        "naam": echte_key,
+                        "prijs_per_m2": prijs_per_m2_addon,
+                        "totaal": totaal_addon,
+                        "forced": extra_item in forced_extras
+                    })
+
+                continue
+
+        # =========================
+        # NORMALE EXTRA
+        # =========================
+        if isinstance(extra_item, str):
+
+            extra = extras_prijslijst.get(extra_item.strip())
             if not extra:
                 continue
 
@@ -306,7 +318,7 @@ def calculate_price():
             })
 
         # =========================
-        # 3️⃣ VARIABLE SURFACE EXTRA
+        # VARIABLE SURFACE EXTRA
         # =========================
         elif isinstance(extra_item, dict):
 
@@ -316,7 +328,7 @@ def calculate_price():
             if not extra_key or m2 <= 0:
                 continue
 
-            extra = extras_prijslijst.get(extra_key)
+            extra = extras_prijslijst.get(extra_key.strip())
             if not extra:
                 continue
 
@@ -380,9 +392,6 @@ def calculate_price():
             "forced": False
         })
 
-    # =========================
-    # RESULTAAT
-    # =========================
     return jsonify({
         "systeem": systeem_key,
         "oppervlakte": oppervlakte,
