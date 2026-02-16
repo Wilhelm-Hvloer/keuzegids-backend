@@ -179,17 +179,17 @@
       "type": "per_m2",
       "prijs": 0.00
     },
-    "toplaag WHG": {
+    "aftop WHG": {
       "naam": "aftop WHG",
       "type": "per_m2",
       "prijs": 2.75
     },
-    "toplaag WHG": {
+    "giet 1,5 WHG": {
       "naam": "giet 1,5 WHG",
       "type": "per_m2",
       "prijs": 4.13
     },
-    "toplaag WHG": {
+    "giet 2 WHG": {
       "naam": "giet 2 WHG",
       "type": "per_m2",
       "prijs": 5.50

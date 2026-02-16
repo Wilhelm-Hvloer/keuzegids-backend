@@ -175,14 +175,14 @@ def calculate_price():
         if fx not in gekozen_extras:
             gekozen_extras.append(fx)
 
-    xtr_uren = data.get("xtr_coating_verwijderen_uren", 0)
+    xtr_uren = float(data.get("xtr_coating_verwijderen_uren", 0) or 0)
     XTR_TARIEF = 120
 
-    meerwerk_uren = data.get("meerwerk_bedrag", 0)
+    meerwerk_uren = float(data.get("meerwerk_bedrag", 0) or 0)
     meerwerk_toelichting = data.get("meerwerk_toelichting", "")
     MEERWERK_TARIEF = 120
 
-    materiaal_bedrag = data.get("materiaal_bedrag", 0)
+    materiaal_bedrag = float(data.get("materiaal_bedrag", 0) or 0)
     materiaal_toelichting = data.get("materiaal_toelichting", "")
 
     # =========================
@@ -239,11 +239,12 @@ def calculate_price():
     extras_prijslijst = PRIJS_DATA.get("extras", {})
     extra_systemen = PRIJS_DATA.get("extra_systemen", {})
 
-    # 🔐 Normalized lookup map voor complexe extras
     normalized_extra_systemen = {
         key.strip().lower(): key
         for key in extra_systemen.keys()
     }
+
+    normalized_forced = [fx.strip().lower() for fx in forced_extras]
 
     extra_details = []
     extra_totaal = 0
@@ -251,79 +252,12 @@ def calculate_price():
     for extra_item in gekozen_extras:
 
         # =========================
-        # COMPLEXE EXTRA (STAFFEL)
-        # =========================
-        if isinstance(extra_item, str):
-
-            normalized_key = extra_item.strip().lower()
-
-            if normalized_key in normalized_extra_systemen:
-
-                echte_key = normalized_extra_systemen[normalized_key]
-                addon = extra_systemen.get(echte_key)
-
-                staffels_addon = addon.get("staffel", [])
-                prijzen_addon = addon.get("prijzen", {}).get(ruimtes)
-
-                if not prijzen_addon:
-                    continue
-
-                prijs_per_m2_addon = None
-
-                for index, bereik in enumerate(staffels_addon):
-                    if bereik.endswith("+"):
-                        if oppervlakte >= float(bereik.replace("+", "")):
-                            prijs_per_m2_addon = prijzen_addon[index]
-                            break
-                    else:
-                        min_m2, max_m2 = map(float, bereik.split("-"))
-                        if min_m2 <= oppervlakte <= max_m2:
-                            prijs_per_m2_addon = prijzen_addon[index]
-                            break
-
-                if prijs_per_m2_addon is not None:
-                    totaal_addon = round(prijs_per_m2_addon * oppervlakte)
-                    extra_totaal += totaal_addon
-
-                    extra_details.append({
-                        "key": echte_key,
-                        "naam": echte_key,
-                        "prijs_per_m2": prijs_per_m2_addon,
-                        "totaal": totaal_addon,
-                        "forced": extra_item in forced_extras
-                    })
-
-                continue
-
-        # =========================
-        # NORMALE EXTRA
-        # =========================
-        if isinstance(extra_item, str):
-
-            extra = extras_prijslijst.get(extra_item.strip())
-            if not extra:
-                continue
-
-            prijs = float(extra.get("prijs", 0))
-            prijs_extra = prijs * oppervlakte if extra.get("type") == "per_m2" else prijs
-            prijs_extra = round(prijs_extra)
-
-            extra_totaal += prijs_extra
-
-            extra_details.append({
-                "key": extra_item,
-                "naam": extra.get("naam", extra_item),
-                "totaal": prijs_extra,
-                "forced": extra_item in forced_extras
-            })
-
-        # =========================
         # VARIABLE SURFACE EXTRA
         # =========================
-        elif isinstance(extra_item, dict):
+        if isinstance(extra_item, dict):
 
             extra_key = extra_item.get("key")
-            m2 = float(extra_item.get("m2", 0))
+            m2 = float(extra_item.get("m2", 0) or 0)
 
             if not extra_key or m2 <= 0:
                 continue
@@ -346,42 +280,114 @@ def calculate_price():
                 "forced": False
             })
 
+            continue
+
+        # =========================
+        # STRING EXTRA
+        # =========================
+        if not isinstance(extra_item, str):
+            continue
+
+        extra_key_clean = extra_item.strip()
+        normalized_key = extra_key_clean.lower()
+
+        # -------------------------
+        # COMPLEXE EXTRA (STAFFEL)
+        # -------------------------
+        if normalized_key in normalized_extra_systemen:
+
+            echte_key = normalized_extra_systemen[normalized_key]
+            addon = extra_systemen.get(echte_key)
+
+            staffels_addon = addon.get("staffel", [])
+            prijzen_addon = addon.get("prijzen", {}).get(ruimtes)
+
+            if not prijzen_addon:
+                continue
+
+            prijs_per_m2_addon = None
+
+            for index, bereik in enumerate(staffels_addon):
+                if bereik.endswith("+"):
+                    if oppervlakte >= float(bereik.replace("+", "")):
+                        prijs_per_m2_addon = prijzen_addon[index]
+                        break
+                else:
+                    min_m2, max_m2 = map(float, bereik.split("-"))
+                    if min_m2 <= oppervlakte <= max_m2:
+                        prijs_per_m2_addon = prijzen_addon[index]
+                        break
+
+            if prijs_per_m2_addon is None:
+                continue
+
+            totaal_addon = round(prijs_per_m2_addon * oppervlakte)
+            extra_totaal += totaal_addon
+
+            extra_details.append({
+                "key": echte_key,
+                "naam": echte_key,
+                "prijs_per_m2": prijs_per_m2_addon,
+                "totaal": totaal_addon,
+                "forced": normalized_key in normalized_forced
+            })
+
+            continue
+
+        # -------------------------
+        # NORMALE EXTRA
+        # -------------------------
+        extra = extras_prijslijst.get(extra_key_clean)
+        if not extra:
+            continue
+
+        prijs = float(extra.get("prijs", 0))
+        prijs_extra = prijs * oppervlakte if extra.get("type") == "per_m2" else prijs
+        prijs_extra = round(prijs_extra)
+
+        extra_totaal += prijs_extra
+
+        extra_details.append({
+            "key": extra_key_clean,
+            "naam": extra.get("naam", extra_key_clean),
+            "totaal": prijs_extra,
+            "forced": normalized_key in normalized_forced
+        })
+
     totaalprijs = basisprijs + extra_totaal
 
     # =========================
     # MEERWERK
     # =========================
-    if xtr_uren and float(xtr_uren) > 0:
-        uren = float(xtr_uren)
-        bedrag = round(uren * XTR_TARIEF)
+    if xtr_uren > 0:
+        bedrag = round(xtr_uren * XTR_TARIEF)
         totaalprijs += bedrag
 
         extra_details.append({
             "key": "xtr_coating_verwijderen",
             "naam": "Meerwerk – coating verwijderen",
-            "uren": uren,
+            "uren": xtr_uren,
             "tarief": XTR_TARIEF,
             "totaal": bedrag,
             "forced": False
         })
 
-    if meerwerk_uren and float(meerwerk_uren) > 0:
-        uren = float(meerwerk_uren)
-        bedrag = round(uren * MEERWERK_TARIEF)
+    if meerwerk_uren > 0:
+        bedrag = round(meerwerk_uren * MEERWERK_TARIEF)
         totaalprijs += bedrag
 
         extra_details.append({
             "key": "algemeen_meerwerk",
             "naam": "Meerwerk (handmatig)",
-            "uren": uren,
+            "uren": meerwerk_uren,
             "tarief": MEERWERK_TARIEF,
             "toelichting": meerwerk_toelichting,
             "totaal": bedrag,
             "forced": False
         })
 
-    if materiaal_bedrag and float(materiaal_bedrag) > 0:
-        bedrag = round(float(materiaal_bedrag))
+    if materiaal_bedrag > 0:
+        bedrag = round(materiaal_bedrag)
         totaalprijs += bedrag
 
         extra_details.append({
