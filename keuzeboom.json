@@ -2024,11 +2024,11 @@
     "text": "Sys: Gietcoating Optimum",
     "forced_extras": "externe keuring",
     "next": [
-      "BGA"
+      "BGH"
     ]
   },
   {
-    "id": "BGA",
+    "id": "BGH",
     "type": "vraag",
     "text": "Vrg: Hoge chemische belasting?",
     "next": [
