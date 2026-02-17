@@ -2040,7 +2040,7 @@
     "id": "BFW",
     "type": "antwoord",
     "text": "Antw: Ja, WHG toevoegen",
-    "chosen_extras": "aftop WHG",
+    "chosen_extra": "aftop WHG",
     "next": [
       "END"
     ]
@@ -2083,7 +2083,7 @@
     "id": "BFZ",
     "type": "antwoord",
     "text": "Antw: Ja, WHG toevoegen",
-    "chosen_extras": "aftop WHG",
+    "chosen_extra": "aftop WHG",
     "next": [
       "END"
     ]
@@ -2135,7 +2135,7 @@
     "id": "BGC",
     "type": "antwoord",
     "text": "Antw: Ja, WHG toevoegen",
-    "chosen_extras": "giet 1,5 WHG",
+    "chosen_extra": "giet 1,5 WHG",
     "next": [
       "END"
     ]
@@ -2170,7 +2170,7 @@
     "id": "BGF",
     "type": "antwoord",
     "text": "Antw: Ja, WHG toevoegen",
-    "chosen_extras": "giet 2 WHG",
+    "chosen_extra": "giet 2 WHG",
     "next": [
       "END"
     ]
