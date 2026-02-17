@@ -2024,11 +2024,11 @@
     "text": "Sys: Gietcoating Optimum",
     "forced_extras": "externe keuring",
     "next": [
-      "BFV"
+      "BGA"
     ]
   },
   {
-    "id": "BFV",
+    "id": "BGA",
     "type": "vraag",
     "text": "Vrg: Hoge chemische belasting?",
     "next": [
@@ -2083,7 +2083,7 @@
     "id": "BFZ",
     "type": "antwoord",
     "text": "Antw: Ja, WHG toevoegen",
-    "chosen_extras": "aftop WHG"
+    "chosen_extras": "aftop WHG",
     "next": [
       "END"
     ]
@@ -2135,7 +2135,7 @@
     "id": "BGC",
     "type": "antwoord",
     "text": "Antw: Ja, WHG toevoegen",
-    "chosen_extras": "giet 1,5 WHG"
+    "chosen_extras": "giet 1,5 WHG",
     "next": [
       "END"
     ]
@@ -2170,7 +2170,7 @@
     "id": "BGF",
     "type": "antwoord",
     "text": "Antw: Ja, WHG toevoegen",
-    "chosen_extras": "giet 2 WHG"
+    "chosen_extras": "giet 2 WHG",
     "next": [
       "END"
     ]
