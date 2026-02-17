@@ -2039,8 +2039,8 @@
   {
     "id": "BFW",
     "type": "antwoord",
-    "text": "Antw: Ja, WHG teovoegen",
-    "forced_extras": "aftop WHG"
+    "text": "Antw: Ja, WHG toevoegen",
+    "chosen_extras": "aftop WHG",
     "next": [
       "END"
     ]
@@ -2082,8 +2082,8 @@
   {
     "id": "BFZ",
     "type": "antwoord",
-    "text": "Antw: Ja, WHG teovoegen",
-    "forced_extras": "aftop WHG"
+    "text": "Antw: Ja, WHG toevoegen",
+    "chosen_extras": "aftop WHG"
     "next": [
       "END"
     ]
@@ -2134,8 +2134,8 @@
   {
     "id": "BGC",
     "type": "antwoord",
-    "text": "Antw: Ja, WHG teovoegen",
-    "forced_extras": "giet 1,5 WHG"
+    "text": "Antw: Ja, WHG toevoegen",
+    "chosen_extras": "giet 1,5 WHG"
     "next": [
       "END"
     ]
@@ -2169,8 +2169,8 @@
   {
     "id": "BGF",
     "type": "antwoord",
-    "text": "Antw: Ja, WHG teovoegen",
-    "forced_extras": "giet 2 WHG"
+    "text": "Antw: Ja, WHG toevoegen",
+    "chosen_extras": "giet 2 WHG"
     "next": [
       "END"
     ]
