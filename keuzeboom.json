@@ -2022,7 +2022,33 @@
     "id": "AJD",
     "type": "systeem",
     "text": "Sys: Gietcoating Optimum",
-    "forced_extras": "aftop WHG",
+    "forced_extras": "externe keuring",
+    "next": [
+      "BFV"
+    ]
+  },
+  {
+    "id": "BFV",
+    "type": "vraag",
+    "text": "Vrg: Hoge chemische belasting?",
+    "next": [
+      "BFW",
+      "BFX"
+    ]
+  },
+  {
+    "id": "BFW",
+    "type": "antwoord",
+    "text": "Antw: Ja, WHG teovoegen",
+    "forced_extras": "aftop WHG"
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BFX",
+    "type": "antwoord",
+    "text": "Antw: Nee, HB color houden",
     "next": [
       "END"
     ]
@@ -2039,7 +2065,33 @@
     "id": "AJE",
     "type": "systeem",
     "text": "Sys: Gietcoating Extreme",
-    "forced_extras": "aftop WHG",
+    "forced_extras": "externe keuring",
+    "next": [
+      "BFY"
+    ]
+  },
+  {
+    "id": "BFY",
+    "type": "vraag",
+    "text": "Vrg: Hoge chemische belasting?",
+    "next": [
+      "BFZ",
+      "BGA"
+    ]
+  },
+  {
+    "id": "BFZ",
+    "type": "antwoord",
+    "text": "Antw: Ja, WHG teovoegen",
+    "forced_extras": "aftop WHG"
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BGA",
+    "type": "antwoord",
+    "text": "Antw: Nee, HB color houden",
     "next": [
       "END"
     ]
@@ -2065,7 +2117,33 @@
     "id": "AJL",
     "type": "systeem",
     "text": "Sys: Gietcoating Basic",
-    "forced_extras": "giet 1,5 WHG",
+    "forced_extras": "externe keuring",
+    "next": [
+      "BGB"
+    ]
+  },
+  {
+    "id": "BGB",
+    "type": "vraag",
+    "text": "Vrg: Hoge chemische belasting?",
+    "next": [
+      "BGC",
+      "BGD"
+    ]
+  },
+  {
+    "id": "BGC",
+    "type": "antwoord",
+    "text": "Antw: Ja, WHG teovoegen",
+    "forced_extras": "giet 1,5 WHG"
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BGD",
+    "type": "antwoord",
+    "text": "Antw: Nee, OS color houden",
     "next": [
       "END"
     ]
@@ -2074,7 +2152,33 @@
     "id": "AJM",
     "type": "systeem",
     "text": "Sys: Gietcoating Premium",
-    "forced_extras": "giet 2 WHG",
+    "forced_extras": "externe keuring",
+    "next": [
+      "BGE"
+    ]
+  },
+  {
+    "id": "BGE",
+    "type": "vraag",
+    "text": "Vrg: Hoge chemische belasting?",
+    "next": [
+      "BGF",
+      "BGG"
+    ]
+  },
+  {
+    "id": "BGF",
+    "type": "antwoord",
+    "text": "Antw: Ja, WHG teovoegen",
+    "forced_extras": "giet 2 WHG"
+    "next": [
+      "END"
+    ]
+  },
+  {
+    "id": "BGG",
+    "type": "antwoord",
+    "text": "Antw: Nee, OS color houden",
     "next": [
       "END"
     ]
@@ -2100,7 +2204,6 @@
     "id": "AJU",
     "type": "systeem",
     "text": "Sys: Gietcoating Basic",
-    "forced_extras": "giet 1,5 WHG",
     "next": [
       "END"
     ]
@@ -2109,7 +2212,6 @@
     "id": "AJV",
     "type": "systeem",
     "text": "Sys: Gietcoating Premium",
-    "forced_extras": "giet 2 WHG",
     "next": [
       "END"
     ]
