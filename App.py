@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
+import os
 
 app = Flask(__name__)
 CORS(
@@ -9,17 +10,23 @@ CORS(
     supports_credentials=True
 )
 
-
-
 # =========================
-# DATA LADEN
+# DATA LADEN (ROBUSTE PADEN)
 # =========================
-with open("keuzeboom.json", encoding="utf-8") as f:
-    KEUZEBOOM = json.load(f)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-with open("Prijstabellen coatingsystemen.json", encoding="utf-8") as f:
-    PRIJS_DATA = json.load(f)
+try:
+    with open(os.path.join(BASE_DIR, "keuzeboom.json"), encoding="utf-8") as f:
+        KEUZEBOOM = json.load(f)
 
+    with open(os.path.join(BASE_DIR, "Prijstabellen coatingsystemen.json"), encoding="utf-8") as f:
+        PRIJS_DATA = json.load(f)
+
+    print("✅ JSON bestanden succesvol geladen")
+
+except Exception as e:
+    print("❌ FOUT bij laden JSON:", e)
+    raise
 
 # =========================
 # HULPFUNCTIE: NODE OPHALEN
@@ -29,7 +36,6 @@ def get_node(node_id):
         if node.get("id") == node_id:
             return node
     return None
-
 
 # =========================
 # HULPFUNCTIE: NODE EXPANDEN (BACKEND-LEIDEND)
