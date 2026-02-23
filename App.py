@@ -1,3 +1,13 @@
+import traceback
+import sys
+
+print("=== APP BOOT START ===")
+
+try:
+    print("Current working dir:", __file__)
+except Exception:
+    pass
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
