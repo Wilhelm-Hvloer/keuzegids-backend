@@ -186,7 +186,6 @@ def calculate_price():
     gekozen_extras = data.get("extras", []) or []
     forced_extras = data.get("forced_extras", []) or []
 
-    # Forced extras altijd meenemen
     for fx in forced_extras:
         if fx not in gekozen_extras:
             gekozen_extras.append(fx)
@@ -201,9 +200,6 @@ def calculate_price():
     materiaal_bedrag = float(data.get("materiaal_bedrag", 0) or 0)
     materiaal_toelichting = data.get("materiaal_toelichting", "")
 
-    # =========================
-    # VALIDATIE
-    # =========================
     if not systeem:
         return jsonify({"error": "geen systeem opgegeven"}), 400
 
@@ -216,9 +212,6 @@ def calculate_price():
     except (ValueError, TypeError):
         return jsonify({"error": "ongeldige invoer"}), 400
 
-    # =========================
-    # BASISSYSTEEM
-    # =========================
     systeem_key = systeem.replace("Sys:", "").strip()
 
     prijs_systeem = PRIJS_DATA.get("systemen", {}).get(systeem_key)
@@ -227,6 +220,7 @@ def calculate_price():
 
     staffels = prijs_systeem.get("staffel", [])
     prijzen = prijs_systeem.get("prijzen", {}).get(ruimtes)
+    omschrijving = prijs_systeem.get("omschrijving", [])
 
     if not prijzen:
         return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
@@ -249,9 +243,6 @@ def calculate_price():
 
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
-    # =========================
-    # EXTRA VERWERKING
-    # =========================
     extras_prijslijst = PRIJS_DATA.get("extras", {})
     extra_systemen = PRIJS_DATA.get("extra_systemen", {})
 
@@ -267,9 +258,6 @@ def calculate_price():
 
     for extra_item in gekozen_extras:
 
-        # =========================
-        # VARIABLE SURFACE EXTRA
-        # =========================
         if isinstance(extra_item, dict):
 
             extra_key = extra_item.get("key")
@@ -298,18 +286,12 @@ def calculate_price():
 
             continue
 
-        # =========================
-        # STRING EXTRA
-        # =========================
         if not isinstance(extra_item, str):
             continue
 
         extra_key_clean = extra_item.strip()
         normalized_key = extra_key_clean.lower()
 
-        # -------------------------
-        # COMPLEXE EXTRA (STAFFEL)
-        # -------------------------
         if normalized_key in normalized_extra_systemen:
 
             echte_key = normalized_extra_systemen[normalized_key]
@@ -350,9 +332,6 @@ def calculate_price():
 
             continue
 
-        # -------------------------
-        # NORMALE EXTRA
-        # -------------------------
         extra = extras_prijslijst.get(extra_key_clean)
         if not extra:
             continue
@@ -372,9 +351,6 @@ def calculate_price():
 
     totaalprijs = basisprijs + extra_totaal
 
-    # =========================
-    # MEERWERK
-    # =========================
     if xtr_uren > 0:
         bedrag = round(xtr_uren * XTR_TARIEF)
         totaalprijs += bedrag
@@ -420,6 +396,7 @@ def calculate_price():
         "ruimtes": int(ruimtes),
         "prijs_per_m2": round(prijs_per_m2, 2),
         "basisprijs": basisprijs,
+        "omschrijving": omschrijving,
         "extras": extra_details,
         "totaalprijs": totaalprijs
     })

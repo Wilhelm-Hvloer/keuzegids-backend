@@ -2048,7 +2048,7 @@
   {
     "id": "BFX",
     "type": "antwoord",
-    "text": "Antw: Nee, HB color houden",
+    "text": "Antw: Nee, Color Top houden",
     "next": [
       "END"
     ]
@@ -2091,7 +2091,7 @@
   {
     "id": "BGA",
     "type": "antwoord",
-    "text": "Antw: Nee, HB color houden",
+    "text": "Antw: Nee, Color Top houden",
     "next": [
       "END"
     ]
