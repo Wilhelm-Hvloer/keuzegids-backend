@@ -225,6 +225,15 @@ def calculate_price():
     if not prijzen:
         return jsonify({"error": "geen prijzen voor dit aantal ruimtes"}), 400
 
+    # =========================
+    # MINIMALE OPPERVLAKTE CHECK
+    # =========================
+    if oppervlakte < 30:
+        return jsonify({
+            "error": "m2_te_klein",
+            "message": "Minimale oppervlakte is 30 m²"
+        }), 200
+
     prijs_per_m2 = None
 
     for index, bereik in enumerate(staffels):
@@ -239,7 +248,9 @@ def calculate_price():
                 break
 
     if prijs_per_m2 is None:
-        return jsonify({"error": "geen passende staffel gevonden"}), 400
+        return jsonify({
+            "error": "geen passende staffel gevonden"
+        }), 200
 
     basisprijs = round(prijs_per_m2 * oppervlakte)
 
