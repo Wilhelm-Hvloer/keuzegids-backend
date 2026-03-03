@@ -32,6 +32,9 @@ try:
     with open(os.path.join(BASE_DIR, "Prijstabellen coatingsystemen.json"), encoding="utf-8") as f:
         PRIJS_DATA = json.load(f)
 
+    with open(os.path.join(BASE_DIR, "Prijstabellen polijsten.json"), encoding="utf-8") as f:
+        POLIJST_DATA = json.load(f)
+
     print("✅ JSON bestanden succesvol geladen")
 
 except Exception as e:
@@ -412,7 +415,74 @@ def calculate_price():
         "totaalprijs": totaalprijs
     })
 
+# =========================
+# API: POLIJST PRIJS
+# =========================
+@app.route("/api/polijst-price", methods=["POST"])
+def calculate_polijst_price():
 
+    data = request.json or {}
+
+    systeem = data.get("systeem")
+    klanttype = data.get("klanttype")
+    oppervlakte = data.get("oppervlakte")
+
+    if not systeem or not klanttype or oppervlakte is None:
+        return jsonify({"error": "systeem, klanttype en oppervlakte verplicht"}), 400
+
+    try:
+        oppervlakte = float(oppervlakte)
+    except (ValueError, TypeError):
+        return jsonify({"error": "ongeldige oppervlakte"}), 400
+
+    systeem_data = POLIJST_DATA.get("systemen", {}).get(systeem)
+    if not systeem_data:
+        return jsonify({"error": "systeem niet gevonden"}), 404
+
+    prijzen = systeem_data.get("prijzen", {}).get(klanttype)
+    staffels = systeem_data.get("staffel", [])
+    vast_index = systeem_data.get("vast_tot_index", -1)
+
+    if not prijzen:
+        return jsonify({"error": "klanttype niet gevonden"}), 404
+
+    prijs = None
+    gekozen_index = None
+
+    for index, bereik in enumerate(staffels):
+
+        if bereik.endswith("+"):
+            grens = float(bereik.replace("+", ""))
+            if oppervlakte >= grens:
+                prijs = prijzen[index]
+                gekozen_index = index
+                break
+        else:
+            min_m2, max_m2 = map(float, bereik.split("-"))
+            if min_m2 <= oppervlakte <= max_m2:
+                prijs = prijzen[index]
+                gekozen_index = index
+                break
+
+    if prijs is None:
+        return jsonify({"error": "geen passende staffel"}), 400
+
+    # Vast bedrag of m² prijs bepalen
+    if gekozen_index <= vast_index:
+        totaalprijs = prijs
+        prijs_per_m2 = None
+    else:
+        totaalprijs = round(prijs * oppervlakte)
+        prijs_per_m2 = prijs
+
+    return jsonify({
+        "systeem": systeem,
+        "klanttype": klanttype,
+        "oppervlakte": oppervlakte,
+        "prijs_per_m2": prijs_per_m2,
+        "totaalprijs": totaalprijs,
+        "omschrijving": systeem_data.get("omschrijving", "")
+    })
 
 # =========================
 # HEALTHCHECK

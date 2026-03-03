@@ -1,0 +1,36 @@
+{
+  "systemen": {
+    "Basic polijsten": {
+      "omschrijving": "Licht opschuren met woodboy",
+      "staffel": ["11-22","21-30","31-40","41-50","51-75","76-100","101+"],
+      "prijzen": {
+        "Particulieren": [630,685,735,17,15,13,11],
+        "Aannemer": [575,625,675,15.5,13.5,12,10],
+        "Vloerenlegger": [525,560,600,14,12,11,9]
+      },
+      "vast_tot_index": 2
+    },
+
+    "Premium polijsten": {
+      "omschrijving": "2 stappen diamant polijsten",
+      "staffel": ["11-22","21-30","31-40","41-50","51-75","76-100","101+"],
+      "prijzen": {
+        "Particulieren": [950,1150,1300,29,26,22.5,19],
+        "Aannemer": [850,1050,1200,26,23.5,20.5,17],
+        "Vloerenlegger": [750,950,1100,23.5,21,18.5,15.5]
+      },
+      "vast_tot_index": 2
+    },
+
+    "Excellent polijsten": {
+      "omschrijving": "4-6 stappen diamant polijsten",
+      "staffel": ["11-22","21-30","31-40","41-50","51-75","76-100"],
+      "prijzen": {
+        "Particulieren": [1350,1500,48.5,43.5,35,31.5],
+        "Aannemer": [1200,1350,43.5,39,31.5,28.5],
+        "Vloerenlegger": [1100,1200,39,35,28.5,25.5]
+      },
+      "vast_tot_index": 1
+    }
+  }
+}
