@@ -1,9 +1,39 @@
+```json
 {
+  "producten": {
+    "HB Color": { "verpakkingen": [25,10], "max_klein": 1 },
+    "OS Color": { "verpakkingen": [25,10], "max_klein": 1 },
+    "Color Top": { "verpakkingen": [25,10], "max_klein": 1 },
+    "St100/Fas100": { "verpakkingen": [25,10], "max_klein": 1 },
+
+    "Primer PF": { "verpakkingen": [30] },
+    "Pur Primer S 2K": { "verpakkingen": [10] },
+    "Polyaspartic": { "verpakkingen": [7.5] },
+    "Clearcoat AG": { "verpakkingen": [10] },
+
+    "Flakes": { "verpakkingen": [25] },
+    "Mortelzand 04/08": { "verpakkingen": [25] },
+
+    "Slijtlaag 02/04": { "verpakkingen": [25] },
+    "Slijtlaag 03/08": { "verpakkingen": [25] },
+
+    "BS2000": { "verpakkingen": [25,10], "max_klein": 1 },
+    "BS3000": { "verpakkingen": [25,10], "max_klein": 1 },
+    "BS4000": { "verpakkingen": [25,10], "max_klein": 1 },
+
+    "Fas100": { "verpakkingen": [25,10], "max_klein": 1 }
+  },
+
   "systemen": {
+
     "Rolcoating Basic": {
       "omschrijving": [
         "Laag 1: HB color 350gr.",
         "Laag 2: HB color 350gr."
+      ],
+      "materialen": [
+        { "product": "HB Color", "kg_m2": 0.35 },
+        { "product": "HB Color", "kg_m2": 0.35 }
       ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500","500-1000","1000+"],
       "prijzen": {
@@ -19,6 +49,11 @@
         "Laag 2: Primer PF - 1,5Kg.",
         "Laag 3: HB color 350gr."
       ],
+      "materialen": [
+        { "product": "St100/Fas100", "kg_m2": 0.25 },
+        { "product": "Primer PF", "kg_m2": 1.5 },
+        { "product": "HB Color", "kg_m2": 0.35 }
+      ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500","500-1000","1000+"],
       "prijzen": {
         "1": [81.14,63.49,60.00,57.17,52.15,49.64,46.31,41.44,34.00,28.76],
@@ -32,6 +67,10 @@
         "Laag 1: St100/Fas100 250gr.",
         "Laag 2: OS Color 1,5Kg."
       ],
+      "materialen": [
+        { "product": "St100/Fas100", "kg_m2": 0.25 },
+        { "product": "OS Color", "kg_m2": 1.5 }
+      ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500","500-1000","1000+"],
       "prijzen": {
         "1": [65.35,57.97,54.06,51.22,48.09,46.05,43.09,39.17,31.59,25.22],
@@ -44,6 +83,11 @@
       "omschrijving": [
         "Laag 1: St100/Fas100 250gr.",
         "Laag 2: OS Color 2Kg. - Gevuld: 01/03 1Kg."
+      ],
+      "materialen": [
+        { "product": "St100/Fas100", "kg_m2": 0.25 },
+        { "product": "OS Color", "kg_m2": 2.0 },
+        { "product": "Mortelzand 04/08", "kg_m2": 1.0 }
       ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500","500-1000","1000+"],
       "prijzen": {
@@ -60,6 +104,12 @@
         "Laag 3: Slijtlaag 02/04 vol/zat",
         "Laag 4: Color Top 500gr."
       ],
+      "materialen": [
+        { "product": "Pur Primer S 2K", "kg_m2": 0.25 },
+        { "product": "St100/Fas100", "kg_m2": 0.25 },
+        { "product": "Slijtlaag 02/04", "kg_m2": 5.0 },
+        { "product": "Color Top", "kg_m2": 0.50 }
+      ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500","500-1000","1000+"],
       "prijzen": {
         "1": [77.31,63.15,57.49,54.21,49.63,48.33,46.09,40.99,35.15,29.27],
@@ -75,6 +125,12 @@
         "Laag 3: Slijtlaag 03/08 vol/zat",
         "Laag 4: Color Top 800gr."
       ],
+      "materialen": [
+        { "product": "Pur Primer S 2K", "kg_m2": 0.25 },
+        { "product": "St100/Fas100", "kg_m2": 0.25 },
+        { "product": "Slijtlaag 03/08", "kg_m2": 5.0 },
+        { "product": "Color Top", "kg_m2": 0.80 }
+      ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500","500-1000","1000+"],
       "prijzen": {
         "1": [80.21,66.05,60.39,57.11,52.53,51.23,48.99,43.89,38.05,32.17],
@@ -83,7 +139,6 @@
       }
     },
 
-
     "Flakecoating": {
       "omschrijving": [
         "Laag 1: Pur Primer S 2K - 300gr.",
@@ -91,6 +146,13 @@
         "Laag 3: Flakes - 1Kg.",
         "Laag 4: Polyaspartic transparant - 300gr.",
         "Laag 5: Clearcoat AG - 100gr."
+      ],
+      "materialen": [
+        { "product": "Pur Primer S 2K", "kg_m2": 0.30 },
+        { "product": "Polyaspartic", "kg_m2": 0.50 },
+        { "product": "Flakes", "kg_m2": 1.0 },
+        { "product": "Polyaspartic", "kg_m2": 0.30 },
+        { "product": "Clearcoat AG", "kg_m2": 0.10 }
       ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500"],
       "prijzen": {
@@ -108,6 +170,13 @@
         "Laag 4: Polyaspartic transparant - 300gr.",
         "Laag 5: Clearcoat AG - 100gr."
       ],
+      "materialen": [
+        { "product": "Pur Primer S 2K", "kg_m2": 0.30 },
+        { "product": "Polyaspartic", "kg_m2": 0.50 },
+        { "product": "Mortelzand 04/08", "kg_m2": 2.0 },
+        { "product": "Polyaspartic", "kg_m2": 0.30 },
+        { "product": "Clearcoat AG", "kg_m2": 0.10 }
+      ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500"],
       "prijzen": {
         "1": [93.42,78.57,73.75,70.11,64.62,61.78,57.84,53.96],
@@ -120,6 +189,10 @@
       "omschrijving": [
         "Laag 1: Bs3000 250gr.",
         "Laag 2: Bs3000 250gr."
+      ],
+      "materialen": [
+        { "product": "BS3000", "kg_m2": 0.25 },
+        { "product": "BS3000", "kg_m2": 0.25 }
       ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500"],
       "prijzen": {
@@ -135,6 +208,11 @@
         "Laag 2: Bs4000 1,5Kg.",
         "Laag 3: Bs3000 250gr."
       ],
+      "materialen": [
+        { "product": "BS2000", "kg_m2": 0.25 },
+        { "product": "BS4000", "kg_m2": 1.5 },
+        { "product": "BS3000", "kg_m2": 0.25 }
+      ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500"],
       "prijzen": {
         "1": [84.74,67.09,63.61,60.77,55.75,53.24,49.91,45.04],
@@ -147,6 +225,9 @@
       "omschrijving": [
         "Laag 1: Fas100 350gr."
       ],
+      "materialen": [
+        { "product": "Fas100", "kg_m2": 0.35 }
+      ],
       "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500","500-1000","1000+"],
       "prijzen": {
         "1": [29.28,23.10,20.39,18.76,16.82,15.98,15.42,13.86,10.86,8.10],
@@ -157,86 +238,42 @@
   },
 
   "extra_systemen": {
+
     "AG lak": {
-      "staffel": [
-        "30-50",
-        "50-70",
-        "70-90",
-        "90-120",
-        "120-150",
-        "150-200",
-        "200-300",
-        "300-500"
+      "materialen": [
+        { "product": "Clearcoat AG", "kg_m2": 0.10 }
       ],
+      "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500"],
       "prijzen": {
-        "1": [39, 30, 29, 28, 25, 23, 20, 17],
-        "2": [45, 34, 33, 32, 28, 26, 22, 19],
-        "3": [52, 39, 38, 37, 32, 29, 25, 21]
+        "1": [39,30,29,28,25,23,20,17],
+        "2": [45,34,33,32,28,26,22,19],
+        "3": [52,39,38,37,32,29,25,21]
       }
     },
 
     "extra uitvlaklaag": {
-      "staffel": [
-        "30-50",
-        "50-70",
-        "70-90",
-        "90-120",
-        "120-150",
-        "150-200",
-        "200-300",
-        "300-500"
+      "materialen": [
+        { "product": "Primer PF", "kg_m2": 1.5 }
       ],
+      "staffel": ["30-50","50-70","70-90","90-120","120-150","150-200","200-300","300-500"],
       "prijzen": {
-        "1": [26, 20, 19, 18, 17, 17, 16, 14],
-        "2": [30, 23, 22, 21, 19, 19, 18, 15],
-        "3": [34, 26, 24, 23, 21, 21, 20, 17]
+        "1": [26,20,19,18,17,17,16,14],
+        "2": [30,23,22,21,19,19,18,15],
+        "3": [34,26,24,23,21,21,20,17]
       }
     }
+
   },
 
   "extras": {
-    "DecoFlakes": {
-      "naam": "DecoFlakes",
-      "type": "per_m2",
-      "prijs": 2.50
-    },
-    "DuraKorrel": {
-      "naam": "DuraKorrel",
-      "type": "per_m2",
-      "prijs": 16.00
-    },
-    "ADD250": {
-      "naam": "ADD250",
-      "type": "per_m2",
-      "prijs": 2.50
-    },
-    "toplaag BS3000": {
-      "naam": "toplaag BS3000",
-      "type": "per_m2",
-      "prijs": 0.00
-    },
-    "aftop WHG": {
-      "naam": "aftop WHG",
-      "type": "per_m2",
-      "prijs": 5.50
-    },
-    "giet 1,5 WHG": {
-      "naam": "giet 1,5 WHG",
-      "type": "per_m2",
-      "prijs": 11.24
-    },
-    "giet 2 WHG": {
-      "naam": "giet 2 WHG",
-      "type": "per_m2",
-      "prijs": 14.98
-    },
-    "externe keuring": {
-      "naam": "externe keuring",
-      "type": "per_m2",
-      "prijs": 0.00
-    }
+    "DecoFlakes": { "naam": "DecoFlakes", "type": "per_m2", "prijs": 2.50 },
+    "DuraKorrel": { "naam": "DuraKorrel", "type": "per_m2", "prijs": 16.00 },
+    "ADD250": { "naam": "ADD250", "type": "per_m2", "prijs": 2.50 },
+    "toplaag BS3000": { "naam": "toplaag BS3000", "type": "per_m2", "prijs": 0.00 },
+    "aftop WHG": { "naam": "aftop WHG", "type": "per_m2", "prijs": 5.50 },
+    "giet 1,5 WHG": { "naam": "giet 1,5 WHG", "type": "per_m2", "prijs": 11.24 },
+    "giet 2 WHG": { "naam": "giet 2 WHG", "type": "per_m2", "prijs": 14.98 },
+    "externe keuring": { "naam": "externe keuring", "type": "per_m2", "prijs": 0.00 }
   }
 }
-
-
-
+```
