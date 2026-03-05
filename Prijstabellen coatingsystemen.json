@@ -1,4 +1,4 @@
-```json
+
 {
   "producten": {
     "HB Color": { "verpakkingen": [25,10], "max_klein": 1 },
@@ -276,4 +276,4 @@
     "externe keuring": { "naam": "externe keuring", "type": "per_m2", "prijs": 0.00 }
   }
 }
-```
+
