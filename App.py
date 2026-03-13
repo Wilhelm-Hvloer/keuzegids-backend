@@ -485,6 +485,57 @@ def calculate_polijst_price():
     })
 
 # =========================
+# API: MATERIALEN (BESTELLIJST)
+# =========================
+@app.route("/api/materialen", methods=["POST"])
+def bereken_materialen():
+
+    data = request.json or {}
+    fases = data.get("fases", [])
+
+    materialen = {}
+
+    for fase in fases:
+
+        systeem = fase.get("gekozenSysteem")
+        oppervlakte = fase.get("gekozenOppervlakte")
+
+        if not systeem or not oppervlakte:
+            continue
+
+        try:
+            oppervlakte = float(oppervlakte)
+        except (ValueError, TypeError):
+            continue
+
+        # 🔑 Systeemnaam normaliseren (zelfde logica als /api/price)
+        systeem_key = str(systeem).replace("Sys:", "").strip()
+
+        systeem_data = PRIJS_DATA.get("systemen", {}).get(systeem_key)
+        if not systeem_data:
+            continue
+
+        for mat in systeem_data.get("materialen", []):
+
+            kg = (mat.get("kg_m2", 0) or 0) * oppervlakte
+            product = mat.get("product")
+
+            if not product:
+                continue
+
+            if product not in materialen:
+                materialen[product] = {
+                    "kg": 0,
+                    "verpakking": mat.get("verpakking", [25, 10])
+                }
+
+            materialen[product]["kg"] += kg
+
+    return jsonify({
+        "materialen": materialen
+    }), 200
+
+# =========================
 # HEALTHCHECK
 # =========================
 @app.route("/")
