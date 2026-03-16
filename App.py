@@ -427,6 +427,13 @@ def calculate_polijst_price():
     klanttype = data.get("klanttype")
     oppervlakte = data.get("oppervlakte")
 
+    # 🔧 NIEUW
+    curing = data.get("curing", False)
+    meerwerk_uren = float(data.get("meerwerk_uren", 0) or 0)
+
+    UURTARIEF = 120
+    CURING_PRIJS_PER_M2 = 10
+
     if not systeem or not klanttype or oppervlakte is None:
         return jsonify({"error": "systeem, klanttype en oppervlakte verplicht"}), 400
 
@@ -467,13 +474,27 @@ def calculate_polijst_price():
     if prijs is None:
         return jsonify({"error": "geen passende staffel"}), 400
 
-    # Vast bedrag of m² prijs bepalen
+    # =========================
+    # BASISPRIJS
+    # =========================
     if gekozen_index <= vast_index:
         totaalprijs = prijs
         prijs_per_m2 = None
     else:
         totaalprijs = round(prijs * oppervlakte)
         prijs_per_m2 = prijs
+
+    # =========================
+    # EXTRA: CURING VERWIJDEREN
+    # =========================
+    if curing:
+        totaalprijs += round(oppervlakte * CURING_PRIJS_PER_M2)
+
+    # =========================
+    # EXTRA: MEERWERK UREN
+    # =========================
+    if meerwerk_uren > 0:
+        totaalprijs += round(meerwerk_uren * UURTARIEF)
 
     return jsonify({
         "systeem": systeem,
