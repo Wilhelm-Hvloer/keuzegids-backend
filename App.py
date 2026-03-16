@@ -415,6 +415,7 @@ def calculate_price():
         "totaalprijs": totaalprijs
     })
 
+
 # =========================
 # API: POLIJST PRIJS
 # =========================
@@ -427,7 +428,6 @@ def calculate_polijst_price():
     klanttype = data.get("klanttype")
     oppervlakte = data.get("oppervlakte")
 
-    # 🔧 NIEUW
     curing = data.get("curing", False)
     meerwerk_uren = float(data.get("meerwerk_uren", 0) or 0)
 
@@ -484,17 +484,37 @@ def calculate_polijst_price():
         totaalprijs = round(prijs * oppervlakte)
         prijs_per_m2 = prijs
 
+    extra_details = []
+
     # =========================
     # EXTRA: CURING VERWIJDEREN
     # =========================
     if curing:
-        totaalprijs += round(oppervlakte * CURING_PRIJS_PER_M2)
+        bedrag = round(oppervlakte * CURING_PRIJS_PER_M2)
+        totaalprijs += bedrag
+
+        extra_details.append({
+            "key": "curing_verwijderen",
+            "naam": "Curing compound verwijderen",
+            "totaal": bedrag,
+            "forced": False
+        })
 
     # =========================
     # EXTRA: MEERWERK UREN
     # =========================
     if meerwerk_uren > 0:
-        totaalprijs += round(meerwerk_uren * UURTARIEF)
+        bedrag = round(meerwerk_uren * UURTARIEF)
+        totaalprijs += bedrag
+
+        extra_details.append({
+            "key": "meerwerk_polijsten",
+            "naam": "Meerwerk polijsten",
+            "uren": meerwerk_uren,
+            "tarief": UURTARIEF,
+            "totaal": bedrag,
+            "forced": False
+        })
 
     return jsonify({
         "systeem": systeem,
@@ -502,8 +522,10 @@ def calculate_polijst_price():
         "oppervlakte": oppervlakte,
         "prijs_per_m2": prijs_per_m2,
         "totaalprijs": totaalprijs,
-        "omschrijving": systeem_data.get("omschrijving", "")
+        "omschrijving": systeem_data.get("omschrijving", []),
+        "extras": extra_details
     })
+
 
 # =========================
 # API: MATERIALEN (BESTELLIJST)
