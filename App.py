@@ -475,14 +475,16 @@ def calculate_polijst_price():
         return jsonify({"error": "geen passende staffel"}), 400
 
     # =========================
-    # BASISPRIJS
+    # BASISPRIJS (ZONDER EXTRAS)
     # =========================
     if gekozen_index <= vast_index:
-        totaalprijs = prijs
+        basis_totaal = prijs
         prijs_per_m2 = None
     else:
-        totaalprijs = round(prijs * oppervlakte)
+        basis_totaal = round(prijs * oppervlakte)
         prijs_per_m2 = prijs
+
+    totaalprijs = basis_totaal  # 🔑 startpunt = basis
 
     extra_details = []
 
@@ -524,6 +526,7 @@ def calculate_polijst_price():
         "klanttype": klanttype,
         "oppervlakte": oppervlakte,
         "prijs_per_m2": prijs_per_m2,
+        "basis_totaal": basis_totaal,   # 🔑 NIEUW (DIT MIS JE)
         "totaalprijs": totaalprijs,
         "omschrijving": systeem_data.get("omschrijving", []),
         "extras": extra_details
