@@ -196,7 +196,7 @@ def calculate_price():
     xtr_uren = float(data.get("xtr_coating_verwijderen_uren", 0) or 0)
     XTR_TARIEF = 120
 
-    meerwerk_uren = float(data.get("meerwerk_bedrag", 0) or 0)
+    meerwerk_uren = float(data.get("meerwerk_uren", 0) or 0)
     meerwerk_toelichting = data.get("meerwerk_toelichting", "")
     MEERWERK_TARIEF = 120
 
