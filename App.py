@@ -557,7 +557,7 @@ def bereken_materialen():
         except (ValueError, TypeError):
             continue
 
-        # 🔑 Systeemnaam normaliseren (zelfde logica als /api/price)
+        # 🔑 Systeemnaam normaliseren
         systeem_key = str(systeem).replace("Sys:", "").strip()
 
         systeem_data = PRIJS_DATA.get("systemen", {}).get(systeem_key)
@@ -572,10 +572,14 @@ def bereken_materialen():
             if not product:
                 continue
 
+            # 🔥 HAAL VERPAKKINGEN UIT PRODUCTEN (NIET UIT mat)
+            product_data = PRIJS_DATA.get("producten", {}).get(product, {})
+            verpakkingen = product_data.get("verpakkingen", [])
+
             if product not in materialen:
                 materialen[product] = {
                     "kg": 0,
-                    "verpakking": mat.get("verpakking", [25, 10])
+                    "verpakkingen": verpakkingen  # 🔑 FIX
                 }
 
             materialen[product]["kg"] += kg
@@ -583,6 +587,9 @@ def bereken_materialen():
     return jsonify({
         "materialen": materialen
     }), 200
+
+
+
 
 # =========================
 # HEALTHCHECK
