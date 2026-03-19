@@ -548,6 +548,7 @@ def bereken_materialen():
 
         systeem = fase.get("gekozenSysteem")
         oppervlakte = fase.get("gekozenOppervlakte")
+        kleur = fase.get("kleur")  # 🔥 NIEUW
 
         if not systeem or not oppervlakte:
             continue
@@ -572,14 +573,17 @@ def bereken_materialen():
             if not product:
                 continue
 
-            # 🔥 HAAL VERPAKKINGEN UIT PRODUCTEN (NIET UIT mat)
+            # 🔥 PRODUCT DATA UIT JSON
             product_data = PRIJS_DATA.get("producten", {}).get(product, {})
             verpakkingen = product_data.get("verpakkingen", [])
+            kleur_verplicht = product_data.get("kleur_verplicht", False)
 
             if product not in materialen:
                 materialen[product] = {
                     "kg": 0,
-                    "verpakkingen": verpakkingen  # 🔑 FIX
+                    "verpakkingen": verpakkingen,
+                    "kleur_verplicht": kleur_verplicht,
+                    "kleur": kleur  # 🔥 NIEUW
                 }
 
             materialen[product]["kg"] += kg
