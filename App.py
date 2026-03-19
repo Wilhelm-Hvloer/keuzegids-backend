@@ -509,13 +509,16 @@ def calculate_polijst_price():
 
         extra_details.append({
             "key": "meerwerk_polijsten",
-            "naam": "Meerwerk polijsten",
+            "naam": f"Meerwerk ({int(meerwerk_uren)} uur)",
             "uren": meerwerk_uren,
             "tarief": UURTARIEF,
             "totaal": bedrag,
             "forced": False
         })
 
+    # =========================
+    # RESPONSE
+    # =========================
     return jsonify({
         "systeem": systeem,
         "klanttype": klanttype,
