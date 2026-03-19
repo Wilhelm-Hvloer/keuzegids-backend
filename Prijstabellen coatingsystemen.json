@@ -1,12 +1,12 @@
 
 {
   "producten": {
-    "HB Color": { "verpakkingen": [25,10], "max_klein": 1 },
-    "OS Color": { "verpakkingen": [25,10], "max_klein": 1 },
-    "Color Top": { "verpakkingen": [25,10], "max_klein": 1 },
+    "HB Color": { "verpakkingen": [25,10], "max_klein": 1, "kleur_verplicht": true },
+    "OS Color": { "verpakkingen": [25,10], "max_klein": 1, "kleur_verplicht": true },
+    "Color Top": { "verpakkingen": [25,10], "max_klein": 1, "kleur_verplicht": true },
     "St100/Fas100": { "verpakkingen": [25,10], "max_klein": 1 },
 
-    "Primer PF": { "verpakkingen": [30] },
+    "Primer PF": { "verpakkingen": [30], "kleur_verplicht": true },
     "Pur Primer S 2K": { "verpakkingen": [10] },
     "Polyaspartic": { "verpakkingen": [7.5] },
     "Clearcoat AG": { "verpakkingen": [10] },
@@ -17,9 +17,9 @@
     "Slijtlaag 02/04": { "verpakkingen": [25] },
     "Slijtlaag 03/08": { "verpakkingen": [25] },
 
-    "BS2000": { "verpakkingen": [25,10], "max_klein": 1 },
-    "BS3000": { "verpakkingen": [25,10], "max_klein": 1 },
-    "BS4000": { "verpakkingen": [25,10], "max_klein": 1 },
+    "BS2000": { "verpakkingen": [25,10], "max_klein": 1, "kleur_verplicht": true },
+    "BS3000": { "verpakkingen": [25,10], "max_klein": 1, "kleur_verplicht": true },
+    "BS4000": { "verpakkingen": [25,10], "max_klein": 1, "kleur_verplicht": true },
 
     "Fas100": { "verpakkingen": [25,10], "max_klein": 1 }
   },
