@@ -35,7 +35,11 @@ try:
     with open(os.path.join(BASE_DIR, "Prijstabellen polijsten.json"), encoding="utf-8") as f:
         POLIJST_DATA = json.load(f)
 
-    print("✅ JSON bestanden succesvol geladen")
+    # 🔥 NIEUW: planning JSON
+    with open(os.path.join(BASE_DIR, "tabellen_planning.json"), encoding="utf-8") as f:
+        PLANNING_DATA = json.load(f)
+
+    print("✅ JSON bestanden succesvol geladen (incl. planning)")
 
 except Exception as e:
     print("❌ FOUT bij laden JSON:", e)
@@ -49,6 +53,39 @@ def get_node(node_id):
         if node.get("id") == node_id:
             return node
     return None
+
+# =========================
+# PLANNING HELPERS
+# =========================
+
+import math
+
+def get_planning_systeem(systemen, naam):
+    systeem = next((s for s in systemen if s["naam"] == naam), None)
+
+    if not systeem:
+        raise ValueError(f"Systeem niet gevonden: {naam}")
+
+    while "planning_ref" in systeem:
+        ref = systeem["planning_ref"]
+        systeem = next((s for s in systemen if s["naam"] == ref), None)
+
+        if not systeem:
+            raise ValueError(f"planning_ref niet gevonden: {ref}")
+
+    return systeem
+
+
+def get_regel(bewerking, m2):
+    for regel in bewerking["regels"]:
+        if m2 <= regel["max_m2"]:
+            return regel
+    return bewerking["regels"][-1]
+
+
+def afronden_halve_uren(uren):
+    return math.ceil(uren * 2) / 2
+
 
 # =========================
 # HULPFUNCTIE: NODE EXPANDEN (BACKEND-LEIDEND)
@@ -121,7 +158,71 @@ def resolve_next_node(current_node, choice_index):
     return next_node
 
 
+# =========================
+# PLANNING BEREKENING
+# =========================
 
+def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1):
+
+    systeem = get_planning_systeem(systemen, systeem_naam)
+
+    reistijd_uren = (reistijd_min * 2) / 60
+    max_werk_per_persoon = 10 - reistijd_uren
+
+    dagen = {}
+
+    for b in systeem["bewerkingen"]:
+        regel = get_regel(b, m2)
+        uren = regel["uur_per_m2"] * m2
+
+        # ruimtes toeslag
+        if ruimtes == 2:
+            uren *= 1.2
+        elif ruimtes == 3:
+            uren *= 1.4
+
+        dag = b["dag"]
+
+        if dag not in dagen:
+            dagen[dag] = []
+
+        dagen[dag].append({
+            "naam": b["naam"],
+            "uren": uren
+        })
+
+    planning = []
+
+    for dag in sorted(dagen.keys()):
+        taken = dagen[dag]
+
+        totaal_uren = sum(t["uren"] for t in taken)
+
+        # 🔥 voorkom crash bij hoge reistijd
+        if max_werk_per_persoon <= 0:
+            raise ValueError("Reistijd te hoog t.o.v. werkdag")
+
+        man = max(1, math.ceil(totaal_uren / max_werk_per_persoon))
+
+        # werkuren per persoon
+        uren_per_persoon = totaal_uren / man
+        uren_per_persoon = afronden_halve_uren(uren_per_persoon)
+
+        # reistijd optellen en afronden
+        totaal_per_persoon = afronden_halve_uren(uren_per_persoon + reistijd_uren)
+
+        planning.append({
+            "dag": dag,
+            "man": man,
+            "uren_per_persoon": totaal_per_persoon,
+            "werk_uren_per_persoon": uren_per_persoon,
+            "reistijd_per_persoon": reistijd_uren,
+            "totaal_werk": round(totaal_uren, 2),
+            "totaal_incl_reistijd": round(totaal_uren + (man * reistijd_uren), 2),
+            "werkzaamheden": [t["naam"] for t in taken]
+        })
+
+    return planning
 
 
 
@@ -531,6 +632,38 @@ def calculate_polijst_price():
         "omschrijving": systeem_data.get("omschrijving", []),
         "extras": extra_details
     })
+
+
+# =========================
+# API: PLANNING
+# =========================
+@app.route("/api/planning", methods=["POST"])
+def planning_endpoint():
+
+    data = request.json or {}
+
+    systeem = data.get("systeem")
+    m2 = data.get("m2")
+    reistijd = data.get("reistijd", 0)
+    ruimtes = data.get("ruimtes", 1)
+
+    if not systeem or m2 is None:
+        return jsonify({"error": "systeem en m2 verplicht"}), 400
+
+    try:
+        planning = bereken_planning(
+            systemen=PLANNING_DATA["systemen"],
+            systeem_naam=systeem,
+            m2=float(m2),
+            reistijd_min=float(reistijd),
+            ruimtes=int(ruimtes)
+        )
+
+        return jsonify({"planning": planning}), 200
+
+    except Exception as e:
+        print("❌ planning error:", e)
+        return jsonify({"error": str(e)}), 500
 
 
 # =========================
