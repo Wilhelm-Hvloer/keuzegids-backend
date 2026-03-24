@@ -1,0 +1,352 @@
+{
+  "systemen": [
+
+    {
+      "naam": "Rolcoating Basic",
+      "aliases": ["DOS-coating Basic"],
+      "bewerkingen": [
+        {
+          "naam": "schuren",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.188, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.129, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.115, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.101, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.087, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.078, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.068, "man": 2 },
+            { "max_m2": 300, "uur_per_m2": 0.061, "man": 2 },
+            { "max_m2": 500, "uur_per_m2": 0.044, "man": 2 },
+            { "max_m2": 1000, "uur_per_m2": 0.03, "man": 2 }
+          ]
+        },
+        {
+          "naam": "primer",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.04, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 2 },
+            { "max_m2": 300, "uur_per_m2": 0.03, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.024, "man": 3 },
+            { "max_m2": 1000, "uur_per_m2": 0.015, "man": 3 }
+          ]
+        },
+        {
+          "naam": "1x rollen",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.134, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.097, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.092, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.089, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.075, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.067, "man": 3 },
+            { "max_m2": 200, "uur_per_m2": 0.055, "man": 3 },
+            { "max_m2": 300, "uur_per_m2": 0.043, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.03, "man": 3 },
+            { "max_m2": 1000, "uur_per_m2": 0.018, "man": 3 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "naam": "Rolcoating Premium",
+      "aliases": ["DOS-coating Premium"],
+      "bewerkingen": [
+        {
+          "naam": "schuren",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.188, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.129, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.115, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.101, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.087, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.078, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.068, "man": 2 },
+            { "max_m2": 300, "uur_per_m2": 0.061, "man": 2 },
+            { "max_m2": 500, "uur_per_m2": 0.044, "man": 2 },
+            { "max_m2": 1000, "uur_per_m2": 0.03, "man": 2 }
+          ]
+        },
+        {
+          "naam": "primer",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.04, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 2 },
+            { "max_m2": 300, "uur_per_m2": 0.03, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.024, "man": 3 },
+            { "max_m2": 1000, "uur_per_m2": 0.015, "man": 3 }
+          ]
+        },
+        {
+          "naam": "schrappen",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.161, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.113, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.104, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.098, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.087, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.086, "man": 3 },
+            { "max_m2": 200, "uur_per_m2": 0.081, "man": 3 },
+            { "max_m2": 300, "uur_per_m2": 0.06, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.042, "man": 4 },
+            { "max_m2": 1000, "uur_per_m2": 0.025, "man": 5 }
+          ]
+        },
+        {
+          "naam": "1x rollen",
+          "dag": 3,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.134, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.097, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.092, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.089, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.075, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.067, "man": 3 },
+            { "max_m2": 200, "uur_per_m2": 0.055, "man": 3 },
+            { "max_m2": 300, "uur_per_m2": 0.043, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.03, "man": 3 },
+            { "max_m2": 1000, "uur_per_m2": 0.018, "man": 3 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "naam": "Rolcoating Optimum",
+      "bewerkingen": [
+        {
+          "naam": "stralen",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.163, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.114, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.093, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.081, "man": 1 },
+            { "max_m2": 120, "uur_per_m2": 0.068, "man": 1 },
+            { "max_m2": 150, "uur_per_m2": 0.063, "man": 1 },
+            { "max_m2": 200, "uur_per_m2": 0.059, "man": 1 },
+            { "max_m2": 300, "uur_per_m2": 0.047, "man": 1 },
+            { "max_m2": 500, "uur_per_m2": 0.028, "man": 1 },
+            { "max_m2": 1000, "uur_per_m2": 0.014, "man": 1 }
+          ]
+        },
+        {
+          "naam": "2x primer",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.084, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.080, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.077, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.073, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.068, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.064, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.062, "man": 3 },
+            { "max_m2": 300, "uur_per_m2": 0.061, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.048, "man": 4 },
+            { "max_m2": 1000, "uur_per_m2": 0.03, "man": 4 }
+          ]
+        },
+        {
+          "naam": "inzanden",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.021, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.02, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.019, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.018, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.017, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.016, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.016, "man": 3 },
+            { "max_m2": 300, "uur_per_m2": 0.015, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.024, "man": 4 },
+            { "max_m2": 1000, "uur_per_m2": 0.024, "man": 4 }
+          ]
+        },
+        {
+          "naam": "afzanden",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.04, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 2 },
+            { "max_m2": 300, "uur_per_m2": 0.03, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.03, "man": 3 },
+            { "max_m2": 1000, "uur_per_m2": 0.03, "man": 3 }
+          ]
+        },
+        {
+          "naam": "aftoppen",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.161, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.113, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.104, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.098, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.087, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.086, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.081, "man": 2 },
+            { "max_m2": 300, "uur_per_m2": 0.06, "man": 3 },
+            { "max_m2": 500, "uur_per_m2": 0.042, "man": 3 },
+            { "max_m2": 1000, "uur_per_m2": 0.025, "man": 3 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "naam": "Flakecoating",
+      "aliases": ["Mortelcoating"],
+      "bewerkingen": [
+        {
+          "naam": "schuren",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.188, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.129, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.115, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.101, "man": 1 },
+            { "max_m2": 120, "uur_per_m2": 0.087, "man": 1 },
+            { "max_m2": 150, "uur_per_m2": 0.078, "man": 1 },
+            { "max_m2": 200, "uur_per_m2": 0.068, "man": 1 }
+          ]
+        },
+        {
+          "naam": "primer",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.04, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 2 }
+          ]
+        },
+        {
+          "naam": "schrappen",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.134, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.097, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.092, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.089, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.075, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.067, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.055, "man": 2 }
+          ]
+        },
+        {
+          "naam": "invlokken",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.021, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.02, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.019, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.018, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.017, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.016, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.016, "man": 2 }
+          ]
+        },
+        {
+          "naam": "afvlokken",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.063, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.06, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.058, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.055, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.051, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.048, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.047, "man": 2 }
+          ]
+        },
+        {
+          "naam": "sealen",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.04, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 2 }
+          ]
+        },
+        {
+          "naam": "lakken",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.04, "man": 2 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 2 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 2 }
+          ]
+        }
+      ]
+    },
+
+    {
+      "naam": "Boeren coating",
+      "bewerkingen": [
+        {
+          "naam": "stralen",
+          "dag": 1,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.040, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 1 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 1 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 1 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 1 },
+            { "max_m2": 300, "uur_per_m2": 0.030, "man": 1 },
+            { "max_m2": 500, "uur_per_m2": 0.024, "man": 1 },
+            { "max_m2": 1000, "uur_per_m2": 0.015, "man": 1 }
+          ]
+        },
+        {
+          "naam": "primer",
+          "dag": 2,
+          "regels": [
+            { "max_m2": 30, "uur_per_m2": 0.042, "man": 1 },
+            { "max_m2": 50, "uur_per_m2": 0.040, "man": 1 },
+            { "max_m2": 70, "uur_per_m2": 0.039, "man": 1 },
+            { "max_m2": 90, "uur_per_m2": 0.037, "man": 2 },
+            { "max_m2": 120, "uur_per_m2": 0.034, "man": 2 },
+            { "max_m2": 150, "uur_per_m2": 0.032, "man": 2 },
+            { "max_m2": 200, "uur_per_m2": 0.031, "man": 2 },
+            { "max_m2": 300, "uur_per_m2": 0.030, "man": 2 },
+            { "max_m2": 500, "uur_per_m2": 0.024, "man": 3 },
+            { "max_m2": 1000, "uur_per_m2": 0.015, "man": 3 }
+          ]
+        }
+      ]
+    }
+  ]
+}
