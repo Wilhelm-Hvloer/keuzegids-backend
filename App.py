@@ -60,18 +60,43 @@ def get_node(node_id):
 
 import math
 
-def get_planning_systeem(systemen, naam):
-    systeem = next((s for s in systemen if s["naam"] == naam), None)
+def resolve_systeem_naam(systemen, naam):
+    naam_lower = naam.lower()
 
-    if not systeem:
+    for systeem in systemen:
+        # directe naam
+        if systeem["naam"].lower() == naam_lower:
+            return systeem["naam"]
+
+        # 🔥 aliases check
+        if "aliases" in systeem:
+            for alias in systeem["aliases"]:
+                if alias.lower() == naam_lower:
+                    return systeem["naam"]
+
+    return None
+
+
+def get_planning_systeem(systemen, naam):
+    # 🔥 eerst naam resolven (incl. aliases)
+    resolved_naam = resolve_systeem_naam(systemen, naam)
+
+    if not resolved_naam:
         raise ValueError(f"Systeem niet gevonden: {naam}")
 
-    while "planning_ref" in systeem:
-        ref = systeem["planning_ref"]
-        systeem = next((s for s in systemen if s["naam"] == ref), None)
+    systeem = next((s for s in systemen if s["naam"] == resolved_naam), None)
 
-        if not systeem:
+    # 🔥 planning_ref volgen
+    while systeem.get("planning_ref"):
+        ref = systeem["planning_ref"]
+
+        # ook hier weer alias-safe
+        resolved_ref = resolve_systeem_naam(systemen, ref)
+
+        if not resolved_ref:
             raise ValueError(f"planning_ref niet gevonden: {ref}")
+
+        systeem = next((s for s in systemen if s["naam"] == resolved_ref), None)
 
     return systeem
 
@@ -161,6 +186,9 @@ def resolve_next_node(current_node, choice_index):
 
     # 3️⃣ Geen automatische doorsprong meer
     return next_node
+
+
+
 
 
 # =========================
