@@ -2,7 +2,7 @@
   "systemen": [
     {
       "naam": "Rolcoating Basic",
-      "aliases": ["DOS-coating Basic"]
+      "aliases": ["DOS-coating Basic"],
       "bewerkingen": [
         {
           "naam": "schuren",
@@ -65,7 +65,7 @@
 
     {
       "naam": "Rolcoating Premium",
-      "aliases": ["DOS-coating Premium"]
+      "aliases": ["DOS-coating Premium"],
       "bewerkingen": [
         {
           "naam": "schuren",
@@ -148,7 +148,7 @@
 
     {
       "naam": "Rolcoating Optimum",
-      "aliases": ["Rolcoating Extreme"]
+      "aliases": ["Rolcoating Extreme"],
       "bewerkingen": [
         {
           "naam": "stralen",
@@ -250,7 +250,7 @@
 
     {
       "naam": "Flakecoating",
-      "aliases": ["Mortelcoating"]
+      "aliases": ["Mortelcoating"],
       "bewerkingen": [
         {
           "naam": "schuren",
