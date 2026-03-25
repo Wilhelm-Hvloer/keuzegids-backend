@@ -77,10 +77,15 @@ def get_planning_systeem(systemen, naam):
 
 
 def get_regel(bewerking, m2):
+    gekozen = None
+
     for regel in bewerking["regels"]:
-        if m2 <= regel["max_m2"]:
-            return regel
-    return bewerking["regels"][-1]
+        if m2 >= regel["max_m2"]:
+            gekozen = regel
+        else:
+            break
+
+    return gekozen if gekozen else bewerking["regels"][0]
 
 
 def afronden_halve_uren(uren):
