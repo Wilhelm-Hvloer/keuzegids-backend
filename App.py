@@ -195,15 +195,24 @@ def resolve_next_node(current_node, choice_index):
 # PLANNING BEREKENING
 # =========================
 
-def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1):
+def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwerk=None):
+
+    if meerwerk is None:
+        meerwerk = []
 
     systeem = get_planning_systeem(systemen, systeem_naam)
 
     reistijd_uren = (reistijd_min * 2) / 60
     max_werk_per_persoon = 10 - reistijd_uren
 
+    if max_werk_per_persoon <= 0:
+        raise ValueError("Reistijd te hoog t.o.v. werkdag")
+
     dagen = {}
 
+    # =========================
+    # BASIS BEWERKINGEN
+    # =========================
     for b in systeem["bewerkingen"]:
         regel = get_regel(b, m2)
         uren = regel["uur_per_m2"] * m2
@@ -221,9 +230,33 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1):
 
         dagen[dag].append({
             "naam": b["naam"],
-            "uren": uren
+            "uren": uren,
+            "type": "standaard"
         })
 
+    # =========================
+    # 🔥 MEERWERK TOEVOEGEN
+    # =========================
+    for mw in meerwerk:
+        dag = mw.get("dag")
+
+        if dag is None:
+            continue
+
+        if dag not in dagen:
+            dagen[dag] = []
+
+        dagen[dag].append({
+            "naam": mw.get("naam", "meerwerk"),
+            "uren": float(mw.get("uren", 0)),
+            "type": "meerwerk"
+        })
+
+
+
+    # =========================
+    # PLANNING OPBOUWEN
+    # =========================
     planning = []
 
     for dag in sorted(dagen.keys()):
@@ -231,18 +264,15 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1):
 
         totaal_uren = sum(t["uren"] for t in taken)
 
-        # 🔥 voorkom crash bij hoge reistijd
-        if max_werk_per_persoon <= 0:
-            raise ValueError("Reistijd te hoog t.o.v. werkdag")
-
         man = max(1, math.ceil(totaal_uren / max_werk_per_persoon))
 
         # werkuren per persoon
-        uren_per_persoon = totaal_uren / man
-        uren_per_persoon = afronden_halve_uren(uren_per_persoon)
+        uren_per_persoon = afronden_halve_uren(totaal_uren / man)
 
-        # reistijd optellen en afronden
-        totaal_per_persoon = afronden_halve_uren(uren_per_persoon + reistijd_uren)
+        # reistijd optellen
+        totaal_per_persoon = afronden_halve_uren(
+            uren_per_persoon + reistijd_uren
+        )
 
         planning.append({
             "dag": dag,
@@ -252,7 +282,7 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1):
             "reistijd_per_persoon": reistijd_uren,
             "totaal_werk": round(totaal_uren, 2),
             "totaal_incl_reistijd": round(totaal_uren + (man * reistijd_uren), 2),
-            "werkzaamheden": [t["naam"] for t in taken]
+            "werkzaamheden": taken
         })
 
     return planning
@@ -700,6 +730,9 @@ def planning_endpoint():
     reistijd = data.get("reistijd", 0)
     ruimtes = data.get("ruimtes", 1)
 
+    # 🔥 NIEUW
+    meerwerk = data.get("meerwerk", [])
+
     if not systeem or m2 is None:
         return jsonify({"error": "systeem en m2 verplicht"}), 400
 
@@ -709,7 +742,8 @@ def planning_endpoint():
             systeem_naam=systeem,
             m2=float(m2),
             reistijd_min=float(reistijd),
-            ruimtes=int(ruimtes)
+            ruimtes=int(ruimtes),
+            meerwerk=meerwerk  # 🔥 DOORGEVEN
         )
 
         return jsonify({"planning": planning}), 200
@@ -717,6 +751,8 @@ def planning_endpoint():
     except Exception as e:
         print("❌ planning error:", e)
         return jsonify({"error": str(e)}), 500
+
+
 
 
 # =========================
