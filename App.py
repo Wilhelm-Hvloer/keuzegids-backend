@@ -551,7 +551,7 @@ def calculate_price():
 
 
 # =========================
-# API: POLIJST PRIJS
+# API: POLIJST PRIJS (GECORRIGEERD)
 # =========================
 @app.route("/api/polijst-price", methods=["POST"])
 def calculate_polijst_price():
@@ -563,7 +563,13 @@ def calculate_polijst_price():
     oppervlakte = data.get("oppervlakte")
 
     curing = data.get("curing", False)
+
+    # 🔥 NIEUW
     meerwerk_uren = float(data.get("meerwerk_uren", 0) or 0)
+    meerwerk_toelichting = data.get("meerwerk_toelichting", "")
+
+    materiaal_bedrag = float(data.get("materiaal_bedrag", 0) or 0)
+    materiaal_toelichting = data.get("materiaal_toelichting", "")
 
     UURTARIEF = 120
     CURING_PRIJS_PER_M2 = 10
@@ -609,7 +615,7 @@ def calculate_polijst_price():
         return jsonify({"error": "geen passende staffel"}), 400
 
     # =========================
-    # BASISPRIJS (ZONDER EXTRAS)
+    # BASISPRIJS
     # =========================
     if gekozen_index <= vast_index:
         basis_totaal = prijs
@@ -618,8 +624,7 @@ def calculate_polijst_price():
         basis_totaal = round(prijs * oppervlakte)
         prijs_per_m2 = prijs
 
-    totaalprijs = basis_totaal  # 🔑 startpunt = basis
-
+    totaalprijs = basis_totaal
     extra_details = []
 
     # =========================
@@ -637,18 +642,33 @@ def calculate_polijst_price():
         })
 
     # =========================
-    # EXTRA: MEERWERK UREN
+    # EXTRA: MEERWERK
     # =========================
     if meerwerk_uren > 0:
         bedrag = round(meerwerk_uren * UURTARIEF)
         totaalprijs += bedrag
 
         extra_details.append({
-            "key": "meerwerk_polijsten",
+            "key": "algemeen_meerwerk",  # 🔥 GELIJK AAN COATING
             "naam": f"Meerwerk ({int(meerwerk_uren)} uur)",
             "uren": meerwerk_uren,
             "tarief": UURTARIEF,
             "totaal": bedrag,
+            "toelichting": meerwerk_toelichting,
+            "forced": False
+        })
+
+    # =========================
+    # EXTRA: MATERIAAL
+    # =========================
+    if materiaal_bedrag > 0:
+        totaalprijs += materiaal_bedrag
+
+        extra_details.append({
+            "key": "extra_materiaal",
+            "naam": "Extra materiaal",
+            "totaal": materiaal_bedrag,
+            "toelichting": materiaal_toelichting,
             "forced": False
         })
 
@@ -660,7 +680,7 @@ def calculate_polijst_price():
         "klanttype": klanttype,
         "oppervlakte": oppervlakte,
         "prijs_per_m2": prijs_per_m2,
-        "basis_totaal": basis_totaal,   # 🔑 NIEUW (DIT MIS JE)
+        "basis_totaal": basis_totaal,
         "totaalprijs": totaalprijs,
         "omschrijving": systeem_data.get("omschrijving", []),
         "extras": extra_details
