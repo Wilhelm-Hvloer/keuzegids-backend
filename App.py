@@ -231,7 +231,8 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
         dagen[dag].append({
             "naam": b["naam"],
             "uren": round(uren, 1),
-            "type": "standaard"
+            "type": "standaard",
+            "min_man": regel.get("man", 1)
         })
 
     # =========================
@@ -248,11 +249,10 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
 
         dagen[dag].append({
             "naam": mw.get("naam", "meerwerk"),
-            "uren": float(mw.get("uren", 0)),
-            "type": "meerwerk"
+            "uren": round(float(mw.get("uren", 0)), 1),
+            "type": "meerwerk",
+            "min_man": 1  # 🔥 meerwerk heeft standaard geen min eis
         })
-
-
 
     # =========================
     # PLANNING OPBOUWEN
@@ -262,9 +262,16 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
     for dag in sorted(dagen.keys()):
         taken = dagen[dag]
 
-        totaal_uren = sum(t["uren"] for t in taken)
+        totaal_uren = round(sum(t["uren"] for t in taken), 1)
 
-        man = max(1, math.ceil(totaal_uren / max_werk_per_persoon))
+        # 🔥 berekening op uren
+        man_op_basis_van_uren = math.ceil(totaal_uren / max_werk_per_persoon)
+
+        # 🔥 minimale man uit systeemregels
+        min_man = max(t.get("min_man", 1) for t in taken)
+
+        # 🔥 definitieve man (belangrijkste fix)
+        man = max(man_op_basis_van_uren, min_man)
 
         # werkuren per persoon
         uren_per_persoon = afronden_halve_uren(totaal_uren / man)
@@ -286,7 +293,6 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
         })
 
     return planning
-
 
 
 
