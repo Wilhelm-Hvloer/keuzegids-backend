@@ -230,7 +230,7 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
 
         dagen[dag].append({
             "naam": b["naam"],
-            "uren": uren,
+            "uren": round(uren, 1),
             "type": "standaard"
         })
 
