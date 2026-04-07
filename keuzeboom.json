@@ -56,7 +56,7 @@
   {
     "id": "AAE",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "AAH"
     ]
@@ -150,7 +150,7 @@
   {
     "id": "AAR",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "AAS"
     ]
@@ -278,7 +278,7 @@
   {
     "id": "ABG",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "ABH"
     ]
@@ -372,7 +372,7 @@
   {
     "id": "ABR",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "ABS"
     ]
@@ -466,7 +466,7 @@
   {
     "id": "ACC",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "ACD"
     ]
@@ -594,7 +594,7 @@
   {
     "id": "ACT",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "ACU"
     ]
@@ -688,7 +688,7 @@
   {
     "id": "ADD",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "ADE"
     ]
@@ -782,7 +782,7 @@
   {
     "id": "ADN",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "ADO"
     ]
@@ -935,7 +935,7 @@
   {
     "id": "AEF",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "AEG"
     ]
@@ -1028,7 +1028,7 @@
   {
     "id": "AEQ",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "AER"
     ]
@@ -1114,7 +1114,7 @@
   {
     "id": "AFB",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "AFC"
     ]
@@ -1259,7 +1259,7 @@
   {
     "id": "AFS",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "AFT"
     ]
@@ -1353,7 +1353,7 @@
   {
     "id": "AGD",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "AGE"
     ]
@@ -1447,7 +1447,7 @@
   {
     "id": "AGO",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "AGP"
     ]
@@ -1592,7 +1592,7 @@
   {
     "id": "AHF",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "AHG"
     ]
@@ -1660,7 +1660,7 @@
   {
     "id": "AHN",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "AHO"
     ]
@@ -1754,7 +1754,7 @@
   {
     "id": "AHY",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "AHZ"
     ]
@@ -1840,7 +1840,7 @@
   {
     "id": "AII",
     "type": "systeem",
-    "text": "Sys: Maatwerk offerte PU aanbrengen",
+    "text": "Maatwerk offerte PU aanbrengen",
     "next": [
       "END"
     ]
@@ -1856,7 +1856,7 @@
   {
     "id": "AIK",
     "type": "systeem",
-    "text": "Sys: DOS-coating Premium",
+    "text": "DOS-coating Premium",
     "next": [
       "AIL"
     ]
@@ -1971,7 +1971,7 @@
   {
     "id": "AIV",
     "type": "systeem",
-    "text": "Sys: Maatwerk offerte",
+    "text": "Maatwerk offerte",
     "next": [
       "END"
     ]
@@ -2021,7 +2021,7 @@
   {
     "id": "AJD",
     "type": "systeem",
-    "text": "Sys: Rolcoating Optimum",
+    "text": "Rolcoating Optimum",
     "forced_extras": "externe keuring",
     "next": [
       "BGH"
@@ -2064,7 +2064,7 @@
   {
     "id": "AJE",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "forced_extras": "externe keuring",
     "next": [
       "BFY"
@@ -2116,7 +2116,7 @@
   {
     "id": "AJL",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "forced_extras": "externe keuring",
     "next": [
       "BGB"
@@ -2151,7 +2151,7 @@
   {
     "id": "AJM",
     "type": "systeem",
-    "text": "Sys: Gietcoating Premium",
+    "text": "Gietcoating Premium",
     "forced_extras": "externe keuring",
     "next": [
       "BGE"
@@ -2203,7 +2203,7 @@
   {
     "id": "AJU",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "END"
     ]
@@ -2211,7 +2211,7 @@
   {
     "id": "AJV",
     "type": "systeem",
-    "text": "Sys: Gietcoating Premium",
+    "text": "Gietcoating Premium",
     "next": [
       "END"
     ]
@@ -2227,7 +2227,7 @@
   {
     "id": "AJX",
     "type": "systeem",
-    "text": "Sys: Boeren coating",
+    "text": "Boeren coating",
     "next": [
       "END"
     ]
@@ -2260,7 +2260,7 @@
   {
     "id": "AKB",
     "type": "systeem",
-    "text": "Sys: Rolcoating Optimum",
+    "text": "Rolcoating Optimum",
     "next": [
       "BFN"
     ]
@@ -2302,7 +2302,7 @@
   {
     "id": "AKD",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "BFQ"
     ]
@@ -2461,7 +2461,7 @@
   {
     "id": "AKR",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "next": [
       "AKT"
     ]
@@ -2495,7 +2495,7 @@
   {
     "id": "AKS",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "AKW"
     ]
@@ -2537,7 +2537,7 @@
   {
     "id": "AKZ",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "forced_extras": ["ADD250"],
     "next": [
       "ALA"
@@ -2580,7 +2580,7 @@
   {
     "id": "ALD",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "ALE"
     ]
@@ -2701,7 +2701,7 @@
   {
     "id": "ALR",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "next": [
       "ALT"
     ]
@@ -2735,7 +2735,7 @@
   {
     "id": "ALS",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "ALW"
     ]
@@ -2786,7 +2786,7 @@
   {
     "id": "AMB",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "forced_extras": ["ADD250"],
     "next": [
       "AMD"
@@ -2821,7 +2821,7 @@
   {
     "id": "AMC",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "AMG"
@@ -2864,7 +2864,7 @@
   {
     "id": "AMK",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "chosen_extra": "toplaag BS3000",
     "next": [
       "AML"
@@ -2969,7 +2969,7 @@
   {
     "id": "AMW",
     "type": "systeem",
-    "text": "Sys: Gietcoating Premium",
+    "text": "Gietcoating Premium",
     "next": [
       "AMZ"
     ]
@@ -3003,7 +3003,7 @@
   {
     "id": "AMX",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "ANC"
     ]
@@ -3037,7 +3037,7 @@
   {
     "id": "AMY",
     "type": "systeem",
-    "text": "Sys: Gietcoating Excellent",
+    "text": "Gietcoating Excellent",
     "next": [
       "ANF"
     ]
@@ -3105,7 +3105,7 @@
   {
     "id": "ANM",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "chosen_extra": "AG lak",
     "next": [
       "ANO"
@@ -3140,7 +3140,7 @@
   {
     "id": "ANN",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "chosen_extra": "AG lak",
     "next": [
       "ANR"
@@ -3200,7 +3200,7 @@
   {
     "id": "ANY",
     "type": "systeem",
-    "text": "Sys: Rolcoating Optimum",
+    "text": "Rolcoating Optimum",
     "next": [
       "ANZ"
     ]
@@ -3242,7 +3242,7 @@
   {
     "id": "AOC",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "AOD"
     ]
@@ -3336,7 +3336,7 @@
   {
     "id": "AOP",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "AOQ"
     ]
@@ -3468,7 +3468,7 @@
   {
     "id": "APH",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "API"
     ]
@@ -3510,7 +3510,7 @@
   {
     "id": "APL",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "APM"
@@ -3553,7 +3553,7 @@
   {
     "id": "APP",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "chosen_extra": "toplaag BS3000",
     "next": [
       "APQ"
@@ -3666,7 +3666,7 @@
   {
     "id": "AQE",
     "type": "systeem",
-    "text": "Sys: Gietcoating",
+    "text": "Gietcoating",
     "next": [
       "AQF"
     ]
@@ -3708,7 +3708,7 @@
   {
     "id": "AQI",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "AQJ"
@@ -3751,7 +3751,7 @@
   {
     "id": "AQM",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met BS3000",
+    "text": "Rolcoating Premium met BS3000",
     "next": [
       "AQN"
     ]
@@ -3855,7 +3855,7 @@
   {
     "id": "AQZ",
     "type": "systeem",
-    "text": "Sys: Gietcoating Premium",
+    "text": "Gietcoating Premium",
     "next": [
       "ARC"
     ]
@@ -3889,7 +3889,7 @@
   {
     "id": "BFD",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "ARF"
     ]
@@ -3923,7 +3923,7 @@
   {
     "id": "ARB",
     "type": "systeem",
-    "text": "Sys: Gietcoating Excellent",
+    "text": "Gietcoating Excellent",
     "next": [
       "ARI"
     ]
@@ -3982,7 +3982,7 @@
   {
     "id": "ARP",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "chosen_extra": "AG lak",
     "next": [
       "ARQ"
@@ -4042,7 +4042,7 @@
   {
     "id": "ARW",
     "type": "systeem",
-    "text": "Sys: Rolcoating Optimum",
+    "text": "Rolcoating Optimum",
     "next": [
       "ARX"
     ]
@@ -4084,7 +4084,7 @@
   {
     "id": "ASA",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "ASB"
     ]
@@ -4178,7 +4178,7 @@
   {
     "id": "ASF",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "ASG"
     ]
@@ -4335,7 +4335,7 @@
   {
     "id": "ASZ",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "ATA"
     ]
@@ -4377,7 +4377,7 @@
   {
     "id": "ATD",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "ATE"
@@ -4420,7 +4420,7 @@
   {
     "id": "ATH",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium met BS3000",
+    "text": "Rolcoating Premium met BS3000",
     "next": [
       "ATI"
     ]
@@ -4532,7 +4532,7 @@
   {
     "id": "ATW",
     "type": "systeem",
-    "text": "Sys: Gietcoating",
+    "text": "Gietcoating",
     "next": [
       "ATX"
     ]
@@ -4574,7 +4574,7 @@
   {
     "id": "AUA",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "AUB"
@@ -4617,7 +4617,7 @@
   {
     "id": "AUE",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "chosen_extra": "toplaag BS3000",
     "next": [
       "AUF"
@@ -4722,7 +4722,7 @@
   {
     "id": "AUQ",
     "type": "systeem",
-    "text": "Sys: Gietcoating premium",
+    "text": "Gietcoating premium",
     "next": [
       "AUT"
     ]
@@ -4756,7 +4756,7 @@
   {
     "id": "AUR",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "AUW"
     ]
@@ -4790,7 +4790,7 @@
   {
     "id": "AUS",
     "type": "systeem",
-    "text": "Sys: Gietcoating Excellent",
+    "text": "Gietcoating Excellent",
     "next": [
       "AUZ"
     ]
@@ -4849,7 +4849,7 @@
   {
     "id": "AVG",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "chosen_extra": "AG lak",
     "next": [
       "AVH"
@@ -4909,7 +4909,7 @@
   {
     "id": "AVN",
     "type": "systeem",
-    "text": "Sys: Rolcoating Optimum",
+    "text": "Rolcoating Optimum",
     "next": [
       "AVO"
     ]
@@ -4951,7 +4951,7 @@
   {
     "id": "AVR",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "AVS"
     ]
@@ -5045,7 +5045,7 @@
   {
     "id": "AWC",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "AWD"
     ]
@@ -5203,7 +5203,7 @@
   {
     "id": "AWY",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "next": [
       "AXA"
     ]
@@ -5237,7 +5237,7 @@
   {
     "id": "AWZ",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "AXD"
     ]
@@ -5279,7 +5279,7 @@
   {
     "id": "AXG",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "forced_extras": ["ADD250"],
     "next": [
       "AXH"
@@ -5322,7 +5322,7 @@
   {
     "id": "AXK",
     "type": "systeem",
-    "text": "Sys: DOS-coating Basic",
+    "text": "DOS-coating Basic",
     "next": [
       "AXL"
     ]
@@ -5443,7 +5443,7 @@
   {
     "id": "AYA",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "next": [
       "AYC"
     ]
@@ -5477,7 +5477,7 @@
   {
     "id": "AYB",
     "type": "systeem",
-    "text": "Sys: Gietcoating",
+    "text": "Gietcoating",
     "next": [
       "AYF"
     ]
@@ -5528,7 +5528,7 @@
   {
     "id": "AYJ",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "forced_extras": ["ADD250"],
     "next": [
       "AYL"
@@ -5563,7 +5563,7 @@
   {
     "id": "AYK",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "AYO"
@@ -5606,7 +5606,7 @@
   {
     "id": "AYR",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "chosen_extra": "toplaag BS3000",
     "next": [
       "AYS"
@@ -5711,7 +5711,7 @@
   {
     "id": "AZD",
     "type": "systeem",
-    "text": "Sys: Gietcoating Premium",
+    "text": "Gietcoating Premium",
     "next": [
       "AZG"
     ]
@@ -5745,7 +5745,7 @@
   {
     "id": "AZE",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "AZJ"
     ]
@@ -5779,7 +5779,7 @@
   {
     "id": "AZF",
     "type": "systeem",
-    "text": "Sys: Gietcoating Excellent",
+    "text": "Gietcoating Excellent",
     "next": [
       "AZM"
     ]
@@ -5847,7 +5847,7 @@
   {
     "id": "AZU",
     "type": "systeem",
-    "text": "Sys: Rolcoating Basic",
+    "text": "Rolcoating Basic",
     "chosen_extra": "AG lak",
     "next": [
       "AZW"
@@ -5882,7 +5882,7 @@
   {
     "id": "AZV",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "chosen_extra": "AG lak",
     "next": [
       "AZZ"
@@ -5942,7 +5942,7 @@
   {
     "id": "BAF",
     "type": "systeem",
-    "text": "Sys: Rolcoating Optimum",
+    "text": "Rolcoating Optimum",
     "next": [
       "BAG"
     ]
@@ -5984,7 +5984,7 @@
   {
     "id": "BAJ",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "BAK"
     ]
@@ -6070,7 +6070,7 @@
   {
     "id": "BAU",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "BAV"
     ]
@@ -6210,7 +6210,7 @@
   {
     "id": "BBM",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "BBN"
     ]
@@ -6252,7 +6252,7 @@
   {
     "id": "BBQ",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "BBR"
@@ -6295,7 +6295,7 @@
   {
     "id": "BBU",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "chosen_extra": "toplaag BS3000",
     "next": [
       "BBV"
@@ -6408,7 +6408,7 @@
   {
     "id": "BCJ",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "BCK"
     ]
@@ -6450,7 +6450,7 @@
   {
     "id": "BCN",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "forced_extras": ["ADD250"],
     "next": [
       "BCO"
@@ -6493,7 +6493,7 @@
   {
     "id": "BCR",
     "type": "systeem",
-    "text": "Sys: Rolcoating Premium",
+    "text": "Rolcoating Premium",
     "chosen_extra": "toplaag BS3000",
     "next": [
       "BCS"
@@ -6598,7 +6598,7 @@
   {
     "id": "BDD",
     "type": "systeem",
-    "text": "Sys: Gietcoating premium",
+    "text": "Gietcoating premium",
     "next": [
       "BDE"
     ]
@@ -6632,7 +6632,7 @@
   {
     "id": "BDH",
     "type": "systeem",
-    "text": "Sys: Gietcoating Basic",
+    "text": "Gietcoating Basic",
     "next": [
       "BDI"
     ]
@@ -6666,7 +6666,7 @@
   {
     "id": "BDL",
     "type": "systeem",
-    "text": "Sys: Gietcoating Excellent",
+    "text": "Gietcoating Excellent",
     "next": [
       "BDM"
     ]
@@ -6784,7 +6784,7 @@
   {
     "id": "BDZ",
     "type": "systeem",
-    "text": "Sys: Rolcoating Optimum",
+    "text": "Rolcoating Optimum",
     "next": [
       "BEA"
     ]
@@ -6826,7 +6826,7 @@
   {
     "id": "BEE",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "BEF"
     ]
@@ -6920,7 +6920,7 @@
   {
     "id": "BEP",
     "type": "systeem",
-    "text": "Sys: Rolcoating Extreme",
+    "text": "Rolcoating Extreme",
     "next": [
       "BEQ"
     ]
