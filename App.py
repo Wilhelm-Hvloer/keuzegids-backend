@@ -262,6 +262,9 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
     for dag in sorted(dagen.keys()):
         taken = dagen[dag]
 
+        # 🔥 NIEUW: meerwerk eerst tonen
+        taken = sorted(taken, key=lambda t: 0 if t.get("type") == "meerwerk" else 1)
+
         totaal_uren = round(sum(t["uren"] for t in taken), 1)
 
         # 🔥 berekening op uren
