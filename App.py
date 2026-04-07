@@ -190,12 +190,11 @@ def resolve_next_node(current_node, choice_index):
 
 
 
-
 # =========================
 # PLANNING BEREKENING
 # =========================
 
-def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwerk=None):
+def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwerk=None, hellingbaan=False):
 
     if meerwerk is None:
         meerwerk = []
@@ -217,11 +216,18 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
         regel = get_regel(b, m2)
         uren = regel["uur_per_m2"] * m2
 
-        # ruimtes toeslag
+        # 🔥 NIEUW: gecombineerde factor (ruimtes + hellingbaan)
+        factor = 1
+
         if ruimtes == 2:
-            uren *= 1.2
+            factor *= 1.2
         elif ruimtes == 3:
-            uren *= 1.4
+            factor *= 1.4
+
+        if hellingbaan:
+            factor *= 1.2
+
+        uren *= factor
 
         dag = b["dag"]
 
@@ -251,7 +257,7 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
             "naam": mw.get("naam", "meerwerk"),
             "uren": round(float(mw.get("uren", 0)), 1),
             "type": "meerwerk",
-            "min_man": 1  # 🔥 meerwerk heeft standaard geen min eis
+            "min_man": 1
         })
 
     # =========================
@@ -262,24 +268,18 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
     for dag in sorted(dagen.keys()):
         taken = dagen[dag]
 
-        # 🔥 NIEUW: meerwerk eerst tonen
+        # 🔥 meerwerk eerst tonen
         taken = sorted(taken, key=lambda t: 0 if t.get("type") == "meerwerk" else 1)
 
         totaal_uren = round(sum(t["uren"] for t in taken), 1)
 
-        # 🔥 berekening op uren
         man_op_basis_van_uren = math.ceil(totaal_uren / max_werk_per_persoon)
-
-        # 🔥 minimale man uit systeemregels
         min_man = max(t.get("min_man", 1) for t in taken)
 
-        # 🔥 definitieve man (belangrijkste fix)
         man = max(man_op_basis_van_uren, min_man)
 
-        # werkuren per persoon
         uren_per_persoon = afronden_halve_uren(totaal_uren / man)
 
-        # reistijd optellen
         totaal_per_persoon = afronden_halve_uren(
             uren_per_persoon + reistijd_uren
         )
@@ -296,7 +296,6 @@ def bereken_planning(systemen, systeem_naam, m2, reistijd_min, ruimtes=1, meerwe
         })
 
     return planning
-
 
 
 
@@ -361,6 +360,8 @@ def calculate_price():
 
     gekozen_extras = data.get("extras", []) or []
     forced_extras = data.get("forced_extras", []) or []
+    heeft_hellingbaan = data.get("heeft_hellingbaan", False)
+
 
     for fx in forced_extras:
         if fx not in gekozen_extras:
@@ -428,7 +429,17 @@ def calculate_price():
             "error": "geen passende staffel gevonden"
         }), 200
 
-    basisprijs = round(prijs_per_m2 * oppervlakte)
+    basisprijs = prijs_per_m2 * oppervlakte
+
+    factor = 1.0
+
+    # ruimtes zitten al in prijs_per_m2 → NIET opnieuw doen!
+
+    # 🔥 hellingbaan toeslag
+    if heeft_hellingbaan:
+         factor *= 1.2
+
+    basisprijs = round(basisprijs * factor)
 
     extras_prijslijst = PRIJS_DATA.get("extras", {})
     extra_systemen = PRIJS_DATA.get("extra_systemen", {})
@@ -537,6 +548,18 @@ def calculate_price():
         })
 
     totaalprijs = basisprijs + extra_totaal
+
+    # 🔥 hellingbaan zichtbaar maken
+    if heeft_hellingbaan:
+        basis_zonder_helling = basisprijs / 1.2
+        hellingbaan_bedrag = round(basis_zonder_helling * 0.2)
+
+        extra_details.append({
+            "key": "hellingbaan",
+            "naam": "Hellingbaan (arbeid +20%)",
+            "totaal": hellingbaan_bedrag,
+            "forced": False
+        })
 
     if xtr_uren > 0:
         bedrag = round(xtr_uren * XTR_TARIEF)
@@ -739,8 +762,8 @@ def planning_endpoint():
     reistijd = data.get("reistijd", 0)
     ruimtes = data.get("ruimtes", 1)
 
-    # 🔥 NIEUW
     meerwerk = data.get("meerwerk", [])
+    heeft_hellingbaan = data.get("heeft_hellingbaan", False)  # 👈 NIEUW
 
     if not systeem or m2 is None:
         return jsonify({"error": "systeem en m2 verplicht"}), 400
@@ -752,7 +775,8 @@ def planning_endpoint():
             m2=float(m2),
             reistijd_min=float(reistijd),
             ruimtes=int(ruimtes),
-            meerwerk=meerwerk  # 🔥 DOORGEVEN
+            meerwerk=meerwerk,
+            hellingbaan=heeft_hellingbaan  # 👈 NIEUW
         )
 
         return jsonify({"planning": planning}), 200

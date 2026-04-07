@@ -2236,10 +2236,13 @@
     "id": "AJY",
     "type": "antwoord",
     "text": "Antw: Hellingbaan",
+    "set": {
+      "heeftHellingbaan": true
+    },
     "next": [
       "AJZ"
     ]
-  },
+  }
   {
     "id": "AJZ",
     "type": "vraag",
