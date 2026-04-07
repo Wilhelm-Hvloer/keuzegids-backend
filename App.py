@@ -129,6 +129,10 @@ def expand_node(node):
         "next": []
     }
 
+    # 🔥 CRUCIAAL: set doorgeven
+    if node.get("set"):
+        expanded["set"] = node.get("set")
+
     # 🔑 chosen_extra doorgeven (antwoord-nodes)
     if node.get("chosen_extra"):
         expanded["chosen_extra"] = node.get("chosen_extra")
@@ -143,16 +147,14 @@ def expand_node(node):
         expanded["forced_extras"] = node.get("forced_extras", [])
 
     # =========================
-    # CHILD NODES EXPANDEN (ALTIJD VOLLEDIGE OBJECTEN)
+    # CHILD NODES EXPANDEN
     # =========================
     for child in node.get("next", []):
 
-        # Als child al een object is (bijv. bij afweging)
         if isinstance(child, dict):
             expanded["next"].append(child)
             continue
 
-        # Anders is het een ID → ophalen en volledig expanden
         child_node = get_node(child)
         if not child_node:
             continue
